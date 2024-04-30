@@ -1,0 +1,95 @@
+project:
+  type: book
+
+book:
+  title: "Thesis"
+  author: 
+  - name: Miguel Matey Sanz
+    orcid: 0000-0002-1189-5079
+    email: matey@uji.es
+    corresponding: true
+    degrees:
+      - MSc
+    affiliation:
+      - id: uji
+        name: Universitat Jaume I
+        city: Castellón de la Plana
+        country: Spain
+        url: www.uji.es
+  - name: Sven Casteleyn
+    orcid: 0000-0003-0572-5716
+    roles: supervision
+    degrees:
+      - PhD
+    affiliation:
+      - ref: uji
+  - name: Carlos Granell
+    orcid: 0000-0003-1004-9695
+    roles: supervision
+    degrees:
+      - PhD
+    affiliation:
+      - ref: uji
+  date: now
+
+  page-footer:
+    left: |
+      TBD 
+      
+      [![BY-NC-SA](figs/by-nc-sa.png){width=70}](https://creativecommons.org/licenses/by-nc-sa/4.0/) Miguel Matey Sanz, 2024
+    right: |
+      This book was built with ❤️ and <a href="https://quarto.org/">Quarto</a>.
+
+  search: true
+  repo-url: https://github.com/matey97/thesis
+  sidebar:
+    style: docked
+    background: light
+
+  chapters:
+    - href: index.qmd
+      text: Preface
+    - 01_intro.qmd
+    - part: 02_materials-methods.qmd
+      chapters:
+        - 02.1_collection-tools.qmd
+        - href: 02.2_dataset.qmd
+          text: Collected dataset
+        - 02.3_methods.qmd
+    - part: 03_analysis-har.qmd
+      text: Multidimensional analysis
+    - part: 04_tug.qmd
+      text: "HAR in mHealth: TUG test"
+    - part: 05_wifi-csi.qmd
+      text: Wi-Fi CSI HAR
+    - 06_conclusions.qmd
+    - references.qmd
+  appendices:
+    - code-documentation.qmd
+    - tools.qmd
+
+  license: "CC BY-NC-SA"
+  abstract: TODO
+  
+
+bibliography: references.bib
+
+format:
+  html:
+    number-sections: false
+    theme:
+      light: lumen
+      dark: darkly
+    code-fold: true
+    code-tools:
+      toggle: true
+      source: repo
+    #crossrefs-hover: false
+    toc-depth: 4
+    toc-expand: true
+    smooth-scroll: true
+  pdf:
+    documentclass: scrreprt
+
+
+

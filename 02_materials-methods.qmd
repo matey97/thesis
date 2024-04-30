@@ -1,0 +1,11 @@
+# Materials & Methods
+
+This section describes the materials and methods employed during the development of the thesis. More concretely, this section encompasses the follwing subsections:
+
+- @sec-collection_tools: describes the reliable data collection libraries for Android smartphones and Wear OS smartwatches.
+- @sec-dataset: describes the smartphone and smartwatch inertial sensors collected database from heterogeneous subjects for HAR applications.
+- @sec-common_methods: describes the ML and DL architectures employed for HAR classification and the statistical tools used to determine the significance of the presented results.
+
+::: {.callout-note}
+The contents on this section correspond with the Chapter 2 of the dissertation document.
+:::

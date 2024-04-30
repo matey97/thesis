@@ -1,0 +1,1 @@
+# Smartphone and smartwatch HAR dataset {#sec-dataset}

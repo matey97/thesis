@@ -1,0 +1,27 @@
+---
+keywords: 
+    - Human activity recognition
+    - Inertial measurement units
+    - Channel state information
+    - Machine learning
+    - Deep learning
+    - Smartphones
+    - Smartwatches
+    - ESP32 microcontrollers
+    - Timed Up & Go test.
+---
+
+# Funding {.unnumbered}
+
+This thesis is funded by the Spanish Ministry of Universities. Grant references FPU19/05352 and EST23/00320.
+
+![](figs/logo-ministerio-universidades.png){width=400 fig-align="center"}
+
+
+
+
+# License {.unnumbered}
+
+_TBD_ Copyright © 2024 Miguel Matey Sanz. This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+[![](figs/by-nc-sa.png){width=300 fig-align="center"}](https://creativecommons.org/licenses/by-nc-sa/4.0/)

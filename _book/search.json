@@ -1,0 +1,136 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Thesis",
+    "section": "",
+    "text": "Funding\nThis thesis is funded by the Spanish Ministry of Universities. Grant references FPU19/05352 and EST23/00320.\n\n\n\n\n\n\n\nLicense\nTBD Copyright © 2024 Miguel Matey Sanz. This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Boonstra, Tjeerd W, Jennifer Nicholas, Quincy JJ Wong, Frances Shaw,\nSamuel Townsend, and Helen Christensen. 2018. “Using Mobile Phone\nSensor Technology for Mental Health Research: Integrated Analysis to\nIdentify Hidden Challenges and Potential Solutions.” J. Med.\nInternet Res. 20 (7): e10131. https://doi.org/10.2196/10131.\n\n\nGonzález-Pérez, Alberto, Miguel Matey-Sanz, Carlos Granell, and Sven\nCasteleyn. 2022. “Using Mobile Devices as Scientific Measurement\nInstruments: Reliable Android Task Scheduling.” Pervasive and\nMobile Computing 81: 101550. https://doi.org/10.1016/j.pmcj.2022.101550.\n\n\nMatey-Sanz, Miguel, Sven Casteleyn, and Carlos Granell. 2024.\n“Background Sensors.” Zenodo. https://doi.org/10.5281/zenodo.10635734.",
+    "crumbs": [
+      "References"
+    ]
+  },
+  {
+    "objectID": "conclusions.html",
+    "href": "conclusions.html",
+    "title": "6  Conclusions",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conclusions</span>"
+    ]
+  },
+  {
+    "objectID": "wifi-csi.html",
+    "href": "wifi-csi.html",
+    "title": "5  Wi-Fi CSI HAR",
+    "section": "",
+    "text": "6 Looking into the future: Wi-Fi CSI based HAR",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Wi-Fi CSI HAR</span>"
+    ]
+  },
+  {
+    "objectID": "01_intro.html",
+    "href": "01_intro.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee for additional discussion of literate programming.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "06_conclusions.html",
+    "href": "06_conclusions.html",
+    "title": "8  Conclusions",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Conclusions</span>"
+    ]
+  },
+  {
+    "objectID": "02_materials-methods.html",
+    "href": "02_materials-methods.html",
+    "title": "Materials & Methods",
+    "section": "",
+    "text": "This section describes the materials and methods employed during the development of the thesis. More concretely, this section encompasses the follwing subsections:\n\nData collection libraries: describes the reliable data collection libraries for Android smartphones and Wear OS smartwatches.\nSmartphone and smartwatch HAR dataset: describes the smartphone and smartwatch inertial sensors collected database from heterogeneous subjects for HAR applications.\nCommon methods: describes the ML and DL architectures employed for HAR classification and the statistical tools used to determine the significance of the presented results.\n\n\n\n\n\n\n\nNote\n\n\n\nThe contents on this section correspond with the Chapter 2 of the dissertation document.",
+    "crumbs": [
+      "Materials & Methods"
+    ]
+  },
+  {
+    "objectID": "02.1_collection-tools.html",
+    "href": "02.1_collection-tools.html",
+    "title": "Data collection libraries",
+    "section": "",
+    "text": "Background Sensors\nThe Background Sensors library is an Android library developed in Java that implements a reliable passive collection of IMU sensors (i.e., accelerometer, gyroscope and magnetometer), and, therefore, it can be used to develop native Android applications that require to collect samples from such sensors. The library has been developed to support devices running from Andriod 5.0 (API level 21) to Android 13 (API level 33).\nFigure 2.1 includes the simplified architecture of the Background Sensors library.",
+    "crumbs": [
+      "Materials & Methods",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data collection libraries</span>"
+    ]
+  },
+  {
+    "objectID": "02.1_collection-tools.html#wearos-sensors-nativescript-wearos-sensors",
+    "href": "02.1_collection-tools.html#wearos-sensors-nativescript-wearos-sensors",
+    "title": "Data collection libraries",
+    "section": "WearOS Sensors & NativeScript WearOS Sensors",
+    "text": "WearOS Sensors & NativeScript WearOS Sensors\nThe WearOS Sensors library is a Wear OS library written in Java that can be used to develop native Wear OS applications and, like Background Sensors, implements a reliable passive collection of IMU sensors (i.e., accelerometer, gyroscope and magnetometer). In addition, it also supports the collection from the heart rate sensor and the location services (i.e., GNSS).\nOn the other hand, NativeScript WearOS Sensors is a library written in TypeScript that can be used to build smartphone applications complementary to WearOS Sensors developed applications. Unlike the other libraries, this one cannot be used to develop native applications but applications built with the NativeScript development framework, which uses web technologies (e.g., JavaScript, TypeScript) to build Android and iOS applications.\nThe following features are available when using applications developed with these libraries:\n\nWearOS Sensors:\n\nStart and stop the data collection on the smartwatch.\nGather collected data in the smartwatch.\n\nWearOS Sensors + Nativescript WearOS Sensors:\n\nStart and stop the data collection on the smartwatch.\nStart and stop the data collection on the smartwatch from a paired smartphone.\nGater the collected data in the smartwatch or in the smartphone.\n\n\nThe WearOS Sensors and NativeScript WearOS Senosrs libraries have been developed to support devices running from Wear OS 1.0 ( level 23) to Wear OS 4 ( level 33) and from Android 6 ( level 23) to Android 13 ( level 33), respectively.\n\n\n\n\n\n\nAvailability\n\n\n\nThe version of WearOS Sensors and NativeScript WearOS Sensors at the moment of writing this thesis are v1.2.1 and v1.3.0. The libraries are available in:\n\nWearOS Sensors:\n\nMaven Central Repository\nGitHub\nZenodo (Matey-Sanz, Casteleyn, and Granell 2024c)\n\nNativeScript WearOS Sensors:\n\nNode Package Manager\nGitHub\nZenodo (Matey-Sanz, Casteleyn, and Granell 2024b)\n\n\n\n\nFigure 2.2 includes the simplified architecture of the WearOS Sensors and NativeScript WearOS Sensors libraries.\n\n\n\n\n\n\nFigure 2.2: Simplified architecture of both libraries\n\n\n\n\n\n\n\n\n\nLibrary documentation\n\n\n\nThe full documentation of the libraries and their components can be found in their respective repositories: WearOS Sensors and NativeScript WearOS Sensors.\n\n\n\nSample usage\n\nManaging and gathering collection in smartwatch.\nSince WearOS Sensors is built on top of Background Sensors the same code as the one presented previously can be employed for this purpose.\n\n\nManaging in smartwatch, gathering in smartphone.\npublic class ExampleActivity extends Activity {\n    private CommandClient commandClient;\n\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n\n1        commandClient = new CommandClient(this);\n    }\n\n    public void start() {\n        Sensor sensor = WearSensor.ACCELEROMETER;\n\n2        CollectionConfiguration config = new CollectionConfiguration(\n            sensor,\n            10000, // sensorDelay (microseconds)\n            100 // batchSize\n        );\n\n3        commandClient.sendStartCommand(config);\n    }\n\n    public void stop() {\n4        commandClient.sendStopCommand(WearSensor.ACCELEROMETER);\n    }\n}\n\n1\n\nCreate a CommandClient instance.\n\n2\n\nCreate a CollectionConfiguration including the sensor, sensorDelay (microseconds) and batchSize.\n\n3\n\nStart the data collection using the CommandClient#sendStartCommand(...).\n\n4\n\nStop the data collection using the CommandClient#sendStopCommand(...).\n\n\nfunction registerListener() {\n5    const collectorManager = getCollectorManager();\n\n6    collectorManager.addSensorListener((sensorRecord: SensorRecord&lt;any&gt;) =&gt; {\n        // Accelerometer samples received here.\n    });\n}\n\n5\n\nObtain a CollectorManager instance using the getCollectorManager() function.\n\n6\n\nRegister a listener with the CollectorManager#addSensorListener(...).\n\n\n\n\nManaging and gathering collection in smartphone.\nlet collectorManager;\nfunction registerListener() {\n1    const collectorManager = getCollectorManager();\n\n2    collectorManager.addSensorListener((sensorRecord: SensorRecord&lt;any&gt;) =&gt; {\n        // Accelerometer samples received here.\n    });\n}\n\nlet smartwatch;\nasync function getConnectedSmartwatch() {\n3    const nodesDiscovered = await getNodeDiscoverer().getConnectedNodes();\n    smartwatch = nodesDiscovered[0];\n}\n\nfunction start() {\n4    const config: CollectionConfiguration = {sensorInterval: 10000, batchSize: 100};\n    \n5    collectorManager.startCollecting(smartwatch, SensorType.ACCELEROMETER, config);\n}\n\nfunction stop() {\n6    collectorManager.stopCollecting(smartwatch, SensorType.ACCELEROMETER);\n}\n\n1\n\nObtain a CollectorManager instance using the getCollectorManager() function.\n\n2\n\nRegister a listener with the CollectorManager#addSensorListener(...).\n\n3\n\nUse NodeDiscoverer#getConnectedNodes() to get a reference to the connected smartwatches.\n\n4\n\nCreate a CollectionConfiguration including the sensorInterval (microseconds) and batchSize.\n\n5\n\nStart the data collection on the selected smartwatch calling CollectorManager#startCollecting(...).\n\n6\n\nStop the data collection on the selected smartwatch calling CollectorManager#stopCollecting(...).",
+    "crumbs": [
+      "Materials & Methods",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data collection libraries</span>"
+    ]
+  },
+  {
+    "objectID": "02.1_collection-tools.html#integration-in-the-awarns-framework",
+    "href": "02.1_collection-tools.html#integration-in-the-awarns-framework",
+    "title": "Data collection libraries",
+    "section": "Integration in the AwarNS Framework",
+    "text": "Integration in the AwarNS Framework\nThe AwarNS Framework, implemented by a colleague researcher, is an Android-based development framework aimed to facilitate the development of context-aware smartphone applications which require systematic data acquisition, on-device analyses and perform actions based on these analyses (González-Pérez et al. 2023). The framework is built on top of the NativeScript Task Dispatcher, which allows the definition and execution of reactive workflows using its building blocks: Tasks (code units), Events (execution drivers) and TaskGraphs (allow the definition of reactive workflows, i.e., Tasks triggered by Events) (González-Pérez et al. 2022).\nThis dissertation contributes to the AwarNS Framework by integrating the previously described data collection tools into it. In that sense, two new packages are developed and added into the framework: the Phone Sensors and the Wear OS packages. These packages wrap up the Background Sensors and NativeScript WearOS Sensors libraries to integrate their functionality into the AwarNS Framework.\n\n\n\n\n\n\nNote\n\n\n\nFor a more detailed description of the AwarNS Framework, check its GitHub repository and the research paper (González-Pérez et al. 2023)\n\n\n\n\n\nIntegration of Background Sensors and NativeScript WearOS Sensors into the AwarNS Framework.\n\n\n\n\n\n\n\n\nLibrary documentation\n\n\n\nThe full documentation of the libraries and their components can be found in the AwarNS Framework repository: Phone Sensors and WearOS Sensors.\n\n\n\n\n\nFigure 2.1: Simplified architecture of the Background Sensors library\nFigure 2.2: Simplified architecture of both libraries\nIntegration of Background Sensors and NativeScript WearOS Sensors into the AwarNS Framework.\n\n\n\nBoonstra, Tjeerd W, Jennifer Nicholas, Quincy JJ Wong, Frances Shaw, Samuel Townsend, and Helen Christensen. 2018. “Using Mobile Phone Sensor Technology for Mental Health Research: Integrated Analysis to Identify Hidden Challenges and Potential Solutions.” J. Med. Internet Res. 20 (7): e10131. https://doi.org/10.2196/10131.\n\n\nGonzález-Pérez, Alberto, Miguel Matey-Sanz, Carlos Granell, and Sven Casteleyn. 2022. “Using Mobile Devices as Scientific Measurement Instruments: Reliable Android Task Scheduling.” Pervasive and Mobile Computing 81: 101550. https://doi.org/10.1016/j.pmcj.2022.101550.\n\n\nGonzález-Pérez, Alberto, Miguel Matey-Sanz, Carlos Granell, Laura Díaz-Sanahuja, Juana Bretón-López, and Sven Casteleyn. 2023. “AwarNS: A Framework for Developing Context-Aware Reactive Mobile Applications for Health and Mental Health.” Journal of Biomedical Informatics, 104359. https://doi.org/10.1016/j.jbi.2023.104359.\n\n\nMatey-Sanz, Miguel, Sven Casteleyn, and Carlos Granell. 2024a. “Background Sensors.” Zenodo. https://doi.org/10.5281/zenodo.10635734.\n\n\n———. 2024b. “NativeScript WearOS Sensors.” Zenodo. https://doi.org/10.5281/zenodo.10640461.\n\n\n———. 2024c. “WearOS Sensors.” Zenodo. https://doi.org/10.5281/zenodo.10640429.",
+    "crumbs": [
+      "Materials & Methods",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data collection libraries</span>"
+    ]
+  },
+  {
+    "objectID": "02.1_collection-tools.html#background-sensors",
+    "href": "02.1_collection-tools.html#background-sensors",
+    "title": "Data collection libraries",
+    "section": "",
+    "text": "Availability\n\n\n\nThe version of the library at the moment of writing this thesis is v1.3.0. The library is available in:\n\nMaven Central Repository\nGitHub\nZenodo (Matey-Sanz, Casteleyn, and Granell 2024a)\n\n\n\n\n\n\n\n\n\n\nFigure 2.1: Simplified architecture of the Background Sensors library\n\n\n\n\n\n\n\n\n\nLibrary documentation\n\n\n\nThe full documentation of the library and its components can be found in GitHub.\n\n\n\nSample usage\n\n\n\n\n\n\nTip\n\n\n\nTap on the numbers at the end of the lines to obtain insights about the code.\n\n\npublic class ExampleActivity extends Activity {\n\n    private SensorManager sensorManager;\n    private ServiceManager serviceManager;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n\n1        sensorManager = new SensorManager(this);\n        List&lt;Sensor&gt; sensors = sensorManager.availableSensors(BaseSensor.values());\n\n2        serviceManager = new ServiceManager(this, BaseSensorRecordingService.class);\n    }\n\n    public void start() {\n        Sensor sensor = BaseSensor.ACCELEROMETER;\n\n3        CollectionConfiguration config = new CollectionConfiguration(\n            sensor,\n            10000, // sensorDelay (microseconds)\n            100    // batchSize\n        );\n\n4        RecordCallback callback = new RecordCallback {\n            public void onRecordsCollected(List&lt;Record&gt; records) {\n                // Accelerometer samples received here\n            }\n        };\n\n5        serviceManager.startCollection(config, callback);\n    }\n\n    public void stop() {\n6        serviceManager.stopCollection(BaseSensor.ACCELEROMETER);\n    }\n}\n\n1\n\nCreate an instance of SensorManager and call availableSensors(...) to determine which sensors are available in the device.\n\n2\n\nCreate a ServiceManager instance with a SensorRecordingService.\n\n3\n\nCreate a CollectionConfiguration indicating the sensor, the sensorDelay(microseconds) and the batchSize.\n\n4\n\nImplement the RecordCallback. The samples will be received here.\n\n5\n\nStart the data collection calling ServiceManager#startCollection(...).\n\n6\n\nStop the data collection calling ServiceManager#stopCollection(...).",
+    "crumbs": [
+      "Materials & Methods",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data collection libraries</span>"
+    ]
+  }
+]
