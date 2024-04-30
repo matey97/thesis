@@ -53,8 +53,7 @@ book:
     - part: 02_materials-methods.qmd
       chapters:
         - 02.1_collection-tools.qmd
-        - href: 02.2_dataset.qmd
-          text: Collected dataset
+        - 02.2_dataset.ipynb
         - 02.3_methods.qmd
     - part: 03_analysis-har.qmd
       text: Multidimensional analysis

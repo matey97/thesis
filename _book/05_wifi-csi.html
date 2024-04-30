@@ -70,6 +70,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
 </head>
@@ -114,7 +115,8 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Preface</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -133,56 +135,32 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_analysis-har.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Multidimensional analysis of ML and DL on HAR</span></a>
+  <a href="./02.1_collection-tools.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data collection libraries</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02.2_dataset.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Smartphone and smartwatch HAR dataset</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02.3_methods.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Common methods</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./03_analysis-har.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Multidimensional analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./04_tug.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">HAR in mHealth: TUG test using smartphones and smartwatches</span></a>
-  </div>
-</li>
-      </ul>
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Multidimensional analysis</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./04_tug.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">HAR in mHealth: TUG test</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./04_tug.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">HAR in mHealth: TUG test using smartphones and smartwatches</span></a>
-  </div>
-</li>
-      </ul>
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">HAR in mHealth: TUG test</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./05_wifi-csi.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Wi-Fi CSI HAR</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./04_tug.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">HAR in mHealth: TUG test using smartphones and smartwatches</span></a>
-  </div>
-</li>
-      </ul>
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Wi-Fi CSI HAR</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -231,7 +209,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Looking into the future: Wi-Fi CSI based HAR</h1>
+<div class="quarto-title-block"><div><h1 class="title">Looking into the future: Wi-Fi CSI based HAR</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/matey97/thesis/blob/main/05_wifi-csi.qmd"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -475,6 +453,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -807,8 +836,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./04_tug.html" class="pagination-link" aria-label="HAR in mHealth: TUG test using smartphones and smartwatches">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">HAR in mHealth: TUG test using smartphones and smartwatches</span></span>
+      <a href="./04_tug.html" class="pagination-link" aria-label="HAR in mHealth: TUG test">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">HAR in mHealth: TUG test</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -822,7 +851,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-footer">
     <div class="nav-footer-left">
 <p>TBD</p>
-<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="by-nc-sa.png" class="img-fluid" width="70" alt="BY-NC-SA"></a> Miguel Matey Sanz, 2024</p>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="figs/by-nc-sa.png" class="img-fluid" width="70" alt="BY-NC-SA"></a> Miguel Matey Sanz, 2024</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
@@ -836,4 +865,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

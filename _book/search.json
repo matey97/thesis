@@ -1,92 +1,79 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Thesis",
+    "objectID": "02.2_dataset.html",
+    "href": "02.2_dataset.html",
+    "title": "Smartphone and smartwatch HAR dataset",
     "section": "",
-    "text": "Funding\nThis thesis is funded by the Spanish Ministry of Universities. Grant references FPU19/05352 and EST23/00320.\n\n\n\n\n\n\n\nLicense\nTBD Copyright © 2024 Miguel Matey Sanz. This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.",
+    "text": "Subjects\nTable 3.1 shows the details of the subjects and the number of activity sequences executed. Twenty-three physically healthy, white caucasian subjects (thirteen male, ten female) voluntarily participated in the data collection procedure. The age of the participants ranged from \\(23\\) to \\(66\\) years old (\\(\\mu = 44.3 \\pm 14.3\\)), where the ratio of male/female participants was \\(56\\%/44\\%\\) (Table 3.2 and Table 3.3). Informed written consent was obtained from all participants, and the data collection was approved by the ethics committee of the Universitat Jaume I (reference No. CD/88/2022) and carried out in accordance with the Declaration of Helsinki.\nCode\nsubjects_info = load_subjects_info()\nsubjects_info\n\n\n\n\nTable 3.1: Subject’s information\n\n\n\n\n\n\n\n\n\n\n\nsubject_id\nage\ngender\nheight\nweight\ndominant_hand\nexecutions\n\n\n\n\n0\ns01\n54\nM\n190\n83\nR\n6\n\n\n1\ns02\n31\nM\n171\n71\nR\n9\n\n\n2\ns03\n24\nF\n161\n62\nR\n10\n\n\n3\ns04\n51\nM\n174\n60\nR\n10\n\n\n4\ns05\n54\nM\n172\n85\nR\n10\n\n\n5\ns06\n53\nM\n179\n110\nR\n10\n\n\n6\ns07\n49\nM\n176\n88\nR\n11\n\n\n7\ns08\n63\nM\n165\n89\nR\n9\n\n\n8\ns09\n28\nF\n164\n49\nR\n10\n\n\n9\ns10\n66\nF\n165\n72\nR\n10\n\n\n10\ns11\n50\nM\n181\n70\nR\n10\n\n\n11\ns12\n46\nM\n181\n90\nR\n10\n\n\n12\ns13\n26\nM\n170\n65\nR\n10\n\n\n13\ns14\n34\nM\n170\n65\nR\n10\n\n\n14\ns15\n23\nF\n166\n60\nR\n10\n\n\n15\ns16\n25\nM\n173\n64\nL\n10\n\n\n16\ns17\n58\nF\n156\n53\nR\n10\n\n\n17\ns18\n61\nM\n172\n97\nR\n10\n\n\n18\ns19\n30\nF\n160\n58\nR\n10\n\n\n19\ns20\n58\nF\n160\n60\nR\n10\n\n\n20\ns21\n56\nF\n160\n55\nR\n10\n\n\n21\ns22\n31\nF\n162\n70\nR\n9\n\n\n22\ns23\n48\nF\n174\n78\nR\n9\nCode\nsubjects_age_range(subjects_info)\n\n\n\n\nTable 3.2: Subject’s statistics\n\n\n\n\n\n\n\n\n\n\n\ncount\nmean\nstd\nmin\n25%\n50%\n75%\nmax\n\n\n\n\nage\n23.0\n44.304348\n14.293784\n23.0\n30.5\n49.0\n55.0\n66.0\nCode\nsubjects_age_range_by_gender(subjects_info)\n\n\n\n\nTable 3.3: Subject’s statistics by gender\n\n\n\n\n\n\n\n\n\n\n\nage\n\n\n\ncount\nmean\nstd\nmin\n25%\n50%\n75%\nmax\n\n\ngender\n\n\n\n\n\n\n\n\n\n\n\n\nF\n10.0\n42.200000\n16.551603\n23.0\n28.5\n39.5\n57.5\n66.0\n\n\nM\n13.0\n45.923077\n12.750566\n25.0\n34.0\n50.0\n54.0\n63.0",
     "crumbs": [
-      "Preface"
+      "Materials & Methods",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Smartphone and smartwatch HAR dataset</span>"
     ]
   },
   {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "Introduction",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "objectID": "02.2_dataset.html#devices",
+    "href": "02.2_dataset.html#devices",
+    "title": "Smartphone and smartwatch HAR dataset",
+    "section": "Devices",
+    "text": "Devices\nA Xiaomi Poco X3 Pro smartphone (M2102J20SG) and a TicWatch Pro 3 GPS smartwatch (WH12018), both equipped with an STMicroelectronics LSM6DSO IMU sensor 1, were used to collect accelerometer and gyroscope data. The devices had a custom application installed —smartphone app (Matey-Sanz and González-Pérez 2022a), smartwatch app (Matey-Sanz and González-Pérez 2022b)— to collect sensor samples at \\(100\\)Hz. The smartwatch was worn on the left wrist; the smartphone was carried in the front left trousers pocket, with an orientation chosen by the participant (see Figure 3.1).\n\n\n\n\n\n\nFigure 3.1: Different orientations of the smartphone placed in the pocket\n\n\n\nAnother device, a Xiaomi Poco F2 Pro smartphone (M2004J11G), was used to video-record the subjects while performing the data collection procedure at \\(60\\) frames per second for data labelling (i.e. ground truth) purposes.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "Materials & Methods",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Smartphone and smartwatch HAR dataset</span>"
     ]
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "2  Summary",
-    "section": "",
-    "text": "In summary, this book has no content whatsoever.",
+    "objectID": "02.2_dataset.html#collection-environment",
+    "href": "02.2_dataset.html#collection-environment",
+    "title": "Smartphone and smartwatch HAR dataset",
+    "section": "Collection environment",
+    "text": "Collection environment\nThe data collection was executed in a research laboratory at Universitat Jaume I. An obstacle-free, three-meter-long and two-meter-wide area with a flat ceramic floor and a combination of natural and artificial light was prepared to carry out the collection.\nAn armless chair was placed in one longitudinal extreme of the area and a visible floor mark was put in the opposite extreme. Thus, the chair and the floor mark were separated by three meters.\nThe environment was only occupied by a participant and a researcher to avoid any distraction or interference during the data collection. In addition to the smartphone used to video-record the collection and the personal devices of the participant, no other devices were enabled in the environment that could interfere with the data collection process.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+      "Materials & Methods",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Smartphone and smartwatch HAR dataset</span>"
     ]
   },
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Boonstra, Tjeerd W, Jennifer Nicholas, Quincy JJ Wong, Frances Shaw,\nSamuel Townsend, and Helen Christensen. 2018. “Using Mobile Phone\nSensor Technology for Mental Health Research: Integrated Analysis to\nIdentify Hidden Challenges and Potential Solutions.” J. Med.\nInternet Res. 20 (7): e10131. https://doi.org/10.2196/10131.\n\n\nGonzález-Pérez, Alberto, Miguel Matey-Sanz, Carlos Granell, and Sven\nCasteleyn. 2022. “Using Mobile Devices as Scientific Measurement\nInstruments: Reliable Android Task Scheduling.” Pervasive and\nMobile Computing 81: 101550. https://doi.org/10.1016/j.pmcj.2022.101550.\n\n\nMatey-Sanz, Miguel, Sven Casteleyn, and Carlos Granell. 2024.\n“Background Sensors.” Zenodo. https://doi.org/10.5281/zenodo.10635734.",
+    "objectID": "02.2_dataset.html#experimental-procedure",
+    "href": "02.2_dataset.html#experimental-procedure",
+    "title": "Smartphone and smartwatch HAR dataset",
+    "section": "Experimental procedure",
+    "text": "Experimental procedure\nEach participant was asked to perform a specific sequence of activities (which corresponds with the TUG test —a well-known mobility test typically used for fall risk assessment (Podsiadlo and Richardson 1991)—) starting from a seated position on a chair: standing up from the chair, walking three meters (indicated with a mark on the ground), turning around (\\(180º\\)), walking back to the chair, turning around (\\(180º\\)), and sitting down on the chair. The participants were free to choose the direction of their turns (i.e., left or right). In summary, five unique activities were performed: SEATED, STANDING_UP, WALKING, TURNING and SITTING_DOWN.\nEach subject was instructed to perform the sequence of activities ten times, although some sequence executions were discarded due to non-compliance with the procedure (e.g., incorrect start of data collection, poor sequence execution, etc.). A total amount of \\(223\\) executions (Table 3.4) compose the dataset.\nEach activity sequence was video-recorded by a researcher. Then, each video was manually analyzed at frame level to determine the transitions between the executed activities and label the collected samples with the corresponding activity to establish the groundtruth.\n\n\nCode\nexecutions_by_gender(subjects_info)\n\n\n\n\nTable 3.4: Total amount of executions\n\n\n\n\n\n\n\n\n\n\ngender\nF\nM\nTotal\n\n\n\n\nexecutions\n98\n125\n223",
     "crumbs": [
-      "References"
+      "Materials & Methods",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Smartphone and smartwatch HAR dataset</span>"
     ]
   },
   {
-    "objectID": "conclusions.html",
-    "href": "conclusions.html",
-    "title": "6  Conclusions",
-    "section": "",
-    "text": "In summary, this book has no content whatsoever.",
+    "objectID": "02.2_dataset.html#data-description",
+    "href": "02.2_dataset.html#data-description",
+    "title": "Smartphone and smartwatch HAR dataset",
+    "section": "Data description",
+    "text": "Data description\n\n\nCode\ndata = load_data()\n\n\nThe collected dataset contains raw (i.e., no preprocessing steps applied) accelerometer and gyroscope samples from a smartphone and a smartwatch labelled with a certain human activity. Even though the labels are synchronised, the samples of each device are not synchronized with each other. In other words, whereas a label of an activity change at timestamp X refers to the same timestamp in both data streams, a data sample at timestamp Y in the smartphone data might not have an equivalent sample exactly at timestamp Y in the smartwatch data.\nThe dataset is organized in CSV files named using the XX_YY_DEV.csv pattern, where XX is the id of the subject, YY is the execution number and DEV is the device used to collect the data contained in the file (i.e., sp or sw). Then, each row of the CSV file contains an accelerometer and gyroscope sample labelled with an activity and annotated with a timestamp.\nTable 3.5 contains the number of collected samples for each activity. Even though the sampling rate used in the data collection applications was set to \\(100\\)Hz, Android applications are not always able to apply the requested sampling rate, resulting in an average sampling rate of \\(102\\)Hz and \\(104\\)Hz for smartphone and smartwatch data, respectively.\n\n\nCode\ncount_samples(data)\n\n\n\n\nTable 3.5: Number of collected samples\n\n\n\n\n\n\n\n\n\n\n\nSEATED\nSTANDING_UP\nWALKING\nTURNING\nSITTING_DOWN\nTOTAL\n\n\n\n\nsp\n32764\n27303\n115069\n52209\n31868\n259213\n\n\nsw\n32025\n27765\n117126\n53180\n32457\n262553\n\n\n\n\n\n\n\n\n\n\n\nAs an example of the type of data captured for one subject, Figure 3.2 and Figure 3.3 show a plot of the accelerometer and gyroscope samples collected respectively from the smartphone and the smartwatch by the subject s16 on his first execution (i.e., files s16_01_sp.csv and s16_01_sw.csv).\n\n\nCode\ns16_01_sp = plot_execution(data, 's16_01_sp')\ns16_01_sp.show()\n\n\n\n\n                                                \n\n\nFigure 3.2: Sample of smartphone collected accelerometer (top) and gyroscope (bottom) data.\n\n\n\n\n\n\nCode\ns16_01_sw = plot_execution(data, 's16_01_sw')\ns16_01_sw.show()\n\n\n\n\n                                                \n\n\nFigure 3.3: Sample of smartwatch collected accelerometer (top) and gyroscope (bottom) data.\n\n\n\n\nFinally, Table 3.6 contains information about each execution. In particular, it contains the phone orientation (see Figure 3.1) and the turning direction (left or right) for each execution.\n\n\nCode\nfrom itables import show\n\nexecutions_info = load_executions_info()\nshow(executions_info)\n\n\n\n\nTable 3.6: Metadata of each execution.\n\n\n\n\n\n    \n      \n      execution_id\n      orientation\n      first_turn\n      second_turn\n    \n  Loading... (need help?)",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conclusions</span>"
+      "Materials & Methods",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Smartphone and smartwatch HAR dataset</span>"
     ]
   },
   {
-    "objectID": "wifi-csi.html",
-    "href": "wifi-csi.html",
-    "title": "5  Wi-Fi CSI HAR",
-    "section": "",
-    "text": "6 Looking into the future: Wi-Fi CSI based HAR",
+    "objectID": "02.2_dataset.html#limitations",
+    "href": "02.2_dataset.html#limitations",
+    "title": "Smartphone and smartwatch HAR dataset",
+    "section": "Limitations",
+    "text": "Limitations\nThe main technical limitation of the data described in this section resides in the data labelling procedure. Data labelling was performed by visual inspection of videos recorded at \\(60\\) frames per second, which implies that the time resolution of the video was \\(16.6\\)ms. However, due to hardware limitations, sometimes two adjacent frames were repeated, reducing the time resolution to \\(33.2\\)ms in specific time frames. On the other hand, the resolution of the sensors used for data collection was about \\(10\\)ms. Due to this resolution mismatch, there is a possible drift of up to three sensor samples, compared to the video recording. This could cause such samples, recorded during the transition from one activity to another, to be mislabeled.\nIn addition, unintentional errors could have been introduced during the manual video-recording inspection and corresponding labelling process. Concerning the sampling rate, we note some minor variability which is imposed by the Android operating system and thus represents a real-world data collection process.\nFinally, while user heterogeneity regarding age and gender was ensured, there is an imbalance in handedness with a majority (\\(22\\) out of \\(23\\)) of participants being right-handed.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Wi-Fi CSI HAR</span>"
+      "Materials & Methods",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Smartphone and smartwatch HAR dataset</span>"
     ]
   },
   {
-    "objectID": "01_intro.html",
-    "href": "01_intro.html",
-    "title": "Introduction",
+    "objectID": "02.2_dataset.html#footnotes",
+    "href": "02.2_dataset.html#footnotes",
+    "title": "Smartphone and smartwatch HAR dataset",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee for additional discussion of literate programming.",
+    "text": "https://www.st.com/en/mems-and-sensors/lsm6dso.html↩︎",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "06_conclusions.html",
-    "href": "06_conclusions.html",
-    "title": "8  Conclusions",
-    "section": "",
-    "text": "In summary, this book has no content whatsoever.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Conclusions</span>"
-    ]
-  },
-  {
-    "objectID": "02_materials-methods.html",
-    "href": "02_materials-methods.html",
-    "title": "Materials & Methods",
-    "section": "",
-    "text": "This section describes the materials and methods employed during the development of the thesis. More concretely, this section encompasses the follwing subsections:\n\nData collection libraries: describes the reliable data collection libraries for Android smartphones and Wear OS smartwatches.\nSmartphone and smartwatch HAR dataset: describes the smartphone and smartwatch inertial sensors collected database from heterogeneous subjects for HAR applications.\nCommon methods: describes the ML and DL architectures employed for HAR classification and the statistical tools used to determine the significance of the presented results.\n\n\n\n\n\n\n\nNote\n\n\n\nThe contents on this section correspond with the Chapter 2 of the dissertation document.",
-    "crumbs": [
-      "Materials & Methods"
+      "Materials & Methods",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Smartphone and smartwatch HAR dataset</span>"
     ]
   },
   {
@@ -95,6 +82,17 @@
     "title": "Data collection libraries",
     "section": "",
     "text": "Background Sensors\nThe Background Sensors library is an Android library developed in Java that implements a reliable passive collection of IMU sensors (i.e., accelerometer, gyroscope and magnetometer), and, therefore, it can be used to develop native Android applications that require to collect samples from such sensors. The library has been developed to support devices running from Andriod 5.0 (API level 21) to Android 13 (API level 33).\nFigure 2.1 includes the simplified architecture of the Background Sensors library.",
+    "crumbs": [
+      "Materials & Methods",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data collection libraries</span>"
+    ]
+  },
+  {
+    "objectID": "02.1_collection-tools.html#background-sensors",
+    "href": "02.1_collection-tools.html#background-sensors",
+    "title": "Data collection libraries",
+    "section": "",
+    "text": "Availability\n\n\n\nThe version of the library at the moment of writing this thesis is v1.3.0. The library is available in:\n\nMaven Central Repository\nGitHub\nZenodo (Matey-Sanz, Casteleyn, and Granell 2024a)\n\n\n\n\n\n\n\n\n\n\nFigure 2.1: Simplified architecture of the Background Sensors library\n\n\n\n\n\n\n\n\n\nLibrary documentation\n\n\n\nThe full documentation of the library and its components can be found in GitHub.\n\n\n\nSample usage\n\n\n\n\n\n\nTip\n\n\n\nTap on the numbers at the end of the lines to obtain insights about the code.\n\n\npublic class ExampleActivity extends Activity {\n\n    private SensorManager sensorManager;\n    private ServiceManager serviceManager;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n\n1        sensorManager = new SensorManager(this);\n        List&lt;Sensor&gt; sensors = sensorManager.availableSensors(BaseSensor.values());\n\n2        serviceManager = new ServiceManager(this, BaseSensorRecordingService.class);\n    }\n\n    public void start() {\n        Sensor sensor = BaseSensor.ACCELEROMETER;\n\n3        CollectionConfiguration config = new CollectionConfiguration(\n            sensor,\n            10000, // sensorDelay (microseconds)\n            100    // batchSize\n        );\n\n4        RecordCallback callback = new RecordCallback {\n            public void onRecordsCollected(List&lt;Record&gt; records) {\n                // Accelerometer samples received here\n            }\n        };\n\n5        serviceManager.startCollection(config, callback);\n    }\n\n    public void stop() {\n6        serviceManager.stopCollection(BaseSensor.ACCELEROMETER);\n    }\n}\n\n1\n\nCreate an instance of SensorManager and call availableSensors(...) to determine which sensors are available in the device.\n\n2\n\nCreate a ServiceManager instance with a SensorRecordingService.\n\n3\n\nCreate a CollectionConfiguration indicating the sensor, the sensorDelay(microseconds) and the batchSize.\n\n4\n\nImplement the RecordCallback. The samples will be received here.\n\n5\n\nStart the data collection calling ServiceManager#startCollection(...).\n\n6\n\nStop the data collection calling ServiceManager#stopCollection(...).",
     "crumbs": [
       "Materials & Methods",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data collection libraries</span>"
@@ -123,14 +121,44 @@
     ]
   },
   {
-    "objectID": "02.1_collection-tools.html#background-sensors",
-    "href": "02.1_collection-tools.html#background-sensors",
-    "title": "Data collection libraries",
-    "section": "",
-    "text": "Availability\n\n\n\nThe version of the library at the moment of writing this thesis is v1.3.0. The library is available in:\n\nMaven Central Repository\nGitHub\nZenodo (Matey-Sanz, Casteleyn, and Granell 2024a)\n\n\n\n\n\n\n\n\n\n\nFigure 2.1: Simplified architecture of the Background Sensors library\n\n\n\n\n\n\n\n\n\nLibrary documentation\n\n\n\nThe full documentation of the library and its components can be found in GitHub.\n\n\n\nSample usage\n\n\n\n\n\n\nTip\n\n\n\nTap on the numbers at the end of the lines to obtain insights about the code.\n\n\npublic class ExampleActivity extends Activity {\n\n    private SensorManager sensorManager;\n    private ServiceManager serviceManager;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n\n1        sensorManager = new SensorManager(this);\n        List&lt;Sensor&gt; sensors = sensorManager.availableSensors(BaseSensor.values());\n\n2        serviceManager = new ServiceManager(this, BaseSensorRecordingService.class);\n    }\n\n    public void start() {\n        Sensor sensor = BaseSensor.ACCELEROMETER;\n\n3        CollectionConfiguration config = new CollectionConfiguration(\n            sensor,\n            10000, // sensorDelay (microseconds)\n            100    // batchSize\n        );\n\n4        RecordCallback callback = new RecordCallback {\n            public void onRecordsCollected(List&lt;Record&gt; records) {\n                // Accelerometer samples received here\n            }\n        };\n\n5        serviceManager.startCollection(config, callback);\n    }\n\n    public void stop() {\n6        serviceManager.stopCollection(BaseSensor.ACCELEROMETER);\n    }\n}\n\n1\n\nCreate an instance of SensorManager and call availableSensors(...) to determine which sensors are available in the device.\n\n2\n\nCreate a ServiceManager instance with a SensorRecordingService.\n\n3\n\nCreate a CollectionConfiguration indicating the sensor, the sensorDelay(microseconds) and the batchSize.\n\n4\n\nImplement the RecordCallback. The samples will be received here.\n\n5\n\nStart the data collection calling ServiceManager#startCollection(...).\n\n6\n\nStop the data collection calling ServiceManager#stopCollection(...).",
+    "objectID": "02.2_dataset.html#comparison-wiht-other-datasets",
+    "href": "02.2_dataset.html#comparison-wiht-other-datasets",
+    "title": "Smartphone and smartwatch HAR dataset",
+    "section": "Comparison wiht other datasets",
+    "text": "Comparison wiht other datasets\nTable 3.7 compares the datasets taking into account the number of activities, the number, age and gender distribution of subjects, and the number of different devices employed in the data collection. In terms of activities, the collected dataset is limited compared with others like ExtraSensory, WISDM and DOMINO, being its weakest point of comparison. ExtraSensory contains up to \\(10\\) times more activities due to they performed an uncontrolled (i.e., real-life) data collection, delegating the data labelling to the users.\nRegarding the subjects, the collected dataset presents the most variate sample in terms of age, and similar gender balance as ExtraSensory and RealWorld, while having a decent amount of participants, but far from ExtraSensory and WISDM numbers. Finally, in the collected dataset we only used a smartphone and a smartwatch for collecting data, while several device models were used in HHAR (four smartphones and two smartwatch models), ExtraSensory (fifteen smartphone models, since each participant used its own smartphone) and WISDM (two smartphone models).\n\n\n\nTable 3.7: Comparison with related datasets\n\n\n\n\n\n\n\n\n\n\n\n\n\nDataset\nActivities\nSubjects\nAge range\nGender\nDevices\n\n\n\n\nHHAR\n5\n9\n25-30—\n—\n4 smartphones2 smartwatches\n\n\nRealWorld\n8\n15\n—(31.9 \\(\\pm\\) 12.4)\n53% male47% female\n6 smartphones1 smartwatch\n\n\nExtraSensory\n51\n60\n18-42(24.7 \\(\\pm\\) 5.6)\n44% male56% female\n15 smartphones1 smartwatch\n\n\nWISDM\n18\n52\n18-25—\n—\n2 smartphones1 smartwatch\n\n\nDomino\n14\n25\n20-59(26.6 \\(\\pm\\) 9.8)\n68% female32% male\n1 smartphone1 smartwatch\n\n\nCollecteddataset\n5\n23\n23-66(44.3 \\(\\pm\\) 14.3)\n56% male44% female\n1 smartphone1 smartwatch\n\n\n\n\n\n\n\n\n\nFigure 3.1: Different orientations of the smartphone placed in the pocket\n\n\n\nArrotta, Luca, Gabriele Civitarese, Riccardo Presotto, and Claudio Bettini. 2023. “DOMINO: A Dataset for Context-Aware Human Activity Recognition Using Mobile Devices.” In 2023 24th IEEE International Conference on Mobile Data Management (MDM), 346–51. IEEE. https://doi.org/10.1109/MDM58254.2023.00063.\n\n\nMatey-Sanz, Miguel, Sven Casteleyn, and Carlos Granell. 2023a. “Dataset of Inertial Measurements of Smartphones and Smartwatches for Human Activity Recognition.” Data in Brief 51: 109809. https://doi.org/10.1016/j.dib.2023.109809.\n\n\n———. 2023b. “Smartphone and smartwatch inertial measurements from heterogeneous subjects for human activity recognition.” Zenodo. https://doi.org/10.5281/zenodo.8398688.\n\n\nMatey-Sanz, Miguel, and Alberto González-Pérez. 2022a. “TUG Test Smartphone Application.” Zenodo. https://doi.org/10.5281/zenodo.7456835.\n\n\n———. 2022b. “TUG Test Smartwatch Application.” Zenodo. https://doi.org/10.5281/zenodo.7457098.\n\n\nPodsiadlo, Diane, and Sandra Richardson. 1991. “The Timed ‘up & Go’: A Test of Basic Functional Mobility for Frail Elderly Persons.” Journal of the American Geriatrics Society 39 (2): 142–48. https://doi.org/10.1111/j.1532-5415.1991.tb01616.x.\n\n\nStisen, Allan, Henrik Blunck, Sourav Bhattacharya, Thor Siiger Prentow, Mikkel Baun Kjærgaard, Anind Dey, Tobias Sonne, and Mads Møller Jensen. 2015. “Smart Devices Are Different: Assessing and Mitigating Mobile Sensing Heterogeneities for Activity Recognition.” In Proceedings of the 13th ACM Conference on Embedded Networked Sensor Systems, 127–40. https://doi.org/10.1145/2809695.2809718.\n\n\nSztyler, Timo, and Heiner Stuckenschmidt. 2016. “On-Body Localization of Wearable Devices: An Investigation of Position-Aware Activity Recognition.” In 2016 IEEE International Conference on Pervasive Computing and Communications (PerCom), 1–9. https://doi.org/10.1109/PERCOM.2016.7456521.\n\n\nVaizman, Yonatan, Katherine Ellis, and Gert Lanckriet. 2017. “Recognizing Detailed Human Context in the Wild from Smartphones and Smartwatches.” IEEE Pervasive Computing 16 (4): 62–74. https://doi.org/10.1109/MPRV.2017.3971131.\n\n\nWeiss, Gary M, Kenichi Yoneda, and Thaier Hayajneh. 2019. “Smartphone and Smartwatch-Based Biometrics Using Activities of Daily Living.” IEEE Access 7: 133190–202. https://doi.org/10.1109/ACCESS.2019.2940729.",
     "crumbs": [
       "Materials & Methods",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data collection libraries</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Smartphone and smartwatch HAR dataset</span>"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Thesis",
+    "section": "",
+    "text": "Funding\nThis thesis is funded by the Spanish Ministry of Universities. Grant references FPU19/05352 and EST23/00320.\n\n\n\n\n\n\n\nLicense\nTBD Copyright © 2024 Miguel Matey Sanz. This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Arrotta, Luca, Gabriele Civitarese, Riccardo Presotto, and Claudio\nBettini. 2023. “DOMINO: A Dataset for Context-Aware Human Activity\nRecognition Using Mobile Devices.” In 2023 24th IEEE\nInternational Conference on Mobile Data Management (MDM), 346–51.\nIEEE. https://doi.org/10.1109/MDM58254.2023.00063.\n\n\nBoonstra, Tjeerd W, Jennifer Nicholas, Quincy JJ Wong, Frances Shaw,\nSamuel Townsend, and Helen Christensen. 2018. “Using Mobile Phone\nSensor Technology for Mental Health Research: Integrated Analysis to\nIdentify Hidden Challenges and Potential Solutions.” J. Med.\nInternet Res. 20 (7): e10131. https://doi.org/10.2196/10131.\n\n\nGonzález-Pérez, Alberto, Miguel Matey-Sanz, Carlos Granell, and Sven\nCasteleyn. 2022. “Using Mobile Devices as Scientific Measurement\nInstruments: Reliable Android Task Scheduling.” Pervasive and\nMobile Computing 81: 101550. https://doi.org/10.1016/j.pmcj.2022.101550.\n\n\nGonzález-Pérez, Alberto, Miguel Matey-Sanz, Carlos Granell, Laura\nDíaz-Sanahuja, Juana Bretón-López, and Sven Casteleyn. 2023.\n“AwarNS: A Framework for Developing Context-Aware Reactive Mobile\nApplications for Health and Mental Health.” Journal of\nBiomedical Informatics, 104359. https://doi.org/10.1016/j.jbi.2023.104359.\n\n\nMatey-Sanz, Miguel, Sven Casteleyn, and Carlos Granell. 2023a.\n“Dataset of Inertial Measurements of Smartphones and Smartwatches\nfor Human Activity Recognition.” Data in Brief 51:\n109809. https://doi.org/10.1016/j.dib.2023.109809.\n\n\n———. 2023b. “Smartphone and smartwatch\ninertial measurements from heterogeneous subjects for human activity\nrecognition.” Zenodo. https://doi.org/10.5281/zenodo.8398688.\n\n\n———. 2024a. “Background Sensors.” Zenodo. https://doi.org/10.5281/zenodo.10635734.\n\n\n———. 2024b. “NativeScript WearOS Sensors.” Zenodo. https://doi.org/10.5281/zenodo.10640461.\n\n\n———. 2024c. “WearOS Sensors.” Zenodo. https://doi.org/10.5281/zenodo.10640429.\n\n\nMatey-Sanz, Miguel, and Alberto González-Pérez. 2022a. “TUG Test\nSmartphone Application.” Zenodo. https://doi.org/10.5281/zenodo.7456835.\n\n\n———. 2022b. “TUG Test Smartwatch Application.” Zenodo. https://doi.org/10.5281/zenodo.7457098.\n\n\nPodsiadlo, Diane, and Sandra Richardson. 1991. “The Timed\n‘up & Go’: A Test of Basic Functional Mobility for\nFrail Elderly Persons.” Journal of the American Geriatrics\nSociety 39 (2): 142–48. https://doi.org/10.1111/j.1532-5415.1991.tb01616.x.\n\n\nStisen, Allan, Henrik Blunck, Sourav Bhattacharya, Thor Siiger Prentow,\nMikkel Baun Kjærgaard, Anind Dey, Tobias Sonne, and Mads Møller Jensen.\n2015. “Smart Devices Are Different: Assessing and Mitigating\nMobile Sensing Heterogeneities for Activity Recognition.” In\nProceedings of the 13th ACM Conference on Embedded Networked Sensor\nSystems, 127–40. https://doi.org/10.1145/2809695.2809718.\n\n\nSztyler, Timo, and Heiner Stuckenschmidt. 2016. “On-Body\nLocalization of Wearable Devices: An Investigation of Position-Aware\nActivity Recognition.” In 2016 IEEE International Conference\non Pervasive Computing and Communications (PerCom), 1–9. https://doi.org/10.1109/PERCOM.2016.7456521.\n\n\nVaizman, Yonatan, Katherine Ellis, and Gert Lanckriet. 2017.\n“Recognizing Detailed Human Context in the Wild from Smartphones\nand Smartwatches.” IEEE Pervasive Computing 16 (4):\n62–74. https://doi.org/10.1109/MPRV.2017.3971131.\n\n\nWeiss, Gary M, Kenichi Yoneda, and Thaier Hayajneh. 2019.\n“Smartphone and Smartwatch-Based Biometrics Using Activities of\nDaily Living.” IEEE Access 7: 133190–202. https://doi.org/10.1109/ACCESS.2019.2940729.",
+    "crumbs": [
+      "References"
+    ]
+  },
+  {
+    "objectID": "02_materials-methods.html",
+    "href": "02_materials-methods.html",
+    "title": "Materials & Methods",
+    "section": "",
+    "text": "This section describes the materials and methods employed during the development of the thesis. More concretely, this section encompasses the follwing subsections:\n\n\n\n\n\n\n\n\nData collection libraries\n\n\nDescribes the reliable data collection libraries for Android smartphones and Wear OS smartwatches.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSmartphone and smartwatch HAR dataset\n\n\nDescribes the smartphone and smartwatch inertial sensors collected database from heterogeneous subjects for HAR applications.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCommon methods\n\n\nDescribes the ML and DL architectures employed for HAR classification and the statistical tools used to determine the significance of the presented results.\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe contents on this section correspond with the Chapter 2 of the dissertation document.",
+    "crumbs": [
+      "Materials & Methods"
     ]
   }
 ]

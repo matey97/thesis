@@ -1,0 +1,4 @@
+# DIB
+pandas==1.5.2
+plotly==5.14.0
+itables==2.0.0

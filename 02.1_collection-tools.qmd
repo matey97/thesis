@@ -1,4 +1,5 @@
 ---
+description: Describes the reliable data collection libraries for Android smartphones and Wear OS smartwatches.
 highlight-style: github
 code-annotations: select
 format:

@@ -1,1 +1,5 @@
+---
+description: Describes the ML and DL architectures employed for HAR classification and the statistical tools used to determine the significance of the presented results.
+---
+
 # Common methods {#sec-common_methods}
