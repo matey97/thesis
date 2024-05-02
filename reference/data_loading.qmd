@@ -1,0 +1,67 @@
+# data_loading { #libs.chapter2.data_loading }
+
+`chapter2.data_loading`
+
+Provides functions to load the collected data and associated metadata files.
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [load_data](#libs.chapter2.data_loading.load_data) | Loads the accelerometer and gyroscope data for each execution. |
+| [load_executions_info](#libs.chapter2.data_loading.load_executions_info) | Loads the 'executions_info.csv' file containing information about the executions (id, phone orientation, turns direction) |
+| [load_subjects_info](#libs.chapter2.data_loading.load_subjects_info) | Loads the 'subjects_info.csv' file containing information about the subjects (age, gender, executions) |
+
+### load_data { #libs.chapter2.data_loading.load_data }
+
+`chapter2.data_loading.load_data(path=os.path.join('data', 'chapter2'))`
+
+Loads the accelerometer and gyroscope data for each execution.
+
+#### Parameters
+
+| Name   | Type   | Description                 | Default                            |
+|--------|--------|-----------------------------|------------------------------------|
+| `path` | str    | root directory of the data. | `os.path.join('data', 'chapter2')` |
+
+#### Returns
+
+| Type   | Description                                                                                     |
+|--------|-------------------------------------------------------------------------------------------------|
+| dict   | dict containing pandas dataframes with the accelerometer and gyroscope data for each execution. |
+
+### load_executions_info { #libs.chapter2.data_loading.load_executions_info }
+
+`chapter2.data_loading.load_executions_info(path=os.path.join('data', 'chapter2', 'executions_info.csv'))`
+
+Loads the 'executions_info.csv' file containing information about the executions (id, phone orientation, turns direction)
+
+#### Parameters
+
+| Name   | Type   | Description       | Default                                                   |
+|--------|--------|-------------------|-----------------------------------------------------------|
+| `path` | str    | path of the file. | `os.path.join('data', 'chapter2', 'executions_info.csv')` |
+
+#### Returns
+
+| Type                    | Description                             |
+|-------------------------|-----------------------------------------|
+| pandas.pandas.DataFrame | dataframe with the contents of the file |
+
+### load_subjects_info { #libs.chapter2.data_loading.load_subjects_info }
+
+`chapter2.data_loading.load_subjects_info(path=os.path.join('data', 'chapter2', 'subjects_info.csv'))`
+
+Loads the 'subjects_info.csv' file containing information about the subjects (age, gender, executions)
+
+#### Parameters
+
+| Name   | Type   | Description       | Default                                                 |
+|--------|--------|-------------------|---------------------------------------------------------|
+| `path` | str    | path of the file. | `os.path.join('data', 'chapter2', 'subjects_info.csv')` |
+
+#### Returns
+
+| Type                    | Description                             |
+|-------------------------|-----------------------------------------|
+| pandas.pandas.DataFrame | dataframe with the contents of the file |

@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+'''
+Provides functions to load the collected data and associated metadata files.
+'''
 
 import os
 import pandas as pd
@@ -33,15 +36,11 @@ def load_data(path=os.path.join('data','chapter2')):
     '''
     Loads the accelerometer and gyroscope data for each execution.
     
-    .. DANGER::
-        Beware killer rabbits!
-
-    
     Args:
-        path (str): root directory of the data. Default: 'data/chapter2'.
+        path (str): root directory of the data.
         
     Returns:
-        dict: pandas dict containing the accelerometer and gyroscope data for each execution.
+        data (dict): dict containing pandas dataframes with the accelerometer and gyroscope data for each execution.
     '''
     
     subjects = _list_subjects_folders(path)
@@ -67,10 +66,10 @@ def load_subjects_info(path=os.path.join('data', 'chapter2', 'subjects_info.csv'
     Loads the 'subjects_info.csv' file containing information about the subjects (age, gender, executions)
     
     Args:
-        path (str): path of the file. Default: 'data/chapter2/subjects_info.csv'
+        path (str): path of the file. 
         
     Returns:
-        pandas.DataFrame: dataframe with the contents of the file
+        subjects_info (pandas.DataFrame): dataframe with the contents of the file
     '''
     subjects_info = pd.read_csv(path)
     return subjects_info
@@ -81,10 +80,10 @@ def load_executions_info(path=os.path.join('data', 'chapter2', 'executions_info.
     Loads the 'executions_info.csv' file containing information about the executions (id, phone orientation, turns direction)
     
     Args:
-        path (str): path of the file. Default: 'data/chapter2/executions_info.csv'
+        path (str): path of the file. 
         
     Returns:
-        pandas.DataFrame: dataframe with the contents of the file
+        executions_info (pandas.DataFrame): dataframe with the contents of the file
     '''
     executions_info = pd.read_csv(path)
     return executions_info

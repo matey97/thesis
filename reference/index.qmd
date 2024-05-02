@@ -1,0 +1,11 @@
+# Function reference {.doc .doc-index}
+
+## Chapter 2
+
+Defines the functions employed in the Chapter 2: Materials & Methods.
+
+| | |
+| --- | --- |
+| [data_loading](data_loading.qmd#libs.chapter2.data_loading) | Provides functions to load the collected data and associated metadata files. |
+| [exploration](exploration.qmd#libs.chapter2.exploration) | Provides functions to compute statistics regarding subjects and collected data. |
+| [visualization](visualization.qmd#libs.chapter2.visualization) | Provides a function to plot the collected data. |

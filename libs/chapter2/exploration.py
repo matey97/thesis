@@ -12,50 +12,53 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+'''
+Provides functions to compute statistics regarding subjects and collected data.
+'''
 
 import pandas as pd
     
 
-def subjects_age_range(info):
+def subjects_age_range(subjects_info):
     '''
     Computes age range statisitcs from the subjects of the data collection.
     
     Args:
-        info (pandas.DataFrame): dataframe with the information of the subjects. See: `utils.data_loading.load_subjects_info()`.
+        subjects_info (pandas.DataFrame): dataframe with the information of the subjects. See: `utils.data_loading.load_subjects_info()`.
     
     Returns:
-        pandas.DataFrame: dataframe with age range statistics.
+        age_stats (pandas.DataFrame): dataframe with age range statistics.
     '''
     
-    return info['age'].describe().to_frame().transpose()
+    return subjects_info['age'].describe().to_frame().transpose()
 
 
-def subjects_age_range_by_gender(info):
+def subjects_age_range_by_gender(subjects_info):
     '''
     Computes age range statisitcs grouped by gender from the subjects of the data collection.
     
     Args:
-        info (pandas.DataFrame): dataframe with the information of the subjects. See: `utils.data_loading.load_subjects_info()`.
+        subjects_info (pandas.DataFrame): dataframe with the information of the subjects. See: `utils.data_loading.load_subjects_info()`.
     
     Returns:
-        pandas.DataFrame: dataframe with age range statistics grouped by gender.
+        gender_stats (pandas.DataFrame): dataframe with age range statistics grouped by gender.
     '''
     
-    return info[['age', 'gender']].groupby(['gender']).describe()
+    return subjects_info[['age', 'gender']].groupby(['gender']).describe()
 
 
-def executions_by_gender(info):
+def executions_by_gender(subjects_info):
     '''
     Counts the number of executions grouped by gender.
     
     Args:
-        info (pandas.DataFrame): dataframe with the information of the subjects. See: `utils.data_loading.load_subjects_info()`.
+        subjects_info (pandas.DataFrame): dataframe with the information of the subjects. See: `utils.data_loading.load_subjects_info()`.
     
     Returns:
-        pandas.DataFrame: dataframe with executions count grouped by gender.
+        execution_stats (pandas.DataFrame): dataframe with executions count grouped by gender.
     '''
     
-    df = info[['executions', 'gender']].groupby(['gender']).sum().transpose()
+    df = subjects_info[['executions', 'gender']].groupby(['gender']).sum().transpose()
     df['Total'] = df.sum(axis=1)
     return df
 
@@ -68,7 +71,7 @@ def count_samples(data_collection):
         data_collection (dict): collected data. Use `utils.data_loading.load_data()` to load the collected data.
         
     Returns:
-        pandas.DataFrame: dataframe with the count of collected samples.
+        counts (pandas.DataFrame): dataframe with the count of collected samples.
     
     '''
     

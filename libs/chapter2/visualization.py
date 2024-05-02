@@ -12,6 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+'''
+Provides a function to plot the collected data.
+'''
+
 
 import plotly.graph_objects as go
 import plotly.io as pio
@@ -29,7 +33,7 @@ def plot_execution(data_collection, execution):
         execution (str): execution data to plot. Format: 'sXX_YY_{sp|sw}'
         
     Returns:
-        plotly.graph_objs.Figure: interactive plot
+        figure (plotly.graph_objs.Figure): interactive plot
     '''
     
     if execution not in data_collection:

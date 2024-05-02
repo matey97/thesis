@@ -42,9 +42,11 @@ book:
 
   search: true
   repo-url: https://github.com/matey97/thesis
-  sidebar:
-    style: docked
-    background: light
+  repo-actions: [source]
+
+  #sidebar:
+  #  style: docked
+  #  background: light
 
   chapters:
     - href: index.qmd
@@ -64,12 +66,29 @@ book:
     - 06_conclusions.qmd
     - references.qmd
   appendices:
-    - code-documentation.qmd
+    - part: reference/index.qmd
+      text: Reference
+      chapters: 
+        - reference/data_loading.qmd
+        - reference/exploration.qmd
+        - reference/visualization.qmd
     - tools.qmd
 
   license: "CC BY-NC-SA"
   abstract: TODO
   
+quartodoc:
+  package: libs
+  parser: google
+
+  sections:
+    - title: Chapter 2
+      package: libs.chapter2
+      desc: "Defines the functions employed in the Chapter 2: Materials & Methods."
+      contents:
+        - data_loading
+        - exploration
+        - visualization
 
 bibliography: references.bib
 
@@ -80,12 +99,8 @@ format:
       light: lumen
       dark: darkly
     code-fold: true
-    code-tools:
-      toggle: true
-      source: repo
-    #crossrefs-hover: false
     toc-depth: 4
-    toc-expand: true
+    #toc-expand: true
     smooth-scroll: true
   pdf:
     documentclass: scrreprt

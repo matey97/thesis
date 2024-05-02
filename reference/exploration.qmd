@@ -1,0 +1,86 @@
+# exploration { #libs.chapter2.exploration }
+
+`chapter2.exploration`
+
+Provides functions to compute statistics regarding subjects and collected data.
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [count_samples](#libs.chapter2.exploration.count_samples) | Counts the number of collected samples for each activity and device. |
+| [executions_by_gender](#libs.chapter2.exploration.executions_by_gender) | Counts the number of executions grouped by gender. |
+| [subjects_age_range](#libs.chapter2.exploration.subjects_age_range) | Computes age range statisitcs from the subjects of the data collection. |
+| [subjects_age_range_by_gender](#libs.chapter2.exploration.subjects_age_range_by_gender) | Computes age range statisitcs grouped by gender from the subjects of the data collection. |
+
+### count_samples { #libs.chapter2.exploration.count_samples }
+
+`chapter2.exploration.count_samples(data_collection)`
+
+Counts the number of collected samples for each activity and device.
+
+#### Parameters
+
+| Name              | Type   | Description                                                                      | Default    |
+|-------------------|--------|----------------------------------------------------------------------------------|------------|
+| `data_collection` | dict   | collected data. Use `utils.data_loading.load_data()` to load the collected data. | _required_ |
+
+#### Returns
+
+| Type                    | Description                                    |
+|-------------------------|------------------------------------------------|
+| pandas.pandas.DataFrame | dataframe with the count of collected samples. |
+
+### executions_by_gender { #libs.chapter2.exploration.executions_by_gender }
+
+`chapter2.exploration.executions_by_gender(subjects_info)`
+
+Counts the number of executions grouped by gender.
+
+#### Parameters
+
+| Name            | Type                    | Description                                                                                     | Default    |
+|-----------------|-------------------------|-------------------------------------------------------------------------------------------------|------------|
+| `subjects_info` | pandas.pandas.DataFrame | dataframe with the information of the subjects. See: `utils.data_loading.load_subjects_info()`. | _required_ |
+
+#### Returns
+
+| Type                    | Description                                        |
+|-------------------------|----------------------------------------------------|
+| pandas.pandas.DataFrame | dataframe with executions count grouped by gender. |
+
+### subjects_age_range { #libs.chapter2.exploration.subjects_age_range }
+
+`chapter2.exploration.subjects_age_range(subjects_info)`
+
+Computes age range statisitcs from the subjects of the data collection.
+
+#### Parameters
+
+| Name            | Type                    | Description                                                                                     | Default    |
+|-----------------|-------------------------|-------------------------------------------------------------------------------------------------|------------|
+| `subjects_info` | pandas.pandas.DataFrame | dataframe with the information of the subjects. See: `utils.data_loading.load_subjects_info()`. | _required_ |
+
+#### Returns
+
+| Type                    | Description                          |
+|-------------------------|--------------------------------------|
+| pandas.pandas.DataFrame | dataframe with age range statistics. |
+
+### subjects_age_range_by_gender { #libs.chapter2.exploration.subjects_age_range_by_gender }
+
+`chapter2.exploration.subjects_age_range_by_gender(subjects_info)`
+
+Computes age range statisitcs grouped by gender from the subjects of the data collection.
+
+#### Parameters
+
+| Name            | Type                    | Description                                                                                     | Default    |
+|-----------------|-------------------------|-------------------------------------------------------------------------------------------------|------------|
+| `subjects_info` | pandas.pandas.DataFrame | dataframe with the information of the subjects. See: `utils.data_loading.load_subjects_info()`. | _required_ |
+
+#### Returns
+
+| Type                    | Description                                            |
+|-------------------------|--------------------------------------------------------|
+| pandas.pandas.DataFrame | dataframe with age range statistics grouped by gender. |
