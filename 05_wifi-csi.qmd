@@ -1,1 +1,6 @@
+---
+image: figs/chapter5/chap5.png
+description: Analyses the feasibility of Wi-Fi CSI-based HAR systems in real-world applications.
+---
+
 # Looking into the future: Wi-Fi CSI based HAR

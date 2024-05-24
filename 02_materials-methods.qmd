@@ -1,4 +1,6 @@
 ---
+image: figs/chapter2/chap2.png
+description: Description of the materials and methods employed during the development of the thesis.
 listing: 
   - id: contents
     type: grid

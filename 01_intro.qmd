@@ -1,5 +1,24 @@
+---
+listing: 
+  - id: chapters
+    type: grid
+    contents: 
+        - "02_materials-methods.qmd"
+        - "03_analysis-har.qmd"
+        - "04_tug.qmd"
+        - "05_wifi-csi.qmd"
+        - "06_conclusions.qmd"
+    sort: false
+    grid-columns: 2
+---
+
 # Introduction
 
 This is a book created from markdown and executable code.
 
 See for additional discussion of literate programming.
+
+## Thesis structure
+
+:::{#chapters}
+:::

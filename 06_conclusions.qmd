@@ -1,3 +1,8 @@
+---
+image: figs/chapter6/chap6.png
+description: Summarises the thesis, discussing the accomplishment of the research objectives, the contributions and the limitations of this dissertation.
+---
+
 # Conclusions
 
 In summary, this book has no content whatsoever.
