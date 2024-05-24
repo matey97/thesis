@@ -13,7 +13,7 @@ format:
 # Common methods {#sec-common_methods}
 This section describes the ML and DL architectures employed for HAR classification and the statistical tools used to determine the significance of the presented results that will be used in the following sections.
 
-## ML and DL
+## ML and DL {#sec-ml_methods}
 In the context of HAR and thorough this thesis, **labelled** data is employed to train ML or DL models and to determine --**classify**-- the activity a user is performing given some input data. Therefore, this dissertation faces a **supervised learning classification** problem.
 
 Next, the models employed, the evaluation metrics used to evaluate them and the tools used to develop them are described.
@@ -101,7 +101,7 @@ The architecture of the CNN-LSTM network is depicted in @fig-cnnlstm. The input 
 ![Architecture of the CNN Long Short-Term Memory network.](figs/chapter2/cnnlstm.png){#fig-cnnlstm .lightbox}
 
 
-### Evaluation metrics
+### Evaluation metrics {#sec-eval_metrics}
 The performance of the ML and DL models can be measured in several ways. Along this thesis, we employ the **accuracy**, **precision**, **recall** and **F1-score** metrics
 
 #### Accuracy
@@ -139,7 +139,7 @@ The full documentation of the library and its components can be found in the [Aw
 :::
 
 
-## Statistical tools
+## Statistical tools {#sec-stats_methods}
 
 
 ### Significance tests
