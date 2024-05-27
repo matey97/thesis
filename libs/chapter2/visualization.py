@@ -29,11 +29,11 @@ def plot_execution(data_collection, execution):
     Generates an interactive plot with the accelerometer and gyroscope data of the specified execution.
     
     Args:
-        data_collection (dict): dictionary containing the collected dataset. See: `utils.data_loading.load_data()`
+        data_collection (dict): Dict containing the collected dataset. See: `utils.data_loading.load_data()`
         execution (str): execution data to plot. Format: 'sXX_YY_{sp|sw}'
         
     Returns:
-        figure (plotly.graph_objs.Figure): interactive plot
+        figure (`plotly.graph_objs.Figure`): Interactive plot
     '''
     
     if execution not in data_collection:

@@ -47,6 +47,7 @@ book:
   search: true
   repo-url: https://github.com/matey97/thesis
   repo-actions: [source]
+  repo-link-target: blank
 
   sidebar:
     border: true
@@ -63,6 +64,10 @@ book:
         - 02.3_methods.qmd
     - part: 03_analysis-har.qmd
       text: Multidimensional analysis
+      chapters:
+        - 03.1_training-data.ipynb
+        - 03.2_data-sources.ipynb
+        - 03.3_models.ipynb
     - part: 04_tug.qmd
       text: "HAR in mHealth: TUG test"
     - part: 05_wifi-csi.qmd
@@ -73,9 +78,13 @@ book:
     - part: reference/index.qmd
       text: Reference
       chapters: 
-        - reference/data_loading.qmd
-        - reference/exploration.qmd
-        - reference/visualization.qmd
+        - reference/chapter2.data_loading.qmd
+        - reference/chapter2.exploration.qmd
+        - reference/chapter2.visualization.qmd
+        - reference/chapter3.data_loading.qmd
+        - reference/chapter3.model.qmd
+        - reference/chapter3.statistical_tests.qmd
+        - reference/chapter3.visualization.qmd
     - tools.qmd
 
   license: "CC BY-NC-SA"
@@ -87,17 +96,27 @@ quartodoc:
 
   sections:
     - title: Chapter 2
-      package: libs.chapter2
+      #package: libs.chapter2
       desc: "Defines the functions employed in the Chapter 2: Materials & Methods."
       contents:
-        - data_loading
-        - exploration
-        - visualization
+        - chapter2.data_loading
+        - chapter2.exploration
+        - chapter2.visualization
+    - title: Chapter 3
+      #package: libs.chapter3
+      desc: "Defines the functions employed in the Chapter 3: Multidimensional analysis of ML and DL on HAR."
+      contents:
+        - chapter3.data_loading
+        - chapter3.model
+        - chapter3.statistical_tests
+        - chapter3.visualization
 
 bibliography: references.bib
 
 format:
   html:
+    execute:
+      warning: false
     number-sections: false
     theme:
       light: lumen

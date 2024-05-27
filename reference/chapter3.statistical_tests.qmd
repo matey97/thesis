@@ -1,0 +1,33 @@
+# chapter3.statistical_tests { #libs.chapter3.statistical_tests }
+
+`chapter3.statistical_tests`
+
+Provides functions to compute statistical tests to determine the significance of the obtained results.
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [pairwise_n_comparision](#libs.chapter3.statistical_tests.pairwise_n_comparision) | Computes pairwise tests for each value of n. |
+
+### pairwise_n_comparision { #libs.chapter3.statistical_tests.pairwise_n_comparision }
+
+`chapter3.statistical_tests.pairwise_n_comparision(data, filters, alternative='two-sided', stars=False, parametric=False)`
+
+Computes pairwise tests for each value of n.
+
+#### Parameters
+
+| Name          | Type               | Description                                                                                                               | Default       |
+|---------------|--------------------|---------------------------------------------------------------------------------------------------------------------------|---------------|
+| `data`        | `pandas.DataFrame` | Model reports.                                                                                                            | _required_    |
+| `filters`     | str                | Filter to apply to the model reports. See: `libs.chapter3.model.Filter`                                                   | _required_    |
+| `alternative` | str                | Hypothesis to test. One of: 'two-sided', 'less' or 'greater'.                                                             | `'two-sided'` |
+| `stars`       | boolean            | Replace p-values under 0.05 by stars. '*' when 0.01<p-value<0.05; '**' when 0.001<p-value<0.01; '***' when p-value<0.001; | `False`       |
+| `parametric`  | boolean            | Compute parametric or non-parametric tests.                                                                               | `False`       |
+
+#### Returns
+
+| Type               | Description                              |
+|--------------------|------------------------------------------|
+| `pandas.DataFrame` | DataFrame containing the pairwise tests. |

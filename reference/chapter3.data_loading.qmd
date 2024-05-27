@@ -1,0 +1,29 @@
+# chapter3.data_loading { #libs.chapter3.data_loading }
+
+`chapter3.data_loading`
+
+Provides functions to load the obtained results.
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [load_reports](#libs.chapter3.data_loading.load_reports) | Loads the ML and DL reports generated from the ILOSO evaluation. |
+
+### load_reports { #libs.chapter3.data_loading.load_reports }
+
+`chapter3.data_loading.load_reports(path=os.path.join('data', 'chapter3', 'model-reports'))`
+
+Loads the ML and DL reports generated from the ILOSO evaluation.
+
+#### Parameters
+
+| Name   | Type   | Description                 | Default                                             |
+|--------|--------|-----------------------------|-----------------------------------------------------|
+| `path` | str    | Root directory of the data. | `os.path.join('data', 'chapter3', 'model-reports')` |
+
+#### Returns
+
+| Type               | Description                                 |
+|--------------------|---------------------------------------------|
+| `pandas.DataFrame` | DataFrame containing the generated reports. |

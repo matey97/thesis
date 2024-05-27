@@ -1,0 +1,30 @@
+# chapter2.visualization { #libs.chapter2.visualization }
+
+`chapter2.visualization`
+
+Provides a function to plot the collected data.
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [plot_execution](#libs.chapter2.visualization.plot_execution) | Generates an interactive plot with the accelerometer and gyroscope data of the specified execution. |
+
+### plot_execution { #libs.chapter2.visualization.plot_execution }
+
+`chapter2.visualization.plot_execution(data_collection, execution)`
+
+Generates an interactive plot with the accelerometer and gyroscope data of the specified execution.
+
+#### Parameters
+
+| Name              | Type   | Description                                                                  | Default    |
+|-------------------|--------|------------------------------------------------------------------------------|------------|
+| `data_collection` | dict   | Dict containing the collected dataset. See: `utils.data_loading.load_data()` | _required_ |
+| `execution`       | str    | execution data to plot. Format: 'sXX_YY_{sp\|sw}'                            | _required_ |
+
+#### Returns
+
+| Type                       | Description      |
+|----------------------------|------------------|
+| `plotly.graph_objs.Figure` | Interactive plot |

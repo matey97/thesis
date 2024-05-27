@@ -37,10 +37,10 @@ def load_data(path=os.path.join('data','chapter2')):
     Loads the accelerometer and gyroscope data for each execution.
     
     Args:
-        path (str): root directory of the data.
+        path (str): Root directory of the data.
         
     Returns:
-        data (dict): dict containing pandas dataframes with the accelerometer and gyroscope data for each execution.
+        data (dict): Dict containing pandas dataframes with the accelerometer and gyroscope data for each execution.
     '''
     
     subjects = _list_subjects_folders(path)
@@ -66,10 +66,10 @@ def load_subjects_info(path=os.path.join('data', 'chapter2', 'subjects_info.csv'
     Loads the 'subjects_info.csv' file containing information about the subjects (age, gender, executions)
     
     Args:
-        path (str): path of the file. 
+        path (str): Path of the file. 
         
     Returns:
-        subjects_info (pandas.DataFrame): dataframe with the contents of the file
+        subjects_info (`pandas.DataFrame`): DataFrame with the contents of the file
     '''
     subjects_info = pd.read_csv(path)
     return subjects_info
@@ -80,10 +80,10 @@ def load_executions_info(path=os.path.join('data', 'chapter2', 'executions_info.
     Loads the 'executions_info.csv' file containing information about the executions (id, phone orientation, turns direction)
     
     Args:
-        path (str): path of the file. 
+        path (str): Path of the file. 
         
     Returns:
-        executions_info (pandas.DataFrame): dataframe with the contents of the file
+        executions_info (`pandas.DataFrame`): DataFrame with the contents of the file
     '''
     executions_info = pd.read_csv(path)
     return executions_info
