@@ -8,7 +8,28 @@ Provides functions to compute statistical tests to determine the significance of
 
 | Name | Description |
 | --- | --- |
+| [is_parametric_data](#libs.chapter3.statistical_tests.is_parametric_data) | Determines if the results in the reports follow a parametric or a non-parametric distribution. |
 | [pairwise_n_comparision](#libs.chapter3.statistical_tests.pairwise_n_comparision) | Computes pairwise tests for each value of n. |
+
+### is_parametric_data { #libs.chapter3.statistical_tests.is_parametric_data }
+
+`chapter3.statistical_tests.is_parametric_data(reports, models, sources)`
+
+Determines if the results in the reports follow a parametric or a non-parametric distribution.
+
+#### Parameters
+
+| Name      | Type                             | Description                 | Default    |
+|-----------|----------------------------------|-----------------------------|------------|
+| `reports` | `pandas.DataFrame`               | Model reports.              | _required_ |
+| `models`  | `libs.chapter3.model.Models`\[\] | List with the models.       | _required_ |
+| `sources` | `libs.chapter3.model.Source`\[\] | List with the data sources. | _required_ |
+
+#### Returns
+
+| Type               | Description                                                                                       |
+|--------------------|---------------------------------------------------------------------------------------------------|
+| `pandas.DataFrame` | DataFrame indicating if the results from a model+source are parametric (`True`) or not (`False`). |
 
 ### pairwise_n_comparision { #libs.chapter3.statistical_tests.pairwise_n_comparision }
 
