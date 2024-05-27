@@ -20,7 +20,10 @@ import numpy as np
 import pandas as pd
 import pingouin as pg
 
-from libs.chapter3.model import ActivityMetric, Filter, ModelMetric, TargetFilter 
+from libs.chapter3.model import ActivityMetric, Filter, ModelMetric, TargetFilter, Source 
+
+pg.options['round.column.p-val'] = 3
+pg.options['round.column.p-unc'] = 3
 
 
 def pairwise_n_comparision(data, filters, alternative='two-sided', stars=False, parametric=False):
@@ -87,8 +90,8 @@ def is_parametric_data(reports, models, sources):
 
     Args:
         reports (`pandas.DataFrame`): Model reports.
-        models (`libs.chapter3.model.Models`[]): List with the models.
-        sources (`libs.chapter3.model.Source`[]): List with the data sources.
+        models (list[`libs.chapter3.model.Models`]): List with the models.
+        sources (list[`libs.chapter3.model.Source`]): List with the data sources.
         
     Returns:
         (`pandas.DataFrame`): DataFrame indicating if the results from a model+source are parametric (`True`) or not (`False`).
@@ -126,3 +129,81 @@ def _check_normality(data):
                 normality_table[n-1, i] = True
 
     return pd.DataFrame(normality_table, index=np.arange(1,23), columns=columns)
+
+
+def statistical_comparison(reports, metric_filter, focus_on, groups, alternative='two-sided'):
+    '''
+    Args:
+        reports (`pandas.DataFrame`): Model reports.
+        metric_filter (tuple[str, str]): Metric filter to apply to the model reports.
+        focus_on (list[str]): Items being compared. List items are one of `libs.chapter3.model.Source` or `libs.chapter3.model.Model`.
+        groups (list[str]): Each group where `focus_on` items are compared. List items are one of `libs.chapter3.model.Source` or `libs.chapter3.model.Model`.
+        alternative (str): Hypothesis to test. One of: 'two-sided', 'less' or 'greater'.
+        
+    Returns:
+        (`pandas.DataFrame`): DataFrame containing groups comparisons.
+    '''
+
+    def filter_builder(target, metric):
+        def filter_by_model(focus):
+            return Filter(focus, None, target, metric)
+        def filter_by_source(focus):
+            return Filter(None, focus, target, metric)
+            
+        return filter_by_model if isinstance(groups[0], Source) else filter_by_source
+    
+    test_results = []
+    posthoc_results = []  
+    target, metric = metric_filter
+    filterer = filter_builder(target, metric)
+    for focus in focus_on:
+        comparision, posthoc = _compare_groups(reports, filterer(focus), groups, alternative)
+        comparision = comparision.set_index('n')
+        #comparision['activity'] = target
+        posthoc['focus'] = focus
+        test_results.append(comparision)
+        posthoc_results.append(posthoc)
+    #return posthoc_results    
+    df_test = pd.concat(test_results, axis=1, keys=focus_on)
+
+    #columns = df_test.columns.to_list()
+    #columns.remove('n')
+    #columns.remove('activity')
+    #df_test = df_test.sort_values(['n', 'activity']).reset_index(drop=True)[['n', 'activity'] + columns]
+    #df_test = df_test.pivot(index='n', columns='activity', values=columns).stack(0).unstack()
+    #df_test = df_test.reindex(columns=df_test.columns.reindex(columns, level=1)[0])
+    
+    df_posthoc = pd.concat(posthoc_results, axis=0)
+    df_posthoc = df_posthoc.set_index(['focus', 'n'])
+    
+    return df_test, df_posthoc
+
+
+def _compare_groups(reports, filters, groups, alternative='two-sided'):
+    filtered_reports = filters.apply(reports)
+    
+    between = 'source' if isinstance(groups[0], Source) else 'model'
+    results = []
+    posthoc_results = []
+    for n in range(1, 23):
+        n_reports = filtered_reports[filtered_reports.n == n]
+        kruskal = pg.kruskal(n_reports, dv='value', between=between, detailed=True).loc['Kruskal']
+        medians = n_reports.groupby(between)['value'].median().round(3)
+        
+        test_results = []
+        labels = ['n']
+        for group in groups:
+            test_results += [medians[str(group)]]
+            labels += [str(group)]
+        test_results += [kruskal["H"].round(3), kruskal['p-unc']]
+        labels += [f'H({kruskal["ddof1"]})', 'p-value']
+        results.append([n] + test_results)
+        
+        if kruskal['p-unc'] <= 0.05:
+            posthoc = pg.pairwise_tests(n_reports, dv='value', between=between, parametric=False, return_desc=True)[['A', 'B', 'mean(A)', 'std(A)', 'mean(B)', 'std(B)', 'U-val', 'p-unc']]
+            posthoc['n'] = n
+            posthoc_results.append(posthoc)
+ 
+    posthoc_df = pd.concat(posthoc_results)#.set_index(['n'])
+    posthoc_df = posthoc_df.rename(columns={'U-val': 'U', 'p-unc': 'p-value'})
+    return pd.DataFrame(results, columns=labels), posthoc_df

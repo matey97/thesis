@@ -44,3 +44,17 @@ def load_reports(path=os.path.join('data', 'chapter3', 'model-reports')):
         reports.append(df)
 
     return pd.concat(reports)
+
+
+def load_best_significant(path):
+    '''
+    Loads a CSV file containing the number of best significant data sources/models for each combination of number of training
+    subjects and models/data sources.
+
+    Args:
+        path (str): Path to the CSV file.
+        
+    Returns:
+        (`pandas.DataFrame`): DataFrame containing specified CSV.
+    '''
+    return pd.read_csv(path, header=[0, 1], index_col=0)

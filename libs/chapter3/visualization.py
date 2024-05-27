@@ -23,7 +23,7 @@ import plotly.express as px
 import plotly.io as pio
 import warnings
 
-from libs.chapter3.model import Filter
+from libs.chapter3.model import Filter, Model, Source, ORDER
 from libs.chapter3.statistical_tests import pairwise_n_comparision, p_value_formatter
 
 from plotly.subplots import make_subplots
@@ -85,9 +85,9 @@ def plot_evolution(reports, sources, filters, fig_titles, filters_secondary=None
     
     Args:
         reports (`pandas.DataFrame`): Model reports.
-        sources (`libs.chapter3.model.Source`[]): List with the data sources to include in the figure.
+        sources (list[`libs.chapter3.model.Source`]): List with the data sources to include in the figure.
         filters (`libs.chapter3.model.Filter`): Filter to apply to the model reports.
-        fig_titles (str[]): Title to use for the plot of each data source.
+        fig_titles (list[str]): Title to use for the plot of each data source.
         filters_secondary (`libs.chapter3.model.Filter`): Filter to apply to the model reports, plotting the result in the secondary axis.  
         
     Returns:
@@ -167,8 +167,8 @@ def plot_comparison(reports, models, sources, filters, sources_print):
     
     Args:
         reports (pandas.DataFrame): Model reports.
-        models (`libs.chapter3.model.Models`[]): List with the models to include in the figure.
-        sources (`libs.chapter3.model.Source`[]): List with the data sources to include in the figure.
+        models (list[`libs.chapter3.model.Models`]): List with the models to include in the figure.
+        sources (list[`libs.chapter3.model.Source`]): List with the data sources to include in the figure.
         filters (`libs.chapter3.model.Filter`): Filter to apply to the model reports.
         sources_print (dict): Mapping between a Source and a string representation.
 
@@ -224,7 +224,7 @@ def plot_pairwise_comparision(reports, sources, filters, sources_print, alternat
     
     Args:
         reports (`pandas.DataFrame`): Model reports.
-        sources (`libs.chapter3.model.Source`[]): List with the data sources to include in the figure.
+        sources (list[`libs.chapter3.model.Source`]): List with the data sources to include in the figure.
         filters (`libs.chapter3.model.Filter`): Filter to apply to the model reports.
         sources_print (dict): Mapping between a Source and a string representation.
         alternative (str): Hypothesis to test. One of: 'two-sided', 'less' or 'greater'.
@@ -291,4 +291,157 @@ def plot_pairwise_comparision(reports, sources, filters, sources_print, alternat
         height = 1200, #width = 1200, 
         plot_bgcolor = 'rgba(0,0,0,0)',
     )
+    return fig
+
+
+COLOR_MAP = {
+    Model.MLP: px.colors.qualitative.Plotly[0],
+    Model.CNN: px.colors.qualitative.Plotly[2],
+    Model.LSTM: px.colors.qualitative.Plotly[1],
+    Model.CNN_LSTM: px.colors.qualitative.Plotly[3],
+    Source.SP: px.colors.qualitative.Plotly[4],
+    Source.SW: px.colors.qualitative.Plotly[5],
+    Source.FUSED: px.colors.qualitative.Plotly[6],
+}
+
+
+SYMBOL_MAP = {
+    Model.MLP: 'triangle-up',
+    Model.CNN: 'square',
+    Model.LSTM: 'diamond',
+    Model.CNN_LSTM: 'circle',
+    Source.SP: 'square',
+    Source.SW: 'diamond',
+    Source.FUSED: 'circle',
+}
+
+TEXT_SYMBOL_MAP = {
+    Model.MLP: '\u25B2',
+    Model.CNN: '\u25A0',
+    Model.LSTM: '\u25C6',
+    Model.CNN_LSTM: '\u25CF',
+    Source.SP: '\u25A0',
+    Source.SW: '\u25C6',
+    Source.FUSED: '\u25CF',
+}
+
+def style_mapper(item, n_sig):   
+    if n_sig == 0:
+        return 'x-thin', 'black'
+
+    symbol = SYMBOL_MAP[item]
+    if n_sig > 1:
+        symbol += '-open'
+
+    return symbol, COLOR_MAP[item]
+
+def plot_visual_comparison(best_items, significance_results, focus_on, groups):
+    '''
+    Generates a figure to visually summarize statistical group comparisons. For each group, plots a symbol representing the best performant item (`focus_on`).
+    If the item is the **statistically** best performant item (i.e., doesn't ties with other item), the symbol is filled. Otherwise, the symbol contains a
+    number indicating the quantity of items the best performant item ties with.
+    
+    Args:
+        best_items (dict): Best item from a performance comparison. See: `libs.chapter3.model.obtain_best_items`.
+        significance_results (`pd.DataFrame`): DataFrame containing the number of best significant data sources/models for each combination of number of training
+    subjects and models/data sources.
+        focus_on (list[str]): Items being compared. List items are one of `libs.chapter3.model.Source` or `libs.chapter3.model.Model`.
+        groups (list[str]): Each group where `focus_on` items are compared. List items are one of `libs.chapter3.model.Source` or `libs.chapter3.model.Model`.
+
+    Returns:
+        (`plotly.Figure`): Interactive Plotly figure.
+    '''
+
+    fig = go.Figure()
+
+    for target in ORDER:
+        for group in groups:
+            #index = df_best[(target,group)].index.to_numpy()
+            values = [focus_on[i] for i in best_items[target][group][:,0]]
+            index = np.arange(1, len(values)+1)
+            significance = significance_results[(str(target),str(group))].values
+            style = np.array([style_mapper(item, sig) for item, sig in zip(values, significance)])
+            fig.add_trace(
+                go.Scatter(
+                    y=[f'<b>{i}</b>' for i in index], x=[[f'<span style="font-family: courier; font-size: 18px"><b>{str(target).upper()}</b></span>']*len(values), [f'<b>{str(group)}</b>']*len(values)], mode='markers+text',
+                    text = [f'<b>{sig - 1}</b>' if sig > 1 else '' for sig in significance], textfont_size=14, textfont_color=style[:,1],
+                    marker_symbol=style[:,0], marker_color=style[:,1], marker_line_color=style[:,1], marker_line_width=3, 
+                    marker_size=22,
+                ),
+            )
+
+
+    fig.add_vline(x=-0.5, line_width=1)        
+    for i in range(len(ORDER)):
+        fig.add_vline(x=-0.5 + len(groups)*(i+1), line_width=1)
+
+    fig.update_layout(
+        #width=1200,
+        height=900,
+        xaxis_side='top',
+        yaxis_range=[21.8, -0.8],
+        yaxis_dtick=1,
+        plot_bgcolor = 'rgba(0,0,0,0)',
+        showlegend=False
+    )
+
+    return fig
+
+
+def plot_visual_ties(best_items, significance_results, focus_on, groups):
+    '''
+    Generates a figure to indicate the ties in the group comparions. For each item, indicates how many times it has tied with other item. 
+    Complementary figure to `libs.chapter3.visualization.plot_visual_comparison`.
+    
+    Args:
+        best_items (dict): Best item from a performance comparison. See: `libs.chapter3.model.obtain_best_items`.
+        significance_results (`pd.DataFrame`): DataFrame containing the number of best significant data sources/models for each combination of number of training
+    subjects and models/data sources.
+        focus_on (list[str]): Items being compared. List items are one of `libs.chapter3.model.Source` or `libs.chapter3.model.Model`.
+        groups (list[str]): Each group where `focus_on` items are compared. List items are one of `libs.chapter3.model.Source` or `libs.chapter3.model.Model`.
+
+    Returns:
+        (`plotly.Figure`): Interactive Plotly figure.
+    '''
+
+    n_cols = len(focus_on)
+    fig = make_subplots(rows=1, cols=n_cols,
+            subplot_titles=[f'<span style="color: {COLOR_MAP[focus]}"><span style="font-size: 25px;">{TEXT_SYMBOL_MAP[focus]}</span> <b>{str(focus).upper()}</b></span>' for focus in focus_on],
+            specs=[[{'type': 'domain'}]*n_cols])
+                                                        
+    for i, focus in enumerate(focus_on):
+        tied_with_best = []
+        for target in ORDER:
+            for group in groups:
+                bests = best_items[target][group][:,0]
+                best_in_focus = np.where(bests == i, True, False)
+                bests_in_focus = best_items[target][group][best_in_focus]
+                n_significant = significance_results[(str(target), str(group))][best_in_focus].values
+                for j, n in enumerate(n_significant):
+                    if n < 2: 
+                        continue
+                    tied_with_best += list(bests_in_focus[j,1:n])
+
+        tied_stats = np.unique(tied_with_best, return_counts=True)
+        items = [focus_on[item] for item in tied_stats[0]]
+
+        fig.add_trace(
+            go.Pie(
+                labels=[str(item).upper() for item in items],
+                values=tied_stats[1],
+                textinfo='label+value',
+                marker_colors=[COLOR_MAP[item] for item in items],
+                hole=.05,
+                showlegend=False,
+                textfont_size=18,
+                marker_line_width=3
+            ),
+            row=1, col=i+1
+        )
+
+    fig.update_layout(
+        #width=300*n_cols,
+        height=500
+    )
+
     return fig

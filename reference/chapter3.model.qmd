@@ -83,3 +83,29 @@ Enumeration to represent the data sources. Values: SP, SW, FUSED.
 `chapter3.model.TargetFilter()`
 
 Enumeration for each attribute of interest from the model reports. Values: MODEL, SEATED, STANDING_UP, WALKING, TURNING, SITTING_DOWN.
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [obtain_best_items](#libs.chapter3.model.obtain_best_items) | Determines the best performant item (model or data source) from a DataFrame of statistical tests comparing groups. |
+
+### obtain_best_items { #libs.chapter3.model.obtain_best_items }
+
+`chapter3.model.obtain_best_items(test_results, focus_on, groups)`
+
+Determines the best performant item (model or data source) from a DataFrame of statistical tests comparing groups.
+
+#### Parameters
+
+| Name           | Type               | Description                                                                                                                        | Default    |
+|----------------|--------------------|------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `test_results` | `pandas.DataFrame` | DataFrame with statistical tests. Generated with `libs.chapter3.statistical_tests.statistical_comparison`.                         | _required_ |
+| `focus_on`     | list\[str\]        | Items being compared. List items are one of `libs.chapter3.model.Source` or `libs.chapter3.model.Model`.                           | _required_ |
+| `groups`       | list\[str\]        | Each group where `focus_on` items are compared. List items are one of `libs.chapter3.model.Source` or `libs.chapter3.model.Model`. | _required_ |
+
+#### Returns
+
+| Type   | Description                               |
+|--------|-------------------------------------------|
+| dict   | Dict containing the best performant item. |
