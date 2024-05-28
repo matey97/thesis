@@ -20,7 +20,7 @@ import numpy as np
 import pandas as pd
 import pingouin as pg
 
-from libs.chapter3.model import ActivityMetric, Filter, ModelMetric, TargetFilter, Source 
+from libs.chapter3.analysis.model import ActivityMetric, Filter, ModelMetric, TargetFilter, Source 
 
 pg.options['round.column.p-val'] = 3
 pg.options['round.column.p-unc'] = 3

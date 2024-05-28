@@ -1,0 +1,1 @@
+[{"hyperparameters": {"input_layer": 256, "n_hidden": 1, "hidden_layer": 512, "lr": 0.001}, "score": 0.3302136957645416}, {"hyperparameters": {"input_layer": 256, "n_hidden": 2, "hidden_layer": 512, "lr": 0.001}, "score": 0.35231807827949524}, {"hyperparameters": {"input_layer": 256, "n_hidden": 3, "hidden_layer": 512, "lr": 0.001}, "score": 0.35854106545448305}]

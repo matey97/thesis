@@ -10,8 +10,23 @@ listing:
         - "03.3_models.ipynb"
     sort: false
     grid-columns: 3
+filters:
+  - add-code-files
 format:
   html:
+    code-links:
+      - text: 01_data-processing.py
+        icon: file-code
+        href: https://github.com/matey97/thesis/blob/main/libs/chapter3/pipeline/01_data-processing.py
+        target: blank
+      - text: 02_hyperparameter-optimization.py
+        icon: file-code
+        href: https://github.com/matey97/thesis/blob/main/libs/chapter3/pipeline/02_hyperparameter-optimization.py
+        target: blank
+      - text: 03_incremental-loso.py
+        icon: file-code
+        href: https://github.com/matey97/thesis/blob/main/libs/chapter3/pipeline/03_incremental-loso.py
+        target: blank
     other-links:  
       - text: CIARP paper
         icon: journal-bookmark-fill
@@ -63,7 +78,7 @@ The smartphone, smartwatch and fused dataset were split using the sliding window
 |---------|:------:|:-----------:|:-------:|:-------:|:------------:|------:|
 | **Smartphone** | 1033 | 1081 | 4606 | 2087 | 1235 | 10042 |
 | **Smartwatch** | 998  | 1105 | 4691 | 2123 | 1253 | 10170 |
-| **Fused**      | 964  | 1085 | 4580 | 2058 | 1205 | 9892  |
+| **Fused**      | 871  | 1083 | 4458 | 1887 | 1066 | 9365  |
 : Number of resulting windows in each dataset {#tbl-windows .striped }
 
 
@@ -75,7 +90,42 @@ A feature extraction process is executed to use the collected data in MLP models
 
 For the smartphone and smartwatch datasets, a total of $47$ (i.e., $7*6+1+1+3$) features were extracted from each window in each dataset. In the case of the fused dataset, $94$ (i.e., $47*2$) features were extracted from each window.
 
+::: {.callout-note}
+The script employed to execute this process is `01_data-processing.py`.
+
+:::: {add-from=libs/chapter3/pipeline/01_data-processing.py code-fold='true' code-filename='01_data-processing.py'}
+```{.python}
+```
+::::
+
+:::
+
+
 ### Models' hyperparameters optimization
+
+Before training the models, their hyperparameters have to be selected, i.e., the models have to be tuned. The selected options for the hyperparameters, which have been chosen based on other works using these models, are the following:
+
+- Number of units (all models): $128$, $256$ and $512$.
+- Number of filters (CNN and CNN-LSTM): $32$, $64$ and $128$.
+- LSTM cells (LSTM and CNN-LSTM): $32$, $64$, $128$.
+
+Other hyperparamters (e.g., learning rate, filter sizes, number of layers) were selected based on previous experience.
+
+The best hyperparameters were obtained using the **Grid Search** technique, where every possible combination of hyperparameters is evaluated. The process was configured to train and evaluate each combination five times using the Adam optimizer during $50$ epochs with a batch size of $64$ windows. To reduce the computational cost of the optimization, the process was carried out in two phases: 1) optimization of layers and learning hyperparameters and 2) optimization of the number of layers. 
+[@tbl-phase2-hyperparameters] contains the best combination of hyperparameters for each model and dataset.
+
+{{< embed 03.1.1_grid-search.ipynb#tbl-phase2-hyperparameters >}}
+
+::: {.callout-note}
+The script employed to execute this process is `02_hyperparameter-optimization.py`.
+
+:::: {add-from=libs/chapter3/pipeline/02_hyperparameter-optimization.py code-fold='true' code-filename='02_hyperparameter-optimization.py'}
+```{.python}
+```
+::::
+
+:::
+
 
 ### Evaluation procedure
 
@@ -85,6 +135,17 @@ As pointed out by @gholamiangonabadi2020deep, the right approach to evaluate HAR
 In the ILOSO strategy, given $S$ subjects, each $s$ subject is individually considered as a test subject. Then, $n$ subjects are randomly selected as training subjects from $S\setminus s$, where $n \in [1,\ldots,|S|-1]$. The data from training subjects are employed to train a model and the data from the test subject is used to evaluate it. This procedure is repeated $R$ times for every value of $n$ with different random initialization of the model. 
 
 The described algorithm trains and evaluates $|S|*(|S|-1)*R$ models. Since we use $R=10$ and there are three datasets and four types of models, a total of $60720$ models are trained ($23*22*10*3*4$). 
+
+
+::: {.callout-note}
+The script employed to execute this process is `03_incremental-loso.py`.
+
+:::: {add-from=libs/chapter3/pipeline/03_incremental-loso.py code-fold='true' code-filename='03_incremental-loso.py'}
+```{.python}
+```
+::::
+
+:::
 
 
 #### Evaluation metrics

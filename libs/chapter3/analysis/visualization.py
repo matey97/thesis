@@ -23,8 +23,8 @@ import plotly.express as px
 import plotly.io as pio
 import warnings
 
-from libs.chapter3.model import Filter, Model, Source, ORDER
-from libs.chapter3.statistical_tests import pairwise_n_comparision, p_value_formatter
+from libs.chapter3.analysis.model import Filter, Model, Source, ORDER
+from libs.chapter3.analysis.statistical_tests import pairwise_n_comparision, p_value_formatter
 
 from plotly.subplots import make_subplots
 
