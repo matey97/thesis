@@ -16,7 +16,13 @@ keywords:
 ---
 
 ## Abstract
-TODO
+During the last decade, research on human activity recognition (HAR) has been consistently growing due to its broad range of applications such as surveillance, exercise monitoring or healthcare monitoring systems. For instance, many researchers are putting their efforts into applying HAR for fall detection applications oriented to elderly people. The main drawback of most of the existing research is the requirements in terms of sensing devices -- cost, amount, placement -- which hamper the applicability of the proposed systems in real-life scenarios. Therefore, research needs to consider this issue to have a real impact on the population.
+
+In this doctoral dissertation, the abovementioned issue is addressed by focusing the research on using consumer devices available worldwide -- smartphones and smartwatches -- or cheap microcontrollers and studying their feasibility in real-life applications. During the thesis, two sensing techniques are explored: an inertial-based approach with smartphones and smartwatches and a Wi-Fi CSI-based approach with microcontrollers.
+
+For the inertial-based approach, reliable data collection libraries for smartphones and smartwatches are provided to support the development of these kinds of applications for researchers and developers. Then, a dataset with inertial measurements from smartphones and smartwatches for HAR is collected, differentiating itself from other datasets due to its heterogeneity and balance in terms of participants' age and gender. Next, the collected dataset is employed in a three-way analysis where the impact on the recognition performance of the selected model -- MLP, CNN, LSTM and CNN-LSTM --, the employed data source -- smartphone, smartwatch or both -- and the amount of data available for training is studied. From the obtained results, an mHealth system is developed to automate the computation of the results of a well-known mobility test, proving the feasibility of these devices for real-life applications.
+
+For the Wi-Fi CSI-based approach, an experiment is conducted to determine the feasibility of using this data source collected from ESP32 microcontrollers. Results determined that this data source might be unstable over time, thus being unfeasible for its use in a real-life scenario.
 
 ***
 
@@ -46,7 +52,7 @@ This thesis is funded by the Spanish Ministry of Universities. Grant references 
 :::: {.columns}
 
 ::: {.column width="60%"}
-_TBD_ Copyright © 2024 Miguel Matey Sanz. This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+_Human activity recognition with consumer devices and real-life perspectives_ Copyright © 2024 Miguel Matey Sanz. This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 :::
 
 ::: {.column width="5%"}

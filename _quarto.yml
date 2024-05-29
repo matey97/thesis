@@ -5,7 +5,7 @@ filters:
   - abstract-section
 
 book:
-  title: "Thesis"
+  title: "Human activity recognition with consumer devices and real-life perspectives"
   author: 
   - name: Miguel Matey Sanz
     orcid: 0000-0002-1189-5079
@@ -19,14 +19,14 @@ book:
         city: Castellón de la Plana
         country: Spain
         url: www.uji.es
-  - name: Sven Casteleyn
+  - name: (Supervisor) Sven Casteleyn
     orcid: 0000-0003-0572-5716
     roles: supervision
     degrees:
       - PhD
     affiliation:
       - ref: uji
-  - name: Carlos Granell
+  - name: (Supervisor) Carlos Granell
     orcid: 0000-0003-1004-9695
     roles: supervision
     degrees:
@@ -37,7 +37,7 @@ book:
 
   page-footer:
     left: |
-      TBD 
+      Human activity recognition with consumer devices and real-life perspectives 
       
       [![BY-NC-SA](figs/by-nc-sa.png){width=70}](https://creativecommons.org/licenses/by-nc-sa/4.0/) Miguel Matey Sanz, 2024
     right: |
