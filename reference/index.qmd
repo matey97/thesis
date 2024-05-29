@@ -23,7 +23,6 @@ Functions employed to carry out the experiments.
 | [chapter3.pipeline.01_data-processing](chapter3.pipeline.01_data-processing.qmd#libs.chapter3.pipeline.01_data-processing) | Data preprocessing script. |
 | [chapter3.pipeline.02_hyperparameter-optimization](chapter3.pipeline.02_hyperparameter-optimization.qmd#libs.chapter3.pipeline.02_hyperparameter-optimization) | Hyperparameters Grid Search script. |
 | [chapter3.pipeline.03_incremental-loso](chapter3.pipeline.03_incremental-loso.qmd#libs.chapter3.pipeline.03_incremental-loso) | Incremental Leaving-One-Subject-Out script. |
-| [chapter3.pipeline.data_fusion](chapter3.pipeline.data_fusion.qmd#libs.chapter3.pipeline.data_fusion) |  |
 
 ### Analysis
 
