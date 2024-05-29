@@ -1,0 +1,49 @@
+# chapter3.analysis.data_loading { #libs.chapter3.analysis.data_loading }
+
+`chapter3.analysis.data_loading`
+
+Provides functions to load the obtained results.
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [load_best_significant](#libs.chapter3.analysis.data_loading.load_best_significant) | Loads a CSV file containing the number of best significant data sources/models for each combination of number of training |
+| [load_reports](#libs.chapter3.analysis.data_loading.load_reports) | Loads the ML and DL reports generated from the ILOSO evaluation. |
+
+### load_best_significant { #libs.chapter3.analysis.data_loading.load_best_significant }
+
+`chapter3.analysis.data_loading.load_best_significant(path)`
+
+Loads a CSV file containing the number of best significant data sources/models for each combination of number of training
+subjects and models/data sources.
+
+#### Parameters
+
+| Name   | Type   | Description           | Default    |
+|--------|--------|-----------------------|------------|
+| `path` | str    | Path to the CSV file. | _required_ |
+
+#### Returns
+
+| Type               | Description                         |
+|--------------------|-------------------------------------|
+| `pandas.DataFrame` | DataFrame containing specified CSV. |
+
+### load_reports { #libs.chapter3.analysis.data_loading.load_reports }
+
+`chapter3.analysis.data_loading.load_reports(path=os.path.join('data', 'chapter3', 'model-reports'))`
+
+Loads the ML and DL reports generated from the ILOSO evaluation.
+
+#### Parameters
+
+| Name   | Type   | Description                 | Default                                             |
+|--------|--------|-----------------------------|-----------------------------------------------------|
+| `path` | str    | Root directory of the data. | `os.path.join('data', 'chapter3', 'model-reports')` |
+
+#### Returns
+
+| Type               | Description                                 |
+|--------------------|---------------------------------------------|
+| `pandas.DataFrame` | DataFrame containing the generated reports. |

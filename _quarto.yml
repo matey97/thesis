@@ -81,10 +81,13 @@ book:
         - reference/chapter2.data_loading.qmd
         - reference/chapter2.exploration.qmd
         - reference/chapter2.visualization.qmd
-        - reference/chapter3.data_loading.qmd
-        - reference/chapter3.model.qmd
-        - reference/chapter3.statistical_tests.qmd
-        - reference/chapter3.visualization.qmd
+        - reference/chapter3.pipeline.01_data-processing.qmd
+        - reference/chapter3.pipeline.02_hyperparameter-optimization.qmd
+        - reference/chapter3.pipeline.03_incremental-loso.qmd
+        - reference/chapter3.analysis.data_loading.qmd
+        - reference/chapter3.analysis.model.qmd
+        - reference/chapter3.analysis.statistical_tests.qmd
+        - reference/chapter3.analysis.visualization.qmd   
     - tools.qmd
 
   license: "CC BY-NC-SA"
@@ -105,11 +108,21 @@ quartodoc:
     - title: Chapter 3
       #package: libs.chapter3
       desc: "Defines the functions employed in the Chapter 3: Multidimensional analysis of ML and DL on HAR."
+    - subtitle: Pipeline
+      desc: "Functions employed to carry out the experiments."
       contents:
-        - chapter3.data_loading
-        - chapter3.model
-        - chapter3.statistical_tests
-        - chapter3.visualization
+        - chapter3.pipeline.01_data-processing
+        - chapter3.pipeline.02_hyperparameter-optimization
+        - chapter3.pipeline.03_incremental-loso
+        - chapter3.pipeline.data_fusion
+    - subtitle: Analysis
+      desc: "Functions employed to analyse the results of the experiment."
+      contents:
+        - chapter3.analysis.data_loading
+        - chapter3.analysis.model
+        - chapter3.analysis.statistical_tests
+        - chapter3.analysis.visualization
+
 
 bibliography: references.bib
 

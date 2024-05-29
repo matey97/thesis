@@ -1,0 +1,13 @@
+# chapter3.pipeline.01_data-processing { #libs.chapter3.pipeline.01_data-processing }
+
+`chapter3.pipeline.01_data-processing`
+
+Data preprocessing script.
+
+Processes the raw data by: applying min-max scaling, fusing smartphone and smartwatch data, arange samples
+in windows and perform feature extraction. The script stores the raw windows, windows with features extracted
+and groundtruth for smartphone, smartwatch and fused data.
+
+**Example**:
+
+    $ python 01_data-processing.py --input_data_path <PATH_OF_RAW_DATA> --windowed_data_path <PATH_TO_STORE_RESULTS>

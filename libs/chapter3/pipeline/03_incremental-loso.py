@@ -1,3 +1,33 @@
+# Copyright 2024 Miguel Matey Sanz
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#     http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+"""Incremental Leaving-One-Subject-Out script.
+
+Performs the ILOSO evaluation.
+
+**Example**:
+
+    $ python 03_incremental-loso.py 
+        --data_dir <PATH_OF_DATA> 
+        --reports_dir <PATH_TO_STORE_RECORDS>
+        --model <MLP,CNN,LSTM,CNN-LSTM>
+        --subject <EVALUATION_SUBJECT>
+        --batch_size <BATCH_SIZE>
+        --epochs <EPOCHS>
+        --splits <SPLITS>
+"""
+
 import os
 import traceback
 import argparse

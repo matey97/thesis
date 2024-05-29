@@ -1,0 +1,18 @@
+# chapter3.pipeline.03_incremental-loso { #libs.chapter3.pipeline.03_incremental-loso }
+
+`chapter3.pipeline.03_incremental-loso`
+
+Incremental Leaving-One-Subject-Out script.
+
+Performs the ILOSO evaluation.
+
+**Example**:
+
+    $ python 03_incremental-loso.py 
+        --data_dir <PATH_OF_DATA> 
+        --reports_dir <PATH_TO_STORE_RECORDS>
+        --model <MLP,CNN,LSTM,CNN-LSTM>
+        --subject <EVALUATION_SUBJECT>
+        --batch_size <BATCH_SIZE>
+        --epochs <EPOCHS>
+        --splits <SPLITS>
