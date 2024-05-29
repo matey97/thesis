@@ -114,7 +114,6 @@ quartodoc:
         - chapter3.pipeline.01_data-processing
         - chapter3.pipeline.02_hyperparameter-optimization
         - chapter3.pipeline.03_incremental-loso
-        - chapter3.pipeline.data_fusion
     - subtitle: Analysis
       desc: "Functions employed to analyse the results of the experiment."
       contents:
