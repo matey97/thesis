@@ -127,6 +127,7 @@ bibliography: references.bib
 
 format:
   html:
+    reference-location: margin
     execute:
       warning: false
     number-sections: false
