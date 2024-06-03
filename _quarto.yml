@@ -6,6 +6,7 @@ filters:
 
 book:
   title: "Human activity recognition with consumer devices and real-life perspectives"
+  favicon: figs/book.svg
   author: 
   - name: Miguel Matey Sanz
     orcid: 0000-0002-1189-5079
@@ -50,6 +51,7 @@ book:
   repo-link-target: blank
 
   sidebar:
+    logo: figs/uji-logo.png
     border: true
   #  style: docked
 
