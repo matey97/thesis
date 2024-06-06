@@ -72,6 +72,10 @@ book:
         - 03.3_models.ipynb
     - part: 04_tug.qmd
       text: "HAR in mHealth: TUG test"
+      chapters:
+        - 04.1_splitting-approach.ipynb
+        - 04.2_system-reliability.ipynb
+        - 04.3_energy-consumption.ipynb
     - part: 05_wifi-csi.qmd
       text: Wi-Fi CSI HAR
     - 06_conclusions.qmd

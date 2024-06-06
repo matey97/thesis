@@ -1,6 +1,164 @@
 ---
 image: figs/chapter4/chap4.png
 description: Implementation and evaluation of an mHealth system for instrumenting a mobility test.
+lightbox: true
+listing: 
+  - id: contents
+    type: grid
+    contents: 
+        - "04.1_splitting-approach.ipynb"
+        - "04.2_system-reliability.ipynb"
+        - "04.3_energy-consumption.ipynb"
+    sort: false
+    grid-columns: 3
+format:
+  html:
+    code-links:  
+      - text: TUG Smartwatch APP
+        icon: github
+        href: https://github.com/matey97/TugTestSmartwatch/tree/v2.0.0
+        target: blank
+      - text: TUG Smartphone APP
+        icon: github
+        href: https://github.com/matey97/TugTestSmartphone/tree/v2.0.0
+        target: blank
 ---
 
 # HAR in mHealth: TUG test using smartphones and smartwatches
+
+Physical performance tests aim to assess the physical abilities and mobility skills of individuals for various healthcare purposes. They are often driven by experts and usually performed at their practice, and therefore they are resource-intensive and time-demanding. For tests based on objective measurements (e.g., duration, repetitions), technology can be used to automate them, allowing the patients to perform the test themselves, more frequently and anywhere while alleviating the expert from supervising the test. The well-known Timed Up & Go (TUG) test [@podsiadlo1991timed], typically used for mobility assessment, is an ideal candidate for automation, as inertial sensors (among others) can be deployed to detect the various movements constituting the test without expert supervision. To move from expert-led testing to self-administered testing, we present a mHealth system capable of automating the TUG test using a pocket-sized smartphone or a wrist smartwatch paired with a smartphone, where data from inertial sensors are used to detect the activities carried out by the patient while performing the test and compute their results in real-time. The use of both devices to automate the TUG test was evaluated and mutually compared and set off with a manual method in terms of accuracy, clinical and statistical reliability and battery consumption, proving its feasibility as a real-life mHealth application.
+
+![TUG test diagram](figs/chapter4/tug.png){#fig-tug width=500 fig-align="center"}
+
+## TUG test mHealth system
+
+The TUG test's main output is its total duration. Nevertheless, this measurement can be decomposed into several components (i.e., subphases) that measure different aspects of the subject's mobility. In the literature, there seem to be different approaches to this decomposition: some authors break down the subphases of the test into stand up (from the chair), walk $3$ meters, turn, walk back to the chair, another turn and sit down. Others consider the last two subphases into a single one combining the last turn and the sitting down activities. As will be shown in , the best approach is the first one, where these subphases can be named as follows: *standing_up*, *first_walk*, *first_turn*, *second_walk*, *second_turn* and *sitting_down*.
+
+These subphases can be associated with five differentiated human activities, namely `SEATED`, `STANDING_UP`, `WALKING`, `TURNING` and `SITTING_DOWN`. Thus, recognizing these human activities enables the automatic assessment of the TUG test. More specifically, the duration of each subphase and the total duration of the test can be obtained by calculating the boundaries between the associated recognized human activities.
+
+This is the aim of the developed mHealth system depicted in @fig-tug_architecture. The developed system has two operating modes:
+
+- `C1`: a WearOS smartwatch is used as a sensing device (i.e., sensor sampling) and a paired Android smartphone acts as a computing device (e.g., data processing, activity inference and results computation). 
+- `C2`: an Android smartphone acts as a sensing and computing device.
+
+![Architecture of the developed mHealth system.](figs/chapter4/tug-architecture.png){#fig-tug_architecture}
+
+The developed system collects samples from the smartwatch (`C1`) or the smartphone (`C2`). These samples are used to determine which activity a subject performs while executing the TUG test, and to measure the duration of each subphase and the total duration of the test upon completion. Sample collection is manually initiated in both configurations, but is automatically stopped during the TUG test assessment when its completion is detected. Next, the smartwatch and smartphone applications of the TUG test system are described.
+
+### Smartwatch application
+The smartwatch application is a native Android application developed using the WearOS Sensors library (described in @sec-collection_tools) that runs on a WearOS-based smartwatch whose main purpose is to act as a sensing device. The smartwatch must be linked to a smartphone with the application described in the next section installed, but the phone does not need to be carried on since it is used as a computing device. This is to increase the battery life of the smartwatch. 
+
+[@fig-sw_screenshots] shows the application interface that allows the user to start the collection of accelerometer and gyroscope samples at $100$Hz for data collection -- [@fig-sw_collection] -- or inference -- [@fig-sw_inference] --. After the collection is started, samples are batched in groups of $50$, wirelessly sending each batch to the paired smartphone using Bluetooth communication. When the end of the test is detected and its results are computed on the smartphone side, the smartwatch stops the data collection process, receives the results and vibrates to signal the end of the test, displaying the results (only the total duration, due to screen size constraints) on the screen -- [@fig-sw_results] --.
+
+::: {#fig-sw_screenshots layout-ncol=3}
+
+![Data collection UI](figs/chapter4/sw_a.png){#fig-sw_collection}
+
+![TUG test assessment UI](figs/chapter4/sw_b.png){#fig-sw_inference}
+
+![TUG test results UI](figs/chapter4/sw_c.png){#fig-sw_results}
+
+Screenshots of the smartwatch application UI.
+:::
+
+::: {.callout-note}
+## Availability
+
+The TUG test smartwatch application is available in [GitHub](https://github.com/matey97/TugTestSmartwatch/tree/v2.0.0) and Zenodo [@matey2022tugsw].
+:::
+
+### Smartphone application
+The smartphone application is a NativeScript application that runs on Android smartphones. It has been developed using the **Phone Sensors**, **Wear OS** and **ML Kit** packages of the AwarNS Framework [@gonzalez2023awarns]. With the application set up and running, the smartphone can act just as a computing device (`C1`), with a paired smartwatch as a sensing device, or as a sensing and computing device (`C2`).
+
+On the sensing facet, the application provides an interface to start the data collection process ([@fig-sp_main]). Like the smartwatch application, it collects accelerometer and gyroscope data at $100$Hz. 
+On the computing facet, the application processes the collected data (either from the smartwatch or from the phone itself) by applying a temporal alignment, Min-Max scaling and data windowing. Once a data window is prepared, the bundle is used as input to an embedded ML or DL model that predicts which activity the subject is performing. 
+
+Based on the predicted activities, the system can automatically detect the end of the TUG test and calculate the results. The application then computes the start and end time (and duration) of each subphase of the test by determining the boundaries between them using the predicted activities. Finally, with the start of the *standing_up* and the end of the *sitting_down* subphases, the duration of the entire test is determined.
+
+After the detection of the end of the test, the data collection is automatically stopped on the sensing device (i.e., smartwatch or smartphone), and the test results are calculated and sent to the smartwatch if it is the sensing device. The smartphone application also displays a list of the executed TUG tests and their full results -- [@fig-sp_main] and [@fig-sp_detail], respectively --.
+
+::: {#fig-sp_screenshots layout-ncol=2}
+
+![Main UI with TUG test assessments list](figs/chapter4/sp_a.jpg){#fig-sp_main}
+
+![Detail UI of single assessment](figs/chapter4/sp_b.jpg){#fig-sp_detail}
+
+Screenshots of the smartphone application UI.
+:::
+
+::: {.callout-note}
+## Availability
+
+The TUG test smartphone application is available in [GitHub](https://github.com/matey97/TugTestSmartphone/tree/v2.0.0) and Zenodo [@matey2022tugsp].
+:::
+
+
+## Methodology
+This section describes the methodology employed to evaluate the developed system.
+
+### Participants
+Thirty healthy individuals participated in the evaluation of the subject. The participants ranged from $21$ to $73$ years old ($\mu = 43.7 \pm 14$), where the ratio of male/female participants was $53\%/47\%$. 
+
+::: {.column-margin .callout-note}
+The experiment was approved by the ethics committee of the Universitat Jaume I (reference No. CD/88/2022) and carried out in accordance with the Declaration of Helsinki.
+:::
+
+The objectives and description of the study were explained to the participants, who were informed that they were going to be video-recorded while performing the test, and their written informed consent was obtained. 
+
+### Devices
+Participants were provided with a TicWatch Pro 3 GPS (WH12018) smartwatch and two Xiaomi Poco X3 Pro (M2102J20SG) smartphones, equipped with an STMicroelectronics LSM6DSO IMU[^1] sensor. The smartwatch and one smartphone were used as sensing and computing devices respectively (`C1`), while the other smartphone was used as a sensing and computing device (`C2`). The participants were instructed to wear the smartwatch on the left wrist (the paired smartphone was left aside) and the smartphone on the left pocket, without further instructions regarding orientation.
+
+A Xiaomi Poco F2 Pro (M2004J11G) smartphone was also used to video-record the subjects while participating in the study. All devices' internal clocks were synchronized using the NTP protocol.
+
+[^1]: [IMU Specification](https://www.st.com/en/mems-and-sensors/lsm6dso.html)
+
+    - Smartphone specs:
+      - Accelerometer: range ($\pm8g$), accuracy ($\pm0.02g$)
+      - Gyroscope: range ($\pm1000dpi$), accuracy ($\pm1dpi$)
+    - Smartwatch specs:
+      - Accelerometer: range ($\pm8g$), accuracy ($\pm0.02g$)
+      - Gyroscope: range ($\pm2000dpi$), accuracy ($\pm1dpi$)
+
+### HAR classifier
+
+Supported by the results presented in the previous chapter, the CNN architecture has been chosen for activity classification. Therefore, two CNN models (i.e., one for smartphone and other smartwatch data) have been trained for HAR using the dataset presented in [@sec-dataset] and embedded in the smartphone application.
+
+### Experimental protocol
+
+Each participant was instructed to execute the TUG test while wearing the smartwatch on the left wrist and the smartphone in the left front pocket, adhering to the following procedure:
+
+1. From a seated position, press the "start" button on the smartphone application, lock the device and store it in the front left pocket.
+2. Wait for a sound emitted from the smartphone.
+3. Press the "start" button on the smartwatch application (already placed on the wrist).
+4. Wait for a vibration emitted from the smartwatch.
+5. Execute the TUG test.
+6. Once finished, the smartphone and smartwatch applications will show the test's results.
+
+Every participant executed the TUG test 10 times, yielding a total amount of 300 TUG test executions, whose results were extracted from both system configurations. From those 300 executions, 9 were discarded due to procedural breaches.
+
+Then, the recorded videos of the participants were manually analysed to determine the boundaries between the activities contained in the test to measure the duration of the test and its subphases.
+
+In addition, Google's BatteryHistorian[^2] tool was used to obtain the percentage of battery consumed by the system in the three devices used in the experiment. 
+
+[^2]: [Battery Historian documentation](https://developer.android.com/topic/performance/power/battery-historian)
+
+### Evaluation analyses
+
+To obtain a first insight into the performance of the TUG automation system, the computed results were classified as follows:
+
+- **Success**: the system was able to measure the total duration of the test and its subphases.
+- **Partial success**: the system was able to measure the total duration of the test, but failed to measure any of its subphases.
+- **Failure**: the system was not able to compute the total duration of the test.
+
+Then, the computed results were compared with the manually obtained results (refernce method) using several metrics:
+
+- **Errors**: a direct comparison between a system and a manual measure to check the difference between them. The significance of the errors (i.e., different from 0) was tested using one-sample T-tests or W-tests. Then, both system configurations were also compared in terms of inter-subject RMSE, using two-sample T-tests or MWU tests to evaluate the significance of the comparison.
+- **Bland Altman agreement**: determines the agreement between measurements from `C1` and `C2` with the manual method (i.e., gold standard).
+- **ICC**: estimates and their $95\%$ confidence intervals based on a single rater, absolute-agreement, 2-way mixed-effects model (i.e., $ICC_{(2,1)}$) were computed comparing each system configuration with the manual approach.
+
+Finally, the energy consumption of the system was analysed using the data obtained from the Google's BatteryHistorian tool.
+
+## Results
+
+:::{#contents}
+:::
