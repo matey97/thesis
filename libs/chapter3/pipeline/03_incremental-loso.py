@@ -38,12 +38,14 @@ sys.path.append("../../..")
 
 from alive_progress import alive_bar
 
-from libs.chapter3.pipeline.data_loading import load_data
-from libs.chapter3.pipeline.data_grouping import generate_lno_group, generate_training_and_test_sets
+from libs.chapter3.pipeline.data_grouping import generate_lno_group
 from libs.chapter3.pipeline.data_reshapers import get_reshaper
 from libs.chapter3.pipeline.training import create_trainer
-from libs.chapter3.pipeline.training_report import generate_report, report_writer
-from libs.chapter3.pipeline.utils import set_seed
+from libs.chapter3.pipeline.training_report import report_writer
+from libs.common.data_loading import load_data
+from libs.common.data_grouping import generate_training_and_test_sets
+from libs.common.ml import generate_report
+from libs.common.utils import set_seed
 
 
 ACTIVITIES = {"SEATED": 0, "STANDING_UP": 1, "WALKING": 2, "TURNING": 3, "SITTING_DOWN": 4}

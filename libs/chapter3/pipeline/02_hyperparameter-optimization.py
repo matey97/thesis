@@ -36,12 +36,12 @@ import json
 import sys
 sys.path.append("../../..")
 
-from libs.chapter3.pipeline.data_loading import load_data
-from libs.chapter3.pipeline.data_grouping import merge_subjects_datasets
 from libs.chapter3.pipeline.data_reshapers import get_reshaper
 from libs.chapter3.pipeline.hyperparameters_tuning import get_model_builder, create_tuner, tune, get_tuning_summary
 from libs.chapter3.pipeline.tuning_configuration import get_tuning_configuration
-from libs.chapter3.pipeline.utils import set_seed
+from libs.common.data_loading import load_data
+from libs.common.data_grouping import merge_subjects_datasets
+from libs.common.utils import set_seed
 
 
 TUNING_DIR = 'GRID_SEARCH_{0}'

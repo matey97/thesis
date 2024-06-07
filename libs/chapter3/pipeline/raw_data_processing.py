@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from .utils import datetime_from
+from libs.common.utils import datetime_from
 
 
 def split(dataframe, types=['accelerometer', 'gyroscope']):

@@ -1,7 +1,7 @@
 import os
 import json
 import pandas as pd
-from .utils import list_folder, list_subjects_folders
+from libs.common.utils import list_folder, list_subjects_folders
 
 
 def load_json(data_file_path):

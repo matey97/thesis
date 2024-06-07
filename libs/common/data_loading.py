@@ -1,7 +1,7 @@
 import os
 import numpy as np
 from tensorflow.keras.utils import to_categorical
-from .utils import list_folder, list_subjects_folders
+from .utils import list_subjects_folders
 
 
 def load_subjects_data(path, source, use_raw_data):

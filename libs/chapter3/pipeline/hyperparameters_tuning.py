@@ -7,7 +7,7 @@ from tensorflow.keras.layers import Dense, LSTM, Conv1D, Flatten, ConvLSTM1D, Ti
 from tensorflow.keras.optimizers import Adam
 from sklearn.model_selection import train_test_split
 
-from .utils import RANDOM_SEED
+from libs.common.utils import RANDOM_SEED
 
 #tf.config.set_visible_devices([], 'GPU')
 
