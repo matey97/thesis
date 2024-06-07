@@ -1,0 +1,32 @@
+# chapter4.analysis.statistical_tests { #libs.chapter4.analysis.statistical_tests }
+
+`chapter4.analysis.statistical_tests`
+
+Provides functions to compute statistical tests to determine the significance of the obtained results.
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [compare_splitting_approaches](#libs.chapter4.analysis.statistical_tests.compare_splitting_approaches) | Statistically compares the two splitting approaches on smartphone and smartwatch data. More concretely, |
+
+### compare_splitting_approaches { #libs.chapter4.analysis.statistical_tests.compare_splitting_approaches }
+
+`chapter4.analysis.statistical_tests.compare_splitting_approaches(reports, metrics)`
+
+Statistically compares the two splitting approaches on smartphone and smartwatch data. More concretely,
+determines if there is a significant difference in the accuracy of the models or the F1-score of the
+`TURNING`, `SITTING_DOWN` and `TURN_TO_SIT` activities.
+
+#### Parameters
+
+| Name      | Type        | Description                    | Default    |
+|-----------|-------------|--------------------------------|------------|
+| `reports` | `dict`      | Model reports.                 | _required_ |
+| `metrics` | list\[str\] | Performance metric to compare. | _required_ |
+
+#### Returns
+
+| Type               | Description                                        |
+|--------------------|----------------------------------------------------|
+| `pandas.DataFrame` | DataFrame containing the statistical test results. |

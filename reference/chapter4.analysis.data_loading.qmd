@@ -1,0 +1,29 @@
+# chapter4.analysis.data_loading { #libs.chapter4.analysis.data_loading }
+
+`chapter4.analysis.data_loading`
+
+Provides functions to load the obtained results.
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [load_reports](#libs.chapter4.analysis.data_loading.load_reports) | Loads the DL reports generated from the splitting approach evaluation. |
+
+### load_reports { #libs.chapter4.analysis.data_loading.load_reports }
+
+`chapter4.analysis.data_loading.load_reports(reports_path=os.path.join('data', 'chapter4', 'splitting-approach', 'reports.json'))`
+
+Loads the DL reports generated from the splitting approach evaluation.
+
+#### Parameters
+
+| Name           | Type   | Description                 | Default                                                                  |
+|----------------|--------|-----------------------------|--------------------------------------------------------------------------|
+| `reports_path` | str    | Root directory of the data. | `os.path.join('data', 'chapter4', 'splitting-approach', 'reports.json')` |
+
+#### Returns
+
+| Type   | Description                                  |
+|--------|----------------------------------------------|
+| `dict` | Dictionary containing the generated reports. |

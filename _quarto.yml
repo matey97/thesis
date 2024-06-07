@@ -93,7 +93,11 @@ book:
         - reference/chapter3.analysis.data_loading.qmd
         - reference/chapter3.analysis.model.qmd
         - reference/chapter3.analysis.statistical_tests.qmd
-        - reference/chapter3.analysis.visualization.qmd   
+        - reference/chapter3.analysis.visualization.qmd
+        - reference/chapter4.pipeline.01_relabel.qmd
+        - reference/chapter4.pipeline.02_splitting-evaluation.qmd
+        - reference/chapter4.analysis.data_loading.qmd
+        - reference/chapter4.analysis.statistical_tests.qmd   
     - tools.qmd
 
   license: "CC BY-NC-SA"
@@ -127,6 +131,18 @@ quartodoc:
         - chapter3.analysis.model
         - chapter3.analysis.statistical_tests
         - chapter3.analysis.visualization
+    - title: Chapter 4
+      desc: "Defines the functions employed in the Chapter 4 - HAR in mHealth: TUG test using smartphones and smartwatches."
+    - subtitle: Pipeline
+      desc: "Functions employed to carry out the experiments."
+      contents:
+        - chapter4.pipeline.01_relabel
+        - chapter4.pipeline.02_splitting-evaluation
+    - subtitle: Analysis
+      desc: "Functions employed to analyse the results of the experiments."
+      contents:
+        - chapter4.analysis.data_loading
+        - chapter4.analysis.statistical_tests
 
 
 bibliography: references.bib

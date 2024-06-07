@@ -1,0 +1,15 @@
+# chapter4.pipeline.02_splitting-evaluation { #libs.chapter4.pipeline.02_splitting-evaluation }
+
+`chapter4.pipeline.02_splitting-evaluation`
+
+Splitting approach evaluation script
+
+This script trains 100 models for each data source (smartphone, smartwatch) and splitting approach. For the training process,
+a 80/20 train/test split is employed with a batch size of 20 windows during 50 epochs.
+
+**Example**:
+
+    $ python 02_splitting-evaluation.py 
+        --ts_data_path <PATH_OF_TURNING_SITTING_DATA> 
+        --tts_data_path <PATH_OF_TURN_TO_SIT_DATA>
+        --reports_output_path <PATH_TO_STORE_REPORTS>

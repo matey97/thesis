@@ -1,0 +1,12 @@
+# chapter4.pipeline.01_relabel { #libs.chapter4.pipeline.01_relabel }
+
+`chapter4.pipeline.01_relabel`
+
+Data relabelling script.
+
+Relabels the windowed data by replacing the TURNING and SITTING_DOWN labels by the TURN_TO_SIT label. Note that
+only the TURNING activities inmediately before the SITTING_DOWN activity are replaced by TURN_TO_SIT.
+
+**Example**:
+
+    $ python 01_relabel.py --input_data_path <PATH_OF_WINDOWED_DATA> --output_data_path <PATH_TO_STORE_RELABELLED_DATA>
