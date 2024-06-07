@@ -97,7 +97,9 @@ The TUG test smartphone application is available in [GitHub](https://github.com/
 This section describes the methodology employed to evaluate the developed system.
 
 ### Participants
-Thirty healthy individuals participated in the evaluation of the subject. The participants ranged from $21$ to $73$ years old ($\mu = 43.7 \pm 14$), where the ratio of male/female participants was $53\%/47\%$. 
+Thirty healthy individuals participated in the evaluation of the system. The participants ranged from $21$ to $73$ years old ($\mu = 43.7 \pm 14$), where the ratio of male/female participants was $53\%/47\%$. 
+
+{{< embed 04.2_system-reliability.ipynb#tbl-subjects_info >}}
 
 ::: {.column-margin .callout-note}
 The experiment was approved by the ethics committee of the Universitat Jaume I (reference No. CD/88/2022) and carried out in accordance with the Declaration of Helsinki.

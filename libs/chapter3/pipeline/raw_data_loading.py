@@ -1,12 +1,7 @@
 import os
-import json
 import pandas as pd
-from libs.common.utils import list_folder, list_subjects_folders
 
-
-def load_json(data_file_path):
-    with open(data_file_path, 'r') as file:
-        return json.load(file)
+from libs.common.utils import list_folder, list_subjects_folders, load_json
 
     
 def records_to_dataframe(records_file):

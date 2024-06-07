@@ -1,8 +1,14 @@
 import os
+import json
 import datetime
 from dateutil import tz
 from tensorflow.keras.utils import set_random_seed
 
+
+def load_json(data_file_path):
+    with open(data_file_path, 'r') as file:
+        return json.load(file)
+    
 
 def list_folder(path):
     subjects = os.listdir(path)
