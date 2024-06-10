@@ -93,4 +93,18 @@ def load_experiment_results(path=os.path.join('data', 'chapter4', 'system-result
     return pd.concat(sw_results, axis=0, ignore_index=True), pd.concat(sp_results, axis=0, ignore_index=True), pd.concat(man_results, axis=0, ignore_index=True)
 
 
-      
+def load_battery_results(path=os.path.join('data', 'chapter4', 'battery-consumption', 'report.csv')):
+    '''
+    Loads the battery consumption report manually generated from Google's BatteryHistorian tool.
+    
+    Args:
+        path (str): Path to the CSV file.
+
+    Returns:
+        (`pandas.DataFrame`): DataFrame with battery consumption results.
+    '''
+        
+    battery_df = pd.read_csv(path)
+    battery_df['ratio'] = battery_df['consumption'] / battery_df['executions']
+    battery_df['configuration'] = battery_df['device'].apply(lambda x: 'C1' if x != 'sp' else 'C2')
+    return battery_df

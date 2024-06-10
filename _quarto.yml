@@ -100,6 +100,7 @@ book:
         - reference/chapter4.analysis.statistical_tests.qmd
         - reference/chapter4.analysis.tug_results_processing.qmd
         - reference/chapter4.analysis.visualization.qmd   
+        - reference/chapter4.analysis.battery.qmd
     - tools.qmd
 
   license: "CC BY-NC-SA"
@@ -147,6 +148,7 @@ quartodoc:
         - chapter4.analysis.statistical_tests
         - chapter4.analysis.tug_results_processing
         - chapter4.analysis.visualization
+        - chapter4.analysis.battery
 
 
 bibliography: references.bib

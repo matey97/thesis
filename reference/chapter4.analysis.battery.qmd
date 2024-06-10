@@ -1,0 +1,30 @@
+# chapter4.analysis.battery { #libs.chapter4.analysis.battery }
+
+`chapter4.analysis.battery`
+
+Provides functions to process the battery consumption results
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [mean_consumption_per_device](#libs.chapter4.analysis.battery.mean_consumption_per_device) | Computes the mean battery consumption per device and system. The battery consumption is reported in mA and the corresponding |
+
+### mean_consumption_per_device { #libs.chapter4.analysis.battery.mean_consumption_per_device }
+
+`chapter4.analysis.battery.mean_consumption_per_device(battery_df)`
+
+Computes the mean battery consumption per device and system. The battery consumption is reported in mA and the corresponding
+ratio in terms of the battery's total capacity.
+
+#### Parameters
+
+| Name         | Type               | Description   | Default    |
+|--------------|--------------------|---------------|------------|
+| `battery_df` | `pandas.DataFrame` |               | _required_ |
+
+#### Returns
+
+| Type               | Description   |
+|--------------------|---------------|
+| `pandas.DataFrame` |               |
