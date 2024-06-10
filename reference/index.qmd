@@ -56,3 +56,5 @@ Functions employed to analyse the results of the experiments.
 | --- | --- |
 | [chapter4.analysis.data_loading](chapter4.analysis.data_loading.qmd#libs.chapter4.analysis.data_loading) | Provides functions to load the obtained results. |
 | [chapter4.analysis.statistical_tests](chapter4.analysis.statistical_tests.qmd#libs.chapter4.analysis.statistical_tests) | Provides functions to compute statistical tests to determine the significance of the obtained results. |
+| [chapter4.analysis.tug_results_processing](chapter4.analysis.tug_results_processing.qmd#libs.chapter4.analysis.tug_results_processing) | Provides functions to process the raw results of the TUG test obtained by the developed system and the reference method. |
+| [chapter4.analysis.visualization](chapter4.analysis.visualization.qmd#libs.chapter4.analysis.visualization) | Provides functions to visualize the obtained results. |

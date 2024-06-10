@@ -8,7 +8,27 @@ Provides functions to load the obtained results.
 
 | Name | Description |
 | --- | --- |
+| [load_experiment_results](#libs.chapter4.analysis.data_loading.load_experiment_results) | Loads the results obtained in the experiment by each participant. |
 | [load_reports](#libs.chapter4.analysis.data_loading.load_reports) | Loads the DL reports generated from the splitting approach evaluation. |
+| [load_subjects_info](#libs.chapter4.analysis.data_loading.load_subjects_info) | Loads a CSV file containing the information regarding the participants in the evaluation of the system. |
+
+### load_experiment_results { #libs.chapter4.analysis.data_loading.load_experiment_results }
+
+`chapter4.analysis.data_loading.load_experiment_results(path=os.path.join('data', 'chapter4', 'system-results'))`
+
+Loads the results obtained in the experiment by each participant.
+
+#### Parameters
+
+| Name   | Type   | Description                                         | Default                                              |
+|--------|--------|-----------------------------------------------------|------------------------------------------------------|
+| `path` | str    | Directory containing the results of the experiment. | `os.path.join('data', 'chapter4', 'system-results')` |
+
+#### Returns
+
+| Type               | Description                                   |
+|--------------------|-----------------------------------------------|
+| `pandas.DataFrame` | DataFrame with the loaded experiment results. |
 
 ### load_reports { #libs.chapter4.analysis.data_loading.load_reports }
 
@@ -27,3 +47,23 @@ Loads the DL reports generated from the splitting approach evaluation.
 | Type   | Description                                  |
 |--------|----------------------------------------------|
 | `dict` | Dictionary containing the generated reports. |
+
+### load_subjects_info { #libs.chapter4.analysis.data_loading.load_subjects_info }
+
+`chapter4.analysis.data_loading.load_subjects_info(path=os.path.join('data', 'chapter4', 'system-results', 'subjects.csv'))`
+
+Loads a CSV file containing the information regarding the participants in the evaluation of the system.
+
+#### Parameters
+
+| Name   | Type   | Description           | Default                                                              |
+|--------|--------|-----------------------|----------------------------------------------------------------------|
+| `path` | str    | Path to the CSV file. | `os.path.join('data', 'chapter4', 'system-results', 'subjects.csv')` |
+
+#### Returns
+
+| Type               | Description                                                                                |
+|--------------------|--------------------------------------------------------------------------------------------|
+| `pandas.DataFrame` | DataFrame with the information of the participants.                                        |
+| str                | Formatted string with statistics regarding participants' age (e.g., range, mean, std).     |
+| str                | Formatted string with statistics regarding participants' gender (e.g., male/female ratio). |

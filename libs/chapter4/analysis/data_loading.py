@@ -40,7 +40,19 @@ def load_reports(reports_path=os.path.join('data','chapter4', 'splitting-approac
         return json.load(file) 
     
 
-def load_subjects_info(path):
+def load_subjects_info(path=os.path.join('data', 'chapter4', 'system-results', 'subjects.csv')):
+    '''
+    Loads a CSV file containing the information regarding the participants in the evaluation of the system.
+
+    Args:
+        path (str): Path to the CSV file.
+
+    Returns:
+        (`pandas.DataFrame`): DataFrame with the information of the participants.
+        (str): Formatted string with statistics regarding participants' age (e.g., range, mean, std).
+        (str): Formatted string with statistics regarding participants' gender (e.g., male/female ratio).
+    '''
+
     subjects_info = pd.read_csv(path)
     age = subjects_info['Age']
     age_info = f'Age info: min={age.min():.2f}, max={age.max():.2f}, mean={age.mean():.2f}, std={age.std():.2f}'
@@ -51,7 +63,17 @@ def load_subjects_info(path):
     return subjects_info, age_info, gender_info
 
 
-def load_experiment_results(path):
+def load_experiment_results(path=os.path.join('data', 'chapter4', 'system-results')):
+    '''
+    Loads the results obtained in the experiment by each participant.
+    
+    Args:
+        path (str): Directory containing the results of the experiment.
+
+    Returns:
+        (`pandas.DataFrame`): DataFrame with the loaded experiment results.
+    '''
+
     subjects = list_subjects_folders(path)
     sw_results = []
     sp_results = []

@@ -97,7 +97,9 @@ book:
         - reference/chapter4.pipeline.01_relabel.qmd
         - reference/chapter4.pipeline.02_splitting-evaluation.qmd
         - reference/chapter4.analysis.data_loading.qmd
-        - reference/chapter4.analysis.statistical_tests.qmd   
+        - reference/chapter4.analysis.statistical_tests.qmd
+        - reference/chapter4.analysis.tug_results_processing.qmd
+        - reference/chapter4.analysis.visualization.qmd   
     - tools.qmd
 
   license: "CC BY-NC-SA"
@@ -143,6 +145,8 @@ quartodoc:
       contents:
         - chapter4.analysis.data_loading
         - chapter4.analysis.statistical_tests
+        - chapter4.analysis.tug_results_processing
+        - chapter4.analysis.visualization
 
 
 bibliography: references.bib
