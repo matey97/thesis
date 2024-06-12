@@ -1,0 +1,14 @@
+# chapter5.pipeline.01_3_multienvironment-processing { #libs.chapter5.pipeline.01_3_multienvironment-processing }
+
+`chapter5.pipeline.01_3_multienvironment-processing`
+
+Data preprocessing script for Multi-environment dataset.
+
+Processes the raw data by aranging samples in windows and processing them using DBSCAN for outlier detection
+and 2-level DWT for threshold based filtering
+
+**Example**:
+
+    $ python 01_3_multienvironment-processing.py 
+        --input_data_path <PATH_OF_RAW_DATA> 
+        --windowed_data_path <PATH_TO_STORE_RESULTS>

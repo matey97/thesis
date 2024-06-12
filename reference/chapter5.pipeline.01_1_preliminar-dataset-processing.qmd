@@ -1,0 +1,17 @@
+# chapter5.pipeline.01_1_preliminar-dataset-processing { #libs.chapter5.pipeline.01_1_preliminar-dataset-processing }
+
+`chapter5.pipeline.01_1_preliminar-dataset-processing`
+
+Data preprocessing script for preliminar dataset.
+
+Processes the raw data by: arange samples in windows and process them using 1) DBSCAN for outlier detection
+and 2-level DWT for threshold based filtering or 2) Choi et al. method.
+
+**Example**:
+
+    $ python 01_1_preliminar-dataset-processing.py 
+        --input_data_path <PATH_OF_RAW_DATA> 
+        --windowed_data_path <PATH_TO_STORE_RESULTS>
+        --method <PROCESSING_METHOD>
+        --window_size <WINDOW_SIZE>
+        --window_overlap <WINDOW_OVERLAP>

@@ -19,7 +19,7 @@ and 2-level DWT for threshold based filtering or 2) Choi et al. method.
 
 **Example**:
 
-    $ python 01.1_preliminar-dataset-processing.py 
+    $ python 01_1_preliminar-dataset-processing.py 
         --input_data_path <PATH_OF_RAW_DATA> 
         --windowed_data_path <PATH_TO_STORE_RESULTS>
         --method <PROCESSING_METHOD>

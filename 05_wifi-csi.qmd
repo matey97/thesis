@@ -21,21 +21,21 @@ format:
         href: https://doi.org/10.1109/IPIN57070.2023.10332214
         target: blank
     code-links:
-      - text: 01.1_preliminar-dataset-processing.py
+      - text: 01_1_preliminar-dataset-processing.py
         icon: file-code
-        href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/01.1_preliminar-dataset-processing.py
+        href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/01_1_preliminar-dataset-processing.py
         target: blank
-      - text: 01.2_stanwifi-processing.py
+      - text: 01_2_stanwifi-processing.py
         icon: file-code
-        href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/01.2_stanwifi-processing.py
+        href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/01_2_stanwifi-processing.py
         target: blank
-      - text: 01.3_multienvironment-processing.py
+      - text: 01_3_multienvironment-processing.py
         icon: file-code
-        href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/01.3_multienvironment-processing.py
+        href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/01_3_multienvironment-processing.py
         target: blank
-      - text: 01.4_lodo-dataset-processing.py
+      - text: 01_4_lodo-dataset-processing.py
         icon: file-code
-        href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/01.4_lodo-dataset-processing.py
+        href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/01_4_lodo-dataset-processing.py
         target: blank
       - text: 02_hyperparameter-optimization.py
         icon: file-code
@@ -95,9 +95,9 @@ Next, the dataset was arranged in windows of $50$ samples with a $50\%$ overlap.
 
 
 ::: {.callout-note}
-The script employed to execute this process is `01.1_preliminar-dataset-processing.py` with the flag `--method proposed`.
+The script employed to execute this process is `01_1_preliminar-dataset-processing.py` with the flag `--method proposed`.
 
-:::: {add-from=libs/chapter5/pipeline/01.1_preliminar-dataset-processing.py code-fold='true' code-filename='01.1_preliminar-dataset-processing.py'}
+:::: {add-from=libs/chapter5/pipeline/01_1_preliminar-dataset-processing.py code-fold='true' code-filename='01_1_preliminar-dataset-processing.py'}
 ```{.python}
 ```
 ::::
@@ -127,8 +127,8 @@ The script employed to execute the Grid Search is `02_hyperparameter-optimizatio
 ![Evaluation procedure](figs/chapter5/csi-evaluation.png){#fig-csi_evaluation}
 
 - **_K_-fold cross-validation**: classical procedure widely employed in the literature for model evaluation. It consists of splitting the available data into $K$ parts, where each $k_{i}$ part is used to evaluate a model trained with the remaining $K-1$ parts. We employ this evaluation approach with the `D1` dataset and $K=10$.
-- **Maintaining the temporal dependencies**: the *K*-fold cross-validation is not the most appropriate evaluation approach when dealing with time series since the temporality of the data is altered. To maintain that temporality, the first $16$ sequences of activities ($80\%$ of data) from `D1` are used for training and the remaining (last) $4$ sequences ($20\%$) for evaluation. These subsets of `D1` are named `D1`<sub>`T`</sub> (training) and `D1`<sub>`E`</sub> (evaluation). This is a basic approach to investigate the stability of the data.
-- **Effect of time**: the model trained with `D1`<sub>`T`</sub> is evaluated using the data from `D2`, `D3` and `D4`. This approach allows to analyse the variation of the classification performance in different time frames ($10$, $30$ and $90$ minutes after `D1`) and therefore, to determine the stability of the CSI data.
+- **Maintaining the temporal dependencies**: the *K*-fold cross-validation is not the most appropriate evaluation approach when dealing with time series since the temporality of the data is altered. To maintain that temporality, the first $16$ sequences of activities ($80\%$ of data) from `D1` are used for training and the remaining (last) $4$ sequences ($20\%$) for evaluation. These subsets of `D1` are named `D1T` (training) and `D1E` (evaluation). This is a basic approach to investigate the stability of the data.
+- **Effect of time**: the model trained with `D1T` is evaluated using the data from `D2`, `D3` and `D4`. This approach allows to analyse the variation of the classification performance in different time frames ($10$, $30$ and $90$ minutes after `D1`) and therefore, to determine the stability of the CSI data.
 
 
 ## Methodology: validation of selected methods
@@ -145,16 +145,16 @@ Two publicly available datasets have been used to validate the methods and model
 The data preparation steps described in [@sec-csi_data_prep] were applied to both datasets. While for the collected dataset the windows consisted of $0.5$ seconds of data, a window size of $1$ seconds was employed in both public datasets since they contain a higher amount of data.
 
 ::: {.callout-note}
-The script employed to execute process the StanWiFi dataset is `01.2_stanwifi-processing.py`.
+The script employed to execute process the StanWiFi dataset is `01_2_stanwifi-processing.py`.
 
-:::: {add-from=libs/chapter5/pipeline/01.2_stanwifi-processing.py code-fold='true' code-filename='01.2_stanwifi-processing.py'}
+:::: {add-from=libs/chapter5/pipeline/01_2_stanwifi-processing.py code-fold='true' code-filename='01_2_stanwifi-processing.py'}
 ```{.python}
 ```
 ::::
 
-The script employed to execute process the Multi-environment dataset is `01.3_multienvironment-processing.py`.
+The script employed to execute process the Multi-environment dataset is `01_3_multienvironment-processing.py`.
 
-:::: {add-from=libs/chapter5/pipeline/01.3_multienvironment-processing.py code-fold='true' code-filename='01.3_multienvironment-processing.py'}
+:::: {add-from=libs/chapter5/pipeline/01_3_multienvironment-processing.py code-fold='true' code-filename='01_3_multienvironment-processing.py'}
 ```{.python}
 ```
 ::::
@@ -181,9 +181,9 @@ As in [@sec-csi_data_prep], the amplitude is extracted from the CSI data and the
 - **Feature extraction**: the extracted features to be used as input of the MLP model are the **Mean**, **SD**, **Maximum**, **Minimum**, **Lower quartile**, **Higher quartile**, **IQR**, **Differences between adjacent** subcarriers and the **Euclidean distance**.
 
 ::: {.callout-note}
-The script employed to execute this process is `01.1_preliminar-dataset-processing.py` with the flag `--method choi`.
+The script employed to execute this process is `01_1_preliminar-dataset-processing.py` with the flag `--method choi`.
 
-:::: {add-from=libs/chapter5/pipeline/01.1_preliminar-dataset-processing.py code-fold='true' code-filename='01.1_preliminar-dataset-processing.py'}
+:::: {add-from=libs/chapter5/pipeline/01_1_preliminar-dataset-processing.py code-fold='true' code-filename='01_1_preliminar-dataset-processing.py'}
 ```{.python}
 ```
 ::::
@@ -228,9 +228,9 @@ The collected CSI samples were labelled regarding the day they were collected (i
 The data preparation steps described in [@sec-csi_data_prep] with minor adaptations were applied to the dataset. More concretely, given the amount of the collected data ($24$ GB), the windowing procedure was set to arrange windows of size $100$ without overlapping.
 
 ::: {.callout-note}
-The script employed to execute this process is `01.4_lodo-dataset-processing.py`.
+The script employed to execute this process is `01_4_lodo-dataset-processing.py`.
 
-:::: {add-from=libs/chapter5/pipeline/01.4_lodo-dataset-processing.py code-fold='true' code-filename='01.4_lodo-dataset-processing.py'}
+:::: {add-from=libs/chapter5/pipeline/01_4_lodo-dataset-processing.py code-fold='true' code-filename='01_4_lodo-dataset-processing.py'}
 ```{.python}
 ```
 ::::

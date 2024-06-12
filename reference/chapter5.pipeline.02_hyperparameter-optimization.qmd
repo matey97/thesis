@@ -1,0 +1,18 @@
+# chapter5.pipeline.02_hyperparameter-optimization { #libs.chapter5.pipeline.02_hyperparameter-optimization }
+
+`chapter5.pipeline.02_hyperparameter-optimization`
+
+Hyperparameters Grid Search script.
+
+Performs an hyperparameter Grid Search on the specified model. The selected hyperparameters for the search
+can be found in `tuning_configuration.py`.
+
+**Example**:
+
+    $ python 02_hyperparameter-optimization.py 
+        --data_dir <PATH_OF_DATA> 
+        --model <MLP,CNN>
+        --phase <initial,extra-layers>
+        --batch_size <BATCH_SIZE>
+        --epochs <EPOCHS>
+        --executions <EXECUTIONS>

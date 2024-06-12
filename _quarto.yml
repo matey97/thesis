@@ -105,6 +105,13 @@ book:
         - reference/chapter4.analysis.tug_results_processing.qmd
         - reference/chapter4.analysis.visualization.qmd   
         - reference/chapter4.analysis.battery.qmd
+        - reference/chapter5.pipeline.01_1_preliminar-dataset-processing.qmd
+        - reference/chapter5.pipeline.01_2_stanwifi-processing.qmd
+        - reference/chapter5.pipeline.01_3_multienvironment-processing.qmd
+        - reference/chapter5.pipeline.01_4_lodo-dataset-processing.qmd
+        - reference/chapter5.pipeline.02_hyperparameter-optimization.qmd
+        - reference/chapter5.analysis.reports.qmd
+        - reference/chapter5.analysis.visualization.qmd
     - tools.qmd
 
   license: "CC BY-NC-SA"
@@ -152,6 +159,21 @@ quartodoc:
         - chapter4.analysis.tug_results_processing
         - chapter4.analysis.visualization
         - chapter4.analysis.battery
+    - title: Chapter 5
+      desc: "Defines the functions employed in the Chapter 5 - Looking into the future: Wi-Fi CSI based HAR."
+    - subtitle: Pipeline
+      desc: "Functions employed to carry out the experiments."
+      contents:
+        - chapter5.pipeline.01_1_preliminar-dataset-processing
+        - chapter5.pipeline.01_2_stanwifi-processing
+        - chapter5.pipeline.01_3_multienvironment-processing
+        - chapter5.pipeline.01_4_lodo-dataset-processing
+        - chapter5.pipeline.02_hyperparameter-optimization
+    - subtitle: Analysis
+      desc: "Functions employed to analyse the results of the experiments."
+      contents:
+        - chapter5.analysis.reports
+        - chapter5.analysis.visualization
 
 
 bibliography: references.bib

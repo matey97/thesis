@@ -59,3 +59,28 @@ Functions employed to analyse the results of the experiments.
 | [chapter4.analysis.tug_results_processing](chapter4.analysis.tug_results_processing.qmd#libs.chapter4.analysis.tug_results_processing) | Provides functions to process the raw results of the TUG test obtained by the developed system and the reference method. |
 | [chapter4.analysis.visualization](chapter4.analysis.visualization.qmd#libs.chapter4.analysis.visualization) | Provides functions to visualize the obtained results. |
 | [chapter4.analysis.battery](chapter4.analysis.battery.qmd#libs.chapter4.analysis.battery) | Provides functions to process the battery consumption results |
+
+## Chapter 5
+
+Defines the functions employed in the Chapter 5 - Looking into the future: Wi-Fi CSI based HAR.
+
+### Pipeline
+
+Functions employed to carry out the experiments.
+
+| | |
+| --- | --- |
+| [chapter5.pipeline.01_1_preliminar-dataset-processing](chapter5.pipeline.01_1_preliminar-dataset-processing.qmd#libs.chapter5.pipeline.01_1_preliminar-dataset-processing) | Data preprocessing script for preliminar dataset. |
+| [chapter5.pipeline.01_2_stanwifi-processing](chapter5.pipeline.01_2_stanwifi-processing.qmd#libs.chapter5.pipeline.01_2_stanwifi-processing) | Data preprocessing script for StanWiFi dataset. |
+| [chapter5.pipeline.01_3_multienvironment-processing](chapter5.pipeline.01_3_multienvironment-processing.qmd#libs.chapter5.pipeline.01_3_multienvironment-processing) | Data preprocessing script for Multi-environment dataset. |
+| [chapter5.pipeline.01_4_lodo-dataset-processing](chapter5.pipeline.01_4_lodo-dataset-processing.qmd#libs.chapter5.pipeline.01_4_lodo-dataset-processing) | Data preprocessing script for LODO dataset. |
+| [chapter5.pipeline.02_hyperparameter-optimization](chapter5.pipeline.02_hyperparameter-optimization.qmd#libs.chapter5.pipeline.02_hyperparameter-optimization) | Hyperparameters Grid Search script. |
+
+### Analysis
+
+Functions employed to analyse the results of the experiments.
+
+| | |
+| --- | --- |
+| [chapter5.analysis.reports](chapter5.analysis.reports.qmd#libs.chapter5.analysis.reports) | Provides functions to process the reports generated in the evaluation of classification models. |
+| [chapter5.analysis.visualization](chapter5.analysis.visualization.qmd#libs.chapter5.analysis.visualization) | Provides functions to visualize the obtained results. |

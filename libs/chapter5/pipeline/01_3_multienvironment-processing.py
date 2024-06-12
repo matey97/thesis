@@ -19,7 +19,7 @@ and 2-level DWT for threshold based filtering
 
 **Example**:
 
-    $ python 01.3_multienvironment-processing.py 
+    $ python 01_3_multienvironment-processing.py 
         --input_data_path <PATH_OF_RAW_DATA> 
         --windowed_data_path <PATH_TO_STORE_RESULTS>
 """
