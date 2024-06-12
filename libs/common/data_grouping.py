@@ -1,5 +1,12 @@
 import numpy as np
 
+
+def combine_windows(windows, windows_labels):
+    x = np.vstack([ window for window in windows.values() ])
+    y = np.concatenate([ window_labels for window_labels in windows_labels.values() ])
+    return x, y 
+
+
 def merge_subjects_datasets(x, y, subjects):
     dim1 = x['s01'].shape[1]
     n_dims = len(x['s01'].shape)

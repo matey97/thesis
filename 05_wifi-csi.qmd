@@ -1,6 +1,253 @@
 ---
 image: figs/chapter5/chap5.png
 description: Analyses the feasibility of Wi-Fi CSI-based HAR systems in real-world applications.
+lightbox: true
+filters:
+  - add-code-files
+listing: 
+  - id: contents
+    type: grid
+    contents: 
+        - "05.1_localized-har.ipynb"
+        - "05.2_methods-validation.ipynb"
+        - "05.3_csi-stability.ipynb"
+    sort: false
+    grid-columns: 3
+format:
+  html:
+    other-links:  
+      - text: IPIN paper
+        icon: journal-bookmark-fill
+        href: https://doi.org/10.1109/IPIN57070.2023.10332214
+        target: blank
+    code-links:
+      - text: 01.1_preliminar-dataset-processing.py
+        icon: file-code
+        href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/01.1_preliminar-dataset-processing.py
+        target: blank
+      - text: 01.2_stanwifi-processing.py
+        icon: file-code
+        href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/01.2_stanwifi-processing.py
+        target: blank
+      - text: 01.3_multienvironment-processing.py
+        icon: file-code
+        href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/01.3_multienvironment-processing.py
+        target: blank
+      - text: 01.4_lodo-dataset-processing.py
+        icon: file-code
+        href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/01.4_lodo-dataset-processing.py
+        target: blank
+      - text: 02_hyperparameter-optimization.py
+        icon: file-code
+        href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/02_hyperparameter-optimization.py
+        target: blank
+        
 ---
 
 # Looking into the future: Wi-Fi CSI based HAR
+
+Inertial-based HAR with smartphones and smartwatches has proven its feasibility for real-life applications and state-of-the-art performance. However, users might find it uncomfortable to wear those devices in specific locations or to use their devices for such HAR sensing tasks. Over the last years, a wide amount of studies have emerged researching what seems a futuristic tool: the Wi-Fi CSI (Channel State Information). The key point of the Wi-Fi CSI-based systems is that they employ a Wi-Fi infrastructure enabling device-free sensing (i.e., users do not have to wear any device). In addition, the CSI can be used for diverse tasks at once, such as HAR and indoor positioning, which would be a major challenge using inertial-based sensors. In this chapter, we analyse the feasibility of a Wi-Fi CSI-based HAR and positioning system using a consumer router and an ESP32 microcontroller, evaluating it by simulating real-life conditions. Preliminary results show a clear instability of the CSI data, thus being unfeasible for real-life applications with the employed devices.
+
+::: {.callout-note}
+The contents on this section correspond with the Chapter 5 of the dissertation document and constitute an extension of the work "Temporal Stability on Human Activity Recognition based on Wi-Fi CSI" [@matey2023csi] presented in the $13^{th}$ International Conference on Indoor Positioning and Indoor Navigation (IPIN).
+:::
+
+
+## Methodology: preliminar localized HAR experiment
+
+### Data collection
+A dataset is collected using a TP-Link Archer C80 router (one TX antenna) and a SparkFun Thing Plus ESP32-S2 WROOM (one RX antenna) connected to a laptop. The TX and RX were separated by $5$ meter in Line of Sight (LOS) condition, with two chairs placed in between them, at $0.5$ meter from each device. Although the chair partially blocks the signal, we consider the setup to be in LOS condition since no heavy obstacles (e.g., walls) are blocking the signal.
+
+The TX device was configured to work with the standard IEEE 802.11n operating in the channel $6$. The RX device was configured to establish a connection with the TX, send ping requests at $100$Hz, and extract the Wi-Fi CSI information from the HT-LTF subcarriers ($64$, $56$ non-null) of the ping responses.
+
+@fig-collection_env depicts the data collection process. It consisted of one subject moving from one chair to the other repeatedly, collecting data for the activities employed along this thesis: `SEATED`, `STANDING_UP`, `WALKING`, `TURNING` and `SITTING_DOWN|`. Since the subject performed the activities in both directions (i.e., from TX to RX and vice versa), the activities were labelled accordingly (e.g., `SEATED_TX/RX`, `WALKING_TX/RX`, etc.) adding a localization component to them. 
+
+![Data collection environment and activities performed](figs/chapter5/csi-collection-env.png){#fig-collection_env}
+
+@fig-collection_procedure depicts the data collection strategy, which was spaced out over time to explore potential degradation of CSI data over time. The following datasets were collected:
+
+![Data collection procedure](figs/chapter5/csi-collection-procedure.png){#fig-collection_procedure}
+
+- `D1`: The subject performed the sequence of activities $20$ times ($10$ in each direction).
+- `D2`: After $10$ minutes of collecting `D1`, the subject performed again the sequence of activities $4$ times ($2$ in each direction).
+- `D3`: After $20$ minutes of collecting `D2`, the subject performed again the sequence of activities $4$ times.
+- `D4`: After $60$ minutes of collecting `D3`, the subject performed again the sequence of activities $4$ times.
+
+@tbl-csi_collected_samples shows the number of CSI samples collected for each activity and dataset.
+
+{{< embed 05.1.1_data-exploration.ipynb#tbl-csi_collected_samples >}}
+
+### Data preparation {#sec-csi_data_prep}
+First, from the raw CSI data, the signal amplitude values of each subcarrier where obtained using the equation
+$$
+amplitude_{i} = \sqrt{real_{i}^2 + imaginary_{i}^2},
+$$
+where $real_{i}$ and $imaginary_{i}$ are the corresponding components of the complex number associated with the $i^{th}$ subcarrier. The phase of the signal was discarded.
+
+Next, the dataset was arranged in windows of $50$ samples with a $50\%$ overlap. Then, each window was processed using the following techniques:
+
+- The DBSCAN clustering algorithm [@ester1996density] was employed to detect outliers and replace them using the average value of the $5$ previous and posterior values.
+- A $2$-level *discrete wavelet transform* was used to decompose the signals, apply threshold-based filtering on the *detail* coefficients and reconstruct the signal with the *inverse discrete wavelet transform*.
+
+@fig-csi_data depicts the raw (after amplitude extraction) and processed CSI data of the first two sequences of `D1`.
+
+{{< embed 05.1.1_data-exploration.ipynb#fig-csi_data >}}
+
+
+::: {.callout-note}
+The script employed to execute this process is `01.1_preliminar-dataset-processing.py` with the flag `--method proposed`.
+
+:::: {add-from=libs/chapter5/pipeline/01.1_preliminar-dataset-processing.py code-fold='true' code-filename='01.1_preliminar-dataset-processing.py'}
+```{.python}
+```
+::::
+
+:::
+
+
+### HAR classifier {#sec-csi_model}
+As in previous chapters, this section still employs the CNN architecture. The **Grid search** technique was used to determine the best hyperparameters for the selected architecture. The process was configured to train and evaluate each combination five times using the Adam optimizer during $50$ epochs with a batch size of $32$ windows. The process was executed in two phases to reduce the computational cost: 1) optimization of layers and learning hyperparameters and 2) optimization of the number of layers. @tbl-csi_hyperparameters_cnn contains the best combination of hyperparameters
+
+{{< embed 05.1.2_grid-search.ipynb#tbl-csi_hyperparameters_cnn >}}
+
+::: {.callout-note}
+The script employed to execute the Grid Search is `02_hyperparameter-optimization.py` with the flag `--model cnn`.
+
+:::: {add-from=libs/chapter5/pipeline/02_hyperparameter-optimization.py code-fold='true' code-filename='02_hyperparameter-optimization.py'}
+```{.python}
+```
+::::
+
+:::
+
+### Experimental procedure {#sec-csi_exp_procedure}
+
+@fig-csi_evaluation depicts the three different evaluation approaches employed to determine the performance of a Wi-Fi CSI model for localized HAR and study the stability of the CSI data over time.
+
+![Evaluation procedure](figs/chapter5/csi-evaluation.png){#fig-csi_evaluation}
+
+- **_K_-fold cross-validation**: classical procedure widely employed in the literature for model evaluation. It consists of splitting the available data into $K$ parts, where each $k_{i}$ part is used to evaluate a model trained with the remaining $K-1$ parts. We employ this evaluation approach with the `D1` dataset and $K=10$.
+- **Maintaining the temporal dependencies**: the *K*-fold cross-validation is not the most appropriate evaluation approach when dealing with time series since the temporality of the data is altered. To maintain that temporality, the first $16$ sequences of activities ($80\%$ of data) from `D1` are used for training and the remaining (last) $4$ sequences ($20\%$) for evaluation. These subsets of `D1` are named `D1`<sub>`T`</sub> (training) and `D1`<sub>`E`</sub> (evaluation). This is a basic approach to investigate the stability of the data.
+- **Effect of time**: the model trained with `D1`<sub>`T`</sub> is evaluated using the data from `D2`, `D3` and `D4`. This approach allows to analyse the variation of the classification performance in different time frames ($10$, $30$ and $90$ minutes after `D1`) and therefore, to determine the stability of the CSI data.
+
+
+## Methodology: validation of selected methods
+The previous methodology (see @sec-localized_har) resulted in non-satisfactory outcomes. To determine the cause of these bad results, this sections presents a methodology to validate the employed methods (i.e., data preparation and DL model). To do so, 1) the described methods will be applied on public datasets and 2) the methods from a related work will be applied on the collected dataset.
+
+### Validation on public datasets
+
+Two publicly available datasets have been used to validate the methods and model employed: the **StanWiFi** and the **Multi-environment** dataset.
+
+- **StanWiFi**: it was collected by [@yousefi2017survey] and made available in GitHub^[[Wifi_Activity_Recognition](https://github.com/ermongroup/Wifi_Activity_Recognition)]. The dataset was collected with a Wi-Fi router (Tx) and an Intel 5300 NIC with three Rx antennas, both separated by $3$ meter in a LOS environment. The dataset contains CSI data from $90$ subcarriers sampled at $1000$Hz corresponding to $7$ activities: *lie*, *fall*, *walk*, *run*, *sit down*, *stand up* and *pick up*. For comparison purposes, the *pick up* activity was removed from the dataset since other works do so.
+- **Multi-environment**: collected in three different environments, `E1` and `E2` in LOS conditions and `E3` in NLOS condition [@alsaify2020dataset]. The latter dataset is discarded since we focus on LOS conditions. The datasets were collected using two computers (Tx and Rx) equipped with an Intel 5300 NIC, which were separated by $3.7$ meter sin `E1` and $7.6$ meters in `E2`. The CSI data was collected from $90$ subcarriers at $320$Hz corresponding to $12$ different activities classified in $6$ groups: *no movement*, *falling*, *walking*, *sitting/standing*, *turning* and *pick up*.
+
+#### Data preparation
+The data preparation steps described in [@sec-csi_data_prep] were applied to both datasets. While for the collected dataset the windows consisted of $0.5$ seconds of data, a window size of $1$ seconds was employed in both public datasets since they contain a higher amount of data.
+
+::: {.callout-note}
+The script employed to execute process the StanWiFi dataset is `01.2_stanwifi-processing.py`.
+
+:::: {add-from=libs/chapter5/pipeline/01.2_stanwifi-processing.py code-fold='true' code-filename='01.2_stanwifi-processing.py'}
+```{.python}
+```
+::::
+
+The script employed to execute process the Multi-environment dataset is `01.3_multienvironment-processing.py`.
+
+:::: {add-from=libs/chapter5/pipeline/01.3_multienvironment-processing.py code-fold='true' code-filename='01.3_multienvironment-processing.py'}
+```{.python}
+```
+::::
+
+:::
+
+#### HAR classifier
+The model architecture described in [@sec-csi_model] was employed, with minor adaptations in some hyperparameters due to computational limitations^[The higher dimensionality of both datasets (higher sampling rate and data from more subcarriers) compared with the collected one makes it unfeasible to use the previous model due to memory limitations.]. The adaptations in each dataset are the following:
+
+- StanWiFi: $16$ **number of filters**, $128$ **batch size** and $30$ **epochs**.
+- Multi-environment (`E1` and `E2`): $8$ **number of filters**, $256$ **batch size** and $30$ **epochs**. 
+
+
+#### Experimental procedure
+The $10$-fold cross-validation has been employed to evaluate the CNN model in the public datasets. The results are compared with other related works also employing a *K*-fold cross-validation approach.
+
+### Use of alternative method from literature
+The methods proposed by @choi2022wi have been applied to the collected dataset. Choi's et al. methods have been selected since they followed an appropiate evaluation taking into account the stability of the signal and only showed a small drop in performance.
+
+#### Data preparation
+As in [@sec-csi_data_prep], the amplitude is extracted from the CSI data and the dataset is arranged in windows of $50$ samples with a $50\%$ overlap. Then, the methods presented by @choi2022wi are applied:
+
+- **Noise removal**: the Hampel and the Savitzky-Golay filters are applied on each subcarrier.
+- **Feature extraction**: the extracted features to be used as input of the MLP model are the **Mean**, **SD**, **Maximum**, **Minimum**, **Lower quartile**, **Higher quartile**, **IQR**, **Differences between adjacent** subcarriers and the **Euclidean distance**.
+
+::: {.callout-note}
+The script employed to execute this process is `01.1_preliminar-dataset-processing.py` with the flag `--method choi`.
+
+:::: {add-from=libs/chapter5/pipeline/01.1_preliminar-dataset-processing.py code-fold='true' code-filename='01.1_preliminar-dataset-processing.py'}
+```{.python}
+```
+::::
+
+:::
+
+#### HAR classifier
+An MLP model is employed, but instead of using the same architecture as the one employed by Choi, a **Grid search** process was executed to determine the most appropriate hyperparameters for our dataset. 
+
+The **Grid search** was carried out as described in [@sec-csi_model]. @tbl-csi_hyperparameters_mlp contains the best combination of hyperparameters.
+
+{{< embed 05.1.2_grid-search.ipynb#tbl-csi_hyperparameters_mlp >}}
+
+
+::: {.callout-note}
+The script employed to execute the Grid Search is `02_hyperparameter-optimization.py` with the flag `--model mlp`.
+
+:::: {add-from=libs/chapter5/pipeline/02_hyperparameter-optimization.py code-fold='true' code-filename='02_hyperparameter-optimization.py'}
+```{.python}
+```
+::::
+
+:::
+
+#### Experimental procedure
+The same experimental procedure described in @sec-csi_exp_procedure with the three evaluation approaches is employed using the method presented by Choi in our collected dataset.
+
+
+## Methodology: analysis of Wi-Fi CSI temporal stability
+This section describes the methodology to determine if the CSI data is stable over time carrying out a simple experiment. To do so, a new data collection is executed minimizing the disturbance of the environment by external factors. Then, an evaluation procedure is designed to determine the similarity of CSI samples collected in different time frames using DL classification models.
+
+### Data collection
+A dataset was collected using a TP-Link Archer C80 (one Tx antenna) and a SparkFun Thing Plus ESP32-S3 WROOM (one Rx antenna) connected to a computer. The Tx and Rx were separated by $1$ meter in LOS condition.
+
+The Tx device was configured to work with the standard IEEE 802.11n in the channel $6$. The Rx device was configured to connect to the Rx and extract Wi-Fi CSI data from HT-LTF subcarriers generated by ping traffic at $100$Hz.
+
+The data collection consisted of capturing CSI data from an unaltered environment for several days: from March $28^{th}$ to April $1^{st}$, coinciding with the Easter holidays. During these days, no external human factors would have disturbed the environment and thus, the CSI data.
+
+The collected CSI samples were labelled regarding the day they were collected (i.e., $03/29$, $03/29$, $03/30$, $03/31$, $04/01$).
+
+### Data preparation
+The data preparation steps described in [@sec-csi_data_prep] with minor adaptations were applied to the dataset. More concretely, given the amount of the collected data ($24$ GB), the windowing procedure was set to arrange windows of size $100$ without overlapping.
+
+::: {.callout-note}
+The script employed to execute this process is `01.4_lodo-dataset-processing.py`.
+
+:::: {add-from=libs/chapter5/pipeline/01.4_lodo-dataset-processing.py code-fold='true' code-filename='01.4_lodo-dataset-processing.py'}
+```{.python}
+```
+::::
+
+:::
+
+### HAR classifier
+The model described in [@sec-csi_model] was employed, although with minor adaptations in some hyperparameters due to computational limitations caused by the high quantity of data. More concretely, the **number of filters**, **batch size** and **epochs** were set to $8$, $512$ and $30$, respectively.
+
+### Experimental procedure
+A $5$-fold cross-validation has been employed with the processed dataset. Each fold of the cross-validation corresponds to the data collected in one day, which can be named as Leaving-One-Day-Out (LODO). This procedure aims to evaluate how the models classify data from an unseen day, having two possible outputs:
+
+- The samples from a specific day are classified in any of the remaining days. In other words, a specific day's samples are similar to those of any other day. These results would imply that the CSI data **is stable** over time.
+- The samples from the day $X_i$ are classified in the day $X_{i-1}$ or $X_{i+1}$. In other words, samples from a specific day are similar only to the adjacent days (i.e., samples most close in time). These results would imply that the CSI data **is not stable** over time.
+
+
+## Results
+
+:::{#contents}
+:::

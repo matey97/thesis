@@ -77,7 +77,11 @@ book:
         - 04.2_system-reliability.ipynb
         - 04.3_energy-consumption.ipynb
     - part: 05_wifi-csi.qmd
-      text: Wi-Fi CSI HAR
+      text: Wi-Fi CSI based HAR
+      chapters:
+        - 05.1_localized-har.ipynb
+        - 05.2_methods-validation.ipynb
+        - 05.3_csi-stability.ipynb
     - 06_conclusions.qmd
     - references.qmd
   appendices:
