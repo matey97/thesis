@@ -12,16 +12,17 @@ Provides functions to visualize the obtained results.
 
 ### plot_confusion_matrix { #libs.chapter5.analysis.visualization.plot_confusion_matrix }
 
-`chapter5.analysis.visualization.plot_confusion_matrix(report, labels)`
+`chapter5.analysis.visualization.plot_confusion_matrix(report, prediction_target, labels)`
 
 Plots the confusion matrix resulting from the evaluation of a machine learning model.
 
 #### Parameters
 
-| Name     | Type        | Description                                                      | Default    |
-|----------|-------------|------------------------------------------------------------------|------------|
-| `report` | dict        | Dict containing a classification report from a model evaluation. | _required_ |
-| `labels` | list\[str\] | List with the associated classes labels.                         | _required_ |
+| Name                | Type        | Description                                                      | Default    |
+|---------------------|-------------|------------------------------------------------------------------|------------|
+| `report`            | dict        | Dict containing a classification report from a model evaluation. | _required_ |
+| `prediction_target` | str         | String describing what is being classified.                      | _required_ |
+| `labels`            | list\[str\] | List with the associated classes labels.                         | _required_ |
 
 #### Returns
 

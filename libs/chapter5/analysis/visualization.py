@@ -24,12 +24,13 @@ import plotly.io as pio
 pio.renderers.default = "notebook"
 
 
-def plot_confusion_matrix(report, labels):
+def plot_confusion_matrix(report, prediction_target, labels):
     '''
     Plots the confusion matrix resulting from the evaluation of a machine learning model.
 
     Args:
         report (dict): Dict containing a classification report from a model evaluation.
+        prediction_target (str): String describing what is being classified.
         labels (list[str]): List with the associated classes labels.
     
     Returns:
@@ -64,6 +65,6 @@ def plot_confusion_matrix(report, labels):
         width=800, 
         height=800,
     )
-    fig.update_yaxes(title="<b>True Activity</b>", title_font_size=20, autorange="reversed", tickangle=-20)
-    fig.update_xaxes(title="<b>Predicted Activity</b>", title_font_size=20, tickangle=-20)
+    fig.update_yaxes(title=f"<b>True {prediction_target}</b>", title_font_size=20, autorange="reversed", tickangle=-20)
+    fig.update_xaxes(title=f"<b>Predicted {prediction_target}</b>", title_font_size=20, tickangle=-20)
     return fig
