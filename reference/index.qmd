@@ -75,6 +75,9 @@ Functions employed to carry out the experiments.
 | [chapter5.pipeline.01_3_multienvironment-processing](chapter5.pipeline.01_3_multienvironment-processing.qmd#libs.chapter5.pipeline.01_3_multienvironment-processing) | Data preprocessing script for Multi-environment dataset. |
 | [chapter5.pipeline.01_4_lodo-dataset-processing](chapter5.pipeline.01_4_lodo-dataset-processing.qmd#libs.chapter5.pipeline.01_4_lodo-dataset-processing) | Data preprocessing script for LODO dataset. |
 | [chapter5.pipeline.02_hyperparameter-optimization](chapter5.pipeline.02_hyperparameter-optimization.qmd#libs.chapter5.pipeline.02_hyperparameter-optimization) | Hyperparameters Grid Search script. |
+| [chapter5.pipeline.03_1_multiple-evaluations](chapter5.pipeline.03_1_multiple-evaluations.qmd#libs.chapter5.pipeline.03_1_multiple-evaluations) | Multiple evaluation script |
+| [chapter5.pipeline.03_2_cross-validation](chapter5.pipeline.03_2_cross-validation.qmd#libs.chapter5.pipeline.03_2_cross-validation) | Cross-validation script |
+| [chapter5.pipeline.03_3_lodo](chapter5.pipeline.03_3_lodo.qmd#libs.chapter5.pipeline.03_3_lodo) | Leaving-One-Day-Out validation script |
 
 ### Analysis
 

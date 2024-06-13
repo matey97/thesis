@@ -1,0 +1,14 @@
+# chapter5.pipeline.03_2_cross-validation { #libs.chapter5.pipeline.03_2_cross-validation }
+
+`chapter5.pipeline.03_2_cross-validation`
+
+Cross-validation script
+
+Performs a cross-validation on the selected dataset.
+
+**Example**:
+
+    $ python 03_2_cross-validation.py 
+        --data_dir <PATH_OF_DATA> 
+        --reports_dir <PATH_TO_STORE_REPORTS>
+        --dataset <stanwifi,multienvironment>

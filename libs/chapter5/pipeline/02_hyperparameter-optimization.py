@@ -37,11 +37,11 @@ import sys
 sys.path.append("../../..")
 
 from libs.chapter5.pipeline.data_loading import load_data
+from libs.chapter5.pipeline.data_grouping import combine_windows
 from libs.chapter5.pipeline.hyperparameters_tuning import get_model_builder, create_tuner, tune, get_tuning_summary
 from libs.chapter5.pipeline.tuning_configuration import get_tuning_configuration
-from libs.common.data_grouping import combine_windows
 from libs.common.data_loading import ground_truth_to_categorical
-from libs.common.utils import set_seed
+from libs.common.utils import save_json, set_seed
 
 TUNING_DIR = 'GRID_SEARCH_{0}'
 TUNING_SUMMARY_FILE = 'summary.json'
@@ -83,12 +83,11 @@ def tune_model(data, model_type, batch_size, epochs, n_executions, phase):
         )
 
         tuner = tune(tuner, x, y, epochs, batch_size)
-        save_tuning_summary(tuner, os.path.join(TUNING_DIR, tuning_project, TUNING_SUMMARY_FILE))
+        save_tuning_summary(tuner, os.path.join(TUNING_DIR, tuning_project))
 
 
 def save_tuning_summary(tuner, tuning_dir):
-    with open(tuning_dir, 'w') as file:
-        json.dump(get_tuning_summary(tuner), file)
+    save_json(get_tuning_summary(tuner), tuning_dir, TUNING_SUMMARY_FILE)
 
 
 if __name__ == '__main__':
@@ -100,8 +99,6 @@ if __name__ == '__main__':
     parser.add_argument('--epochs', help='training epochs', type=int, default=EPOCHS)
     parser.add_argument('--executions', help='executions per trial', type=int, default=N_EXECUTIONS)
     args = parser.parse_args()
-
-    use_raw_data = args.model != 'mlp'
 
     d1_windows, d1_labels = load_data(args.data_dir)
     y = ground_truth_to_categorical(d1_labels, MAPPING)    

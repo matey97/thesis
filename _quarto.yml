@@ -110,6 +110,9 @@ book:
         - reference/chapter5.pipeline.01_3_multienvironment-processing.qmd
         - reference/chapter5.pipeline.01_4_lodo-dataset-processing.qmd
         - reference/chapter5.pipeline.02_hyperparameter-optimization.qmd
+        - reference/chapter5.pipeline.03_1_multiple-evaluations.qmd
+        - reference/chapter5.pipeline.03_2_cross-validation.qmd
+        - reference/chapter5.pipeline.03_3_lodo.qmd
         - reference/chapter5.analysis.reports.qmd
         - reference/chapter5.analysis.visualization.qmd
     - tools.qmd
@@ -169,6 +172,9 @@ quartodoc:
         - chapter5.pipeline.01_3_multienvironment-processing
         - chapter5.pipeline.01_4_lodo-dataset-processing
         - chapter5.pipeline.02_hyperparameter-optimization
+        - chapter5.pipeline.03_1_multiple-evaluations
+        - chapter5.pipeline.03_2_cross-validation
+        - chapter5.pipeline.03_3_lodo
     - subtitle: Analysis
       desc: "Functions employed to analyse the results of the experiments."
       contents:
@@ -184,6 +190,12 @@ format:
     execute:
       warning: false
     number-sections: false
+    mainfont: "Roboto"
+    monofont: "Roboto Mono"
+    fontsize: "15px"
+    header-includes: |
+      <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" type="text/css"/>
+      <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Roboto+Mono" type="text/css"/>
     theme:
       light: lumen
       dark: darkly

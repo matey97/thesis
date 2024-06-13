@@ -1,0 +1,13 @@
+# chapter5.pipeline.03_3_lodo { #libs.chapter5.pipeline.03_3_lodo }
+
+`chapter5.pipeline.03_3_lodo`
+
+Leaving-One-Day-Out validation script
+
+Performs a Leaving-One-Day-Out evaluation on the LODO dataset.
+
+**Example**:
+
+    $ python 03_3_lodo.py 
+        --data_dir <PATH_OF_DATA> 
+        --reports_dir <PATH_TO_STORE_REPORTS>

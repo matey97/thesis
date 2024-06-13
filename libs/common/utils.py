@@ -10,6 +10,14 @@ def load_json(data_file_path):
         return json.load(file)
     
 
+def save_json(data, dir_path, file_name):
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
+        
+    with open(os.path.join(dir_path, file_name), 'w') as f:
+        json.dump(data, f)
+    
+
 def list_folder(path):
     subjects = os.listdir(path)
     subjects.sort()

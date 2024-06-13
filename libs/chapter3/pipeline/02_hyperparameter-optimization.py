@@ -41,7 +41,7 @@ from libs.chapter3.pipeline.hyperparameters_tuning import get_model_builder, cre
 from libs.chapter3.pipeline.tuning_configuration import get_tuning_configuration
 from libs.common.data_loading import load_data
 from libs.common.data_grouping import merge_subjects_datasets
-from libs.common.utils import set_seed
+from libs.common.utils import save_json, set_seed
 
 
 TUNING_DIR = 'GRID_SEARCH_{0}'
@@ -79,12 +79,11 @@ def tune_model(data, model_type, batch_size, epochs, n_executions, phase):
         )
 
         tuner = tune(tuner, x, y, epochs, batch_size)
-        save_tuning_summary(tuner, os.path.join(TUNING_DIR, tuning_project, TUNING_SUMMARY_FILE))
+        save_tuning_summary(tuner, os.path.join(TUNING_DIR, tuning_project))
 
 
 def save_tuning_summary(tuner, tuning_dir):
-    with open(tuning_dir, 'w') as file:
-        json.dump(get_tuning_summary(tuner), file)
+    save_json(get_tuning_summary(tuner), tuning_dir, TUNING_SUMMARY_FILE)
 
 
 

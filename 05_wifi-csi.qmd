@@ -41,7 +41,18 @@ format:
         icon: file-code
         href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/02_hyperparameter-optimization.py
         target: blank
-        
+      - text: 03_1_multiple-evaluations.py
+        icon: file-code
+        href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/03_1_multiple-evaluations.py
+        target: blank
+      - text: 03_2_cross-validation.py
+        icon: file-code
+        href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/03_2_cross-validation.py
+        target: blank
+      - text: 03_3_lodo.py
+        icon: file-code
+        href: https://github.com/matey97/thesis/blob/main/libs/chapter5/pipeline/03_3_lodo.py
+        target: blank        
 ---
 
 # Looking into the future: Wi-Fi CSI based HAR
@@ -130,6 +141,16 @@ The script employed to execute the Grid Search is `02_hyperparameter-optimizatio
 - **Maintaining the temporal dependencies**: the *K*-fold cross-validation is not the most appropriate evaluation approach when dealing with time series since the temporality of the data is altered. To maintain that temporality, the first $16$ sequences of activities ($80\%$ of data) from `D1` are used for training and the remaining (last) $4$ sequences ($20\%$) for evaluation. These subsets of `D1` are named `D1T` (training) and `D1E` (evaluation). This is a basic approach to investigate the stability of the data.
 - **Effect of time**: the model trained with `D1T` is evaluated using the data from `D2`, `D3` and `D4`. This approach allows to analyse the variation of the classification performance in different time frames ($10$, $30$ and $90$ minutes after `D1`) and therefore, to determine the stability of the CSI data.
 
+::: {.callout-note}
+The script employed to execute this process is `03_1_multiple-evaluations.py` with the flag `--model cnn`.
+
+:::: {add-from=libs/chapter5/pipeline/03_1_multiple-evaluations.py code-fold='true' code-filename='03_1_multiple-evaluations.py'}
+```{.python}
+```
+::::
+
+:::
+
 
 ## Methodology: validation of selected methods
 The previous methodology (see @sec-localized_har) resulted in non-satisfactory outcomes. To determine the cause of these bad results, this sections presents a methodology to validate the employed methods (i.e., data preparation and DL model). To do so, 1) the described methods will be applied on public datasets and 2) the methods from a related work will be applied on the collected dataset.
@@ -145,14 +166,14 @@ Two publicly available datasets have been used to validate the methods and model
 The data preparation steps described in [@sec-csi_data_prep] were applied to both datasets. While for the collected dataset the windows consisted of $0.5$ seconds of data, a window size of $1$ seconds was employed in both public datasets since they contain a higher amount of data.
 
 ::: {.callout-note}
-The script employed to execute process the StanWiFi dataset is `01_2_stanwifi-processing.py`.
+The script employed to execute the process in StanWiFi dataset is `01_2_stanwifi-processing.py`.
 
 :::: {add-from=libs/chapter5/pipeline/01_2_stanwifi-processing.py code-fold='true' code-filename='01_2_stanwifi-processing.py'}
 ```{.python}
 ```
 ::::
 
-The script employed to execute process the Multi-environment dataset is `01_3_multienvironment-processing.py`.
+The script employed to execute the process in Multi-environment dataset is `01_3_multienvironment-processing.py`.
 
 :::: {add-from=libs/chapter5/pipeline/01_3_multienvironment-processing.py code-fold='true' code-filename='01_3_multienvironment-processing.py'}
 ```{.python}
@@ -170,6 +191,16 @@ The model architecture described in [@sec-csi_model] was employed, with minor ad
 
 #### Experimental procedure
 The $10$-fold cross-validation has been employed to evaluate the CNN model in the public datasets. The results are compared with other related works also employing a *K*-fold cross-validation approach.
+
+::: {.callout-note}
+The script employed to execute this process in the StanWiFi is `03_2_cross-validation.py` with the flag `--dataset stanwifi`. The same script was used for the Multienvironment dataset employing the flag `--dataset multienvironment`.
+
+:::: {add-from=libs/chapter5/pipeline/03_2_cross-validation.py code-fold='true' code-filename='03_2_cross-validation.py'}
+```{.python}
+```
+::::
+
+:::
 
 ### Use of alternative method from literature
 The methods proposed by @choi2022wi have been applied to the collected dataset. Choi's et al. methods have been selected since they followed an appropiate evaluation taking into account the stability of the signal and only showed a small drop in performance.
@@ -211,6 +242,16 @@ The script employed to execute the Grid Search is `02_hyperparameter-optimizatio
 #### Experimental procedure
 The same experimental procedure described in @sec-csi_exp_procedure with the three evaluation approaches is employed using the method presented by Choi in our collected dataset.
 
+::: {.callout-note}
+The script employed to execute this process is `03_1_multiple-evaluations.py` with the flag `--model mlp`.
+
+:::: {add-from=libs/chapter5/pipeline/03_1_multiple-evaluations.py code-fold='true' code-filename='03_1_multiple-evaluations.py'}
+```{.python}
+```
+::::
+
+:::
+
 
 ## Methodology: analysis of Wi-Fi CSI temporal stability
 This section describes the methodology to determine if the CSI data is stable over time carrying out a simple experiment. To do so, a new data collection is executed minimizing the disturbance of the environment by external factors. Then, an evaluation procedure is designed to determine the similarity of CSI samples collected in different time frames using DL classification models.
@@ -245,6 +286,17 @@ A $5$-fold cross-validation has been employed with the processed dataset. Each f
 
 - The samples from a specific day are classified in any of the remaining days. In other words, a specific day's samples are similar to those of any other day. These results would imply that the CSI data **is stable** over time.
 - The samples from the day $X_i$ are classified in the day $X_{i-1}$ or $X_{i+1}$. In other words, samples from a specific day are similar only to the adjacent days (i.e., samples most close in time). These results would imply that the CSI data **is not stable** over time.
+
+
+::: {.callout-note}
+The script employed to execute this process is `03_3_lodo.py`.
+
+:::: {add-from=libs/chapter5/pipeline/03_3_lodo.py code-fold='true' code-filename='03_3_lodo.py'}
+```{.python}
+```
+::::
+
+:::
 
 
 ## Results

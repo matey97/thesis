@@ -38,7 +38,7 @@ from libs.chapter4.pipeline.training import create_trainer
 from libs.common.data_loading import load_data
 from libs.common.data_grouping import generate_training_and_test_sets
 from libs.common.ml import generate_report
-from libs.common.utils import set_seed
+from libs.common.utils import save_json, set_seed
 from sklearn.model_selection import train_test_split
 
 
@@ -71,11 +71,6 @@ def training_report_from_datasets(datasets, models_per_dataset=100):
     return reports
 
 
-def store_reports(reports, path):
-    with open(os.path.join(path, 'reports.json'), 'w') as file:
-        json.dump(reports, file)
-
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--ts_data_path', help='Path of data labelled with TURNING and SITTING_DOWN activities', type=str, required=True)
@@ -97,6 +92,5 @@ if __name__ == '__main__':
     }
 
     reports = training_report_from_datasets(datasets)
-    #store_reports(reports, args.reports_output_path)
-
+    save_json(reports, args.reports_output_path, 'reports.json')
     

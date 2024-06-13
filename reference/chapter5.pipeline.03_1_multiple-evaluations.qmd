@@ -1,0 +1,14 @@
+# chapter5.pipeline.03_1_multiple-evaluations { #libs.chapter5.pipeline.03_1_multiple-evaluations }
+
+`chapter5.pipeline.03_1_multiple-evaluations`
+
+Multiple evaluation script
+
+Performs a cross-validation and an evaluation with different subsets collected at different time frames.
+
+**Example**:
+
+    $ python 03_1_multiple_evaluations.py 
+        --data_dir <PATH_OF_DATA> 
+        --reports_dir <PATH_TO_STORE_REPORTS>
+        --model <MLP,CNN>
