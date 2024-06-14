@@ -1,4 +1,14 @@
-# DIB
-pandas==1.5.2
-plotly==5.14.0
-itables==2.0.0
+alive_progress==3.0.1       # Animated progress bar employed for long-lasting processes
+hampel==1.0.2               # Implementation of Hampel filter
+itables==2.0.0              # Interactive displaying of DataFrames
+keras==2.10.0               # API for building ML and DL models
+keras-tuner==1.4.6          # API for tuning (e.g., Grid Search) ML and DL models
+numpy==1.23.2               # Manipulation of multidimensional arrays 
+pandas==1.5.2               # Manipulation of tabular data (i.e. DataFrames)
+pingouin==0.5.3             # Statistical tests
+plotly==5.14.0              # Interactive plotting library
+python-dateutil==2.8.2      # Utils for manipulation of dates
+PyWavelets==1.4.1           # Implementation of Wavelet transforms
+scikit-learn==1.2.0         # ML and DL tools
+scipy==1.10.0               # Algorithms for scienific computing (e.g., statistics, signal filters, etc.)
+tensorflow==2.10.0          # Backend for running ML and DL models
