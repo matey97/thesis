@@ -1,1 +1,38 @@
+---
+filters:
+  - add-code-files
+code-fold: false
+---
+
 # Tools {.unnumbered}
+
+## Software tools
+
+The software tools employed in this thesis are the following:
+
+- Android SDK 33: development of _Background Sensors_, _WearOS Sensors_ (see @sec-collection_tools) and _TUG Test Smartwatch APP_ (see [HAR in mHealth: TUG test using smartphones and smartwatches](04_tug.qmd)).
+- Node v16.13, JDK 11 and NativeScript CLI v8.2.3: development of _NativeScrit WearOS Sensors_, AwarNS _Phone Sensors_ and _Wear OS_ (see @sec-collection_tools), _TUG Test Smartphone APP_ (see [HAR in mHealth: TUG test using smartphones and smartwatches](04_tug.qmd)).
+- Espressif IoT Development Framework v5.1: development of CSI data collection tools employed in [Looking into the future: Wi-Fi CSI based HAR](05_wifi-csi.qmd).
+- Python 3.9.15: tasks related to ML, DL and data analysis. The following Python modules have been employed for such tasks:
+
+::: {add-from=requirements.txt filename='requirements.txt'}
+```{.python}
+```
+:::
+
+## Hardware tools
+
+Following, the harware devices during the development of this thesis are listed.
+
+- **Smart devices**:
+  - TicWatch Pro 3 GPS (WH12018): IMU data collection for @sec-dataset and system evaluation in [HAR in mHealth: TUG test using smartphones and smartwatches](04_tug.qmd).
+  - Xiaomi Poco X3 Pro (M2102J20SG): IMU data collection for @sec-dataset and system evaluation in [HAR in mHealth: TUG test using smartphones and smartwatches](04_tug.qmd).
+  - Xiaomi Poco F2 Pro (M2004J11G): video recordings for @sec-dataset and @sec-localized_har, and system evaluation in [HAR in mHealth: TUG test using smartphones and smartwatches](04_tug.qmd).
+- **Microcontrollers**:
+  - ESP32-S2 WROOM: CSI data collection for @sec-localized_har.
+  - ESP32-S3 WROOM: CSI data collection for @sec-csi_stability.
+- **Computers**:
+  - Windows 10 PC with i7-8700 CPU, NVIDIA GeForce GTX 750 GPU and 16 GB RAM: ML and DL models.
+  - MacBook Air M1 16GB RAM: development and analysis tasks.
+- **Other**:
+  - TP-Link Archer C80 Router: CSI data collection for @sec-localized_har and @sec-csi_stability.
