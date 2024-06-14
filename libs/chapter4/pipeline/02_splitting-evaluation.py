@@ -28,8 +28,6 @@ a 80/20 train/test split is employed with a batch size of 20 windows during 50 e
 
 
 import argparse
-import json
-import os
 import sys
 sys.path.append("../../..")
 

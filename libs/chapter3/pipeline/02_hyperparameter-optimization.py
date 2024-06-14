@@ -31,7 +31,6 @@ can be found in `tuning_configuration.py`.
 
 import argparse
 import os
-import json
 
 import sys
 sys.path.append("../../..")
