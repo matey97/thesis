@@ -1,8 +1,129 @@
 ---
 image: figs/chapter6/chap6.png
 description: Summarises the thesis, discussing the accomplishment of the research objectives, the contributions and the limitations of this dissertation.
+format:
+  html:
+    code-links:
+      - text: Background Sensors
+        icon: github
+        href: https://github.com/GeoTecINIT/BackgroundSensors/tree/v1.3.0
+        target: blank
+      - text: WearOS Sensors
+        icon: github
+        href: https://github.com/GeoTecINIT/WearOSSensors/tree/v1.2.1
+        target: blank
+      - text: NativeScript WearOS Sensors
+        icon: github
+        href: https://github.com/GeoTecINIT/nativescript-wearos-sensors/tree/v1.3.0
+        target: blank
+      - text: AwarNS Phone Sensors
+        icon: github
+        href: https://github.com/GeoTecINIT/awarns-framework/blob/v1.0.0.210922/packages/phone-sensors
+        target: blank
+      - text: AwarNS Wear OS
+        icon: github
+        href: https://github.com/GeoTecINIT/awarns-framework/blob/v1.0.0.210922/packages/wear-os
+        target: blank
+      - text: TUG Test Smartwatch APP
+        icon: github
+        href: https://github.com/matey97/TugTestSmartwatch/tree/v2.0.0
+        target: blank
+      - text: TUG Test Smartphone APP
+        icon: github
+        href: https://github.com/matey97/TugTestSmartphone/tree/v2.0.0
+        target: blank
+    other-links:  
+      - text: DIB paper
+        icon: journal-bookmark-fill
+        href: https://doi.org/10.1016/j.dib.2023.109809
+        target: blank
+      - text: AIME paper
+        icon: journal-bookmark-fill
+        href: https://doi.org/10.1007/978-3-031-09342-5_14
+        target: blank
+      - text: CIARP paper
+        icon: journal-bookmark-fill
+        href: https://doi.org/10.1007/978-3-031-49018-7_28
+        target: blank
+      - text: IPIN paper
+        icon: journal-bookmark-fill
+        href: https://doi.org/10.1109/IPIN57070.2023.10332214
+        target: blank
 ---
 
 # Conclusions
 
-In summary, this book has no content whatsoever.
+This doctoral thesis focused first on the usage of consumer devices -- Android smartphones and Wear OS smartwatches -- for HAR systems, to finally explore the possibility of getting rid of any wearable device, relying on infrastructure devices and Wi-Fi technology for sensing purposes.
+
+First, data collection libraries for Android smartphones and smartwatches were developed. Although other libraries for such tasks exist, the developed libraries were strictly designed focusing on data collection reliability (i.e., minimizing missing data, collection stopped by energy restrictions, etc.)
+
+Then, after performing actual experimentation, public datasets containing inertial data from smartphones and smartwatches were reviewed, putting the focus on the placement of the devices and the heterogeneity and diversity (e.g., age and gender) of the subjects that participated in the data collection. From the five identified datasets, only two of them properly reported physiological information about their participants [@vaizman2017;@arrotta2023domino], while others failed in reporting information such as age information or gender distribution [@stisen2015smart;@sztyler2016;@weiss2019smartphone]. Therefore, a data collection process was executed to build a dataset, carefully selecting the participants. As a result, the collected dataset is the dataset with data from the most diverse subjects in terms of age and most equally distributed in terms of gender, while having a moderate number of participants. 
+
+Next, some doubts before building a HAR system arose: *how much data is required to train a HAR classifier? Which model will perform best? Which data source -- smartphone, smartwatch, or both -- will provide the best results?* Few studies analyzed how the amount of data impacts classification performance, but none focused on smartphone and smartwatch data. On the other hand, while comparisons of models and data sources were common in the literature, conclusions differed from one article to another. Therefore, an extensive analysis combining these dimensions was carried out to provide an answer to these questions. 
+
+Following these analyses, the lessons learned were employed to put HAR into practice by implementing a real-life mHealth system to compute the results of a mobility test automatically. The system was designed to work on consumer Android smartphones and Wear OS smartwatches, and its evaluation on a cohort of $30$ participants showed results similar to and better than other state-of-the-art proposals. This proved the feasibility of using smartphones and smartwatches as sensing devices for HAR, real-life mHealth systems.
+
+Finally, the dissertation migrates from inertial-based to Wi-Fi CSI-based HAR, a recent trend that employs the channel status from a Wi-Fi infrastructure and promises recognition of human activities -- among other applications -- without other sensing devices. In this case, we used an ESP32 microcontroller to obtain the Wi-Fi CSI data and observed through several experiments that the collected data changes over time. Although very good results can be obtained when limiting the experiments to a determined time frame, this instability over time makes it hardly portable to real-life scenarios.
+
+In conclusion, the path followed during this dissertation constitutes a comprehensive research that ranges from the development of tools, data collection, analysis, development and evaluation of HAR systems, while focusing on their applicability in real life. 
+
+## Accomplishment of objectives
+In @sec-introduction, the objectives of this research were defined. Next, a summary is provided for each goal indicating how it was fulfilled.
+
+
+### RO1: Provide tools for reliable data collection in Android smartphones and Wear OS smartwatches
+@sec-collection_tools described the *Background Sensors*, *WearOS Sensors* and *NativeScript WearOS Sensors* libraries, which grant access to some specific sensors in Android smartphones and smartwatches. 
+
+The libraries were implemented following the guidelines presented by @gonzalez2022using, which proved to achieve a reliable task execution (i.e., data collection) with less than $1\%$ of missing data. In addition, the libraries were integrated into the AwarNS Framework, a modular framework to ease the development of context-aware applications [@gonzalez2023awarns].
+
+### RO2: Collect HAR dataset of smartphone and smartwatch data from heterogeneous subjects
+@sec-dataset described a dataset containing accelerometer and gyroscope samples from a smartphone and a smartwatch associated with five human activities. The dataset was collected focusing on the heterogeneity and diversity of the participants, resulting in the dataset of these characteristics with the wider age range of its subjects and with a balance of $56\%$/$44\%$ male/female participants.
+
+### RO3: Analyse and compare the effect of the amount of training data, the data source and the model architecture on the performance of ML- and DL-based HAR
+[Multidimensional analysis of ML and DL on HAR](03_analysis-har.qmd) presented an analysis exploring how the classification performance on four ML and DL models and three data sources were affected by the amount of data used for training them.
+
+Results unveiled different patterns in how the performance of classification models evolves depending on the amount of training data and the data source employed. Regarding data sources, the smartwatch data provided the best results when the amount of available data was low, while the fusion of smartphone and smartwatch data generally obtained the best results as the amount of data increased. When focusing on the models, the CNN showed the best results in almost any circumstance, making it the clear choice -- or at least, the starting point -- for HAR systems.
+
+### RO4: Development and evaluation of an mHealth system using HAR with smartphones and smartwatches
+[HAR in mHealth: TUG test using smartphones and smartwatches](04_tug.qmd) presented an mHealth system to automate the execution of the TUG test was implemented and evaluated. The system, composed of two applications, employed the inertial data from a smartphone or a smartwatch to automatically compute the test's results.
+
+The system was evaluated on $30$ test subjects, showing an average error of $44$ ms and $51$ ms when computing the total duration of the test with the smartwatch and smartphone inertial data, respectively. In general, results indicated that the system performed better with the smartwatch data than with the smartphone data. These results showed that HAR with consumer smartphones and smartwatches can successfully be used for real-life mHealth -- which require a high degree of reliability -- applications.
+
+### RO5: Analyse the feasibility of Wi-Fi CSI data for real-life HAR systems
+[Looking into the future: Wi-Fi CSI based HAR](05_wifi-csi.qmd) explored the usage of the Wi-Fi CSI applied to HAR, while also taking advantage of its reported versatility adding a location dimension to the target activities.
+
+A first experiment showed a downgrade in the classification accuracy of a CNN model when evaluating it using data from a different time span than the one used for training it. A further experiment indicated a clear similarity between the CSI data of adjacent days while being different from other days. These results suggested the instability of the CSI data, thus hampering its usage for real-life applications.
+
+However, there is still work to be done since the observed instability might have been produced by hardware or software limitations in the employed devices or by uncontrollable interferences in the environment.
+
+## Contributions
+Several research outcomes were produced during the development of this thesis. These outcomes are listed below and classified as journal or conference contributions, datasets, reproducibility packages, software.
+
+### Journals
+
+- "Dataset of inertial measurements of smartphones and smartwatches for human activity recognition". In: **Data in Brief** [@matey2023dib].
+- "Implementing and evaluating the Timed Up and Go test automation using smartphones and smartwatches". In: **IEEE Journal of Biomedical and Health Informatics** **[Submitted. Under first review round]** [@matey2024implementing].
+
+### Conferences
+
+- "Instrumented Timed Up and Go Test Using Inertial Sensors from Consumer Wearable Devices". In: **International Conference on Artificial Intelligence in Medicine** [@matey2022instrumented].
+- "Analysis and Impact of Training Set Size in Cross-Subject Human Activity Recognition". In: **26th Iberoamerican Congress on Pattern Recognition** [@matey2024analysis].
+- "Temporal Stability on Human Activity Recognition based on Wi-Fi CSI". In: **13th International Conference on Indoor Positioning and Indoor Navigation** [@matey2023csi].
+
+### Datasets
+
+- "Smartphone and smartwatch inertial measurements from heterogeneous subjects for human activity recognition". In: **Zenodo** [@matey2023dataset].
+
+### Reproducibility packages
+
+- Code and data resources for "Instrumented Timed Up and Go Test Using Inertial Sensors from Consumer Wearable Devices". In **Zenodo** [@matey2022rp_tug].
+- Reproducible package for "Analysis and Impact of Training Set Size in Cross-Subject Human Activity Recognition". In **Zenodo** [@matey2023rp_impact_har].
+- Reproducible package for "Temporal Stability on Human Activity Recognition based on Wi-Fi CSI". In **Zenodo** [@matey2023rp_csi].
+
+### Softwate
+
+- Background Sensors [v1.3.0] [@matey2024bs]
+- WearOS Sensors [v1.2.1] [@matey2024ws]
+- NativeScript WearOS Sensors [v1.3.0] [@matey2024nws]
+- Tug Test Smartphone Application [v2.0.0] [@matey2022tugsp]
+- Tug Test Smartwatch Application [v2.0.0] [@matey2022tugsw]

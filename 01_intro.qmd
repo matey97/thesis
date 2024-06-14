@@ -12,7 +12,7 @@ listing:
     grid-columns: 2
 ---
 
-# Introduction
+# Introduction {#sec-introduction}
 
 The research on this dissertation is centred on the Human Activity Recognition (HAR) topic, whose main objective is to characterize the activities performed by human subjects automatically. This research field has had a large trajectory, which will continue due to its breadth of possibilities and room for improvement: sensing technologies, sensing devices, types of activities, applications, etc. 
 
