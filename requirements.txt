@@ -1,4 +1,5 @@
 alive_progress==3.0.1       # Animated progress bar employed for long-lasting processes
+h5py==3.6.0                 # Numpy dependency
 hampel==1.0.2               # Implementation of Hampel filter
 itables==2.0.0              # Interactive displaying of DataFrames
 keras==2.10.0               # API for building ML and DL models

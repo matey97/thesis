@@ -14,7 +14,7 @@ from libs.chapter3.analysis.statistical_tests import pairwise_n_comparision, p_v
 
 from plotly.subplots import make_subplots
 
-pio.renderers.default = "notebook"
+pio.renderers.default = "notebook+jupyterlab"
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 

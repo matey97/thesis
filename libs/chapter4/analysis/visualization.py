@@ -15,7 +15,7 @@ from libs.chapter4.analysis.statistical_tests import compare_distribution_with_z
 
 from plotly.subplots import make_subplots
 
-pio.renderers.default = "notebook"
+pio.renderers.default = "notebook+jupyterlab"
 
 
 def _create_figure_with_subplots(x_title, y_title, subplots, with_titles, max_subfigures_in_row=3):

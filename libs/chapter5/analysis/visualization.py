@@ -5,7 +5,7 @@ Provides functions to visualize the obtained results.
 import numpy as np
 import plotly.graph_objects as go
 import plotly.io as pio
-pio.renderers.default = "notebook"
+pio.renderers.default = "notebook+jupyterlab"
 
 
 def plot_confusion_matrix(report, prediction_target, labels):

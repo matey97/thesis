@@ -5,7 +5,7 @@ Provides a function to plot the collected data.
 
 import plotly.graph_objects as go
 import plotly.io as pio
-pio.renderers.default = "notebook"
+pio.renderers.default = "notebook+jupyterlab"
 
 from plotly.subplots import make_subplots
 

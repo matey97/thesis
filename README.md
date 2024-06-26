@@ -20,6 +20,7 @@ The repository includes all the data, code and other resources employed througho
 - `*.qmd` files: Quarto Markdown documents
 - `*.ipynb` files: Jupyter notebooks containing the analyses whose results are presented in the thesis.
 - `requirements.txt`: Python libraries employed to execute experiments and analyses. All these experiments and analyses have been executed using Python 3.9.
+- `.docker`: contains a Dockerfile to build a Docker image with a computational environment to reproduce the experiments and analyses.
 
 ## Reproducibility
 From the begining of this thesis, the reproducibility of the results has been a paramounth objective. Therefore, all the outcomes presented in the thesis document can be reproduced using the `*.ipynb` notebooks. In addition, since all the scripts employed for the execution of experiments are provided, their replicability is also possible.
@@ -47,14 +48,14 @@ pip install -r requirements.txt
 > The usage of a virtual enviroment such as the ones provided by [Conda](https://conda.io/projects/conda/en/latest/index.html) or [venv](https://docs.python.org/3/library/venv.html) are recommended.
 
 #### Reproduce locally with Docker
-Install [Docker](https://www.docker.com) for building an image based on a `Dockerfile` with a Jupyter environment and running a container based on the image.
+Install [Docker](https://www.docker.com) for building an image based on the provided `.docker/Dockerfile` with a Jupyter environment and running a container based on the image.
 
 Download the repository, open a command line in the root of the directory and:
 
-1. Build the image:
+1. Build the image (don't forget the final `.`):
 
 ```bash
-docker build . --tag thesis
+docker build --file .docker/Dockerfile --tag thesis .
 ```
 
 2. Run the image:
