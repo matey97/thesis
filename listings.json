@@ -1,0 +1,44 @@
+[
+  {
+    "listing": "/01_intro.html",
+    "items": [
+      "/02_materials-methods.html",
+      "/03_analysis-har.html",
+      "/04_tug.html",
+      "/05_wifi-csi.html",
+      "/06_conclusions.html"
+    ]
+  },
+  {
+    "listing": "/02_materials-methods.html",
+    "items": [
+      "/02.1_collection-tools.html",
+      "/02.2_dataset.html",
+      "/02.3_methods.html"
+    ]
+  },
+  {
+    "listing": "/03_analysis-har.html",
+    "items": [
+      "/03.1_training-data.html",
+      "/03.2_data-sources.html",
+      "/03.3_models.html"
+    ]
+  },
+  {
+    "listing": "/04_tug.html",
+    "items": [
+      "/04.1_splitting-approach.html",
+      "/04.2_system-reliability.html",
+      "/04.3_energy-consumption.html"
+    ]
+  },
+  {
+    "listing": "/05_wifi-csi.html",
+    "items": [
+      "/05.1_localized-har.html",
+      "/05.2_methods-validation.html",
+      "/05.3_csi-stability.html"
+    ]
+  }
+]
