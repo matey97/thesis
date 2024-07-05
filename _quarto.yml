@@ -5,7 +5,7 @@ filters:
   - abstract-section
 
 book:
-  title: "Human activity recognition with consumer devices and real-life perspectives"
+  title: "Human Activity Recognition with Consumer Devices and Real-Life Perspectives"
   favicon: figs/book.svg
   author: 
   - name: Miguel Matey Sanz
@@ -38,7 +38,7 @@ book:
 
   page-footer:
     left: |
-      *Human activity recognition with consumer devices and real-life perspectives* 
+      *Human Activity Recognition with Consumer Devices and Real-Life Perspectives* 
       <br>
       Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) © Miguel Matey Sanz, 2024
     right: |
