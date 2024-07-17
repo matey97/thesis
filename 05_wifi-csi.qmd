@@ -100,9 +100,11 @@ Next, the dataset was arranged in windows of $50$ samples with a $50\%$ overlap.
 - The DBSCAN clustering algorithm [@ester1996density] was employed to detect outliers and replace them using the average value of the $5$ previous and posterior values.
 - A $2$-level *discrete wavelet transform* was used to decompose the signals, apply threshold-based filtering on the *detail* coefficients and reconstruct the signal with the *inverse discrete wavelet transform*.
 
-@fig-csi_data depicts the raw (after amplitude extraction) and processed CSI data of the first two sequences of `D1`.
+@fig-csi_data_before and @fig-csi_data_after depict the raw (after amplitude extraction) and processed CSI data of the first two sequences of `D1`.
 
-{{< embed 05.1.1_data-exploration.ipynb#fig-csi_data >}}
+{{< embed 05.1.1_data-exploration.ipynb#fig-csi_data_before >}}
+
+{{< embed 05.1.1_data-exploration.ipynb#fig-csi_data_after >}}
 
 
 ::: {.callout-note}
