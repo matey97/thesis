@@ -4,10 +4,11 @@ Provides a function to plot the collected data.
 
 
 import plotly.graph_objects as go
-import plotly.io as pio
-pio.renderers.default = "notebook+jupyterlab"
 
 from plotly.subplots import make_subplots
+
+from libs.common.plotly import configure_renderers
+configure_renderers()
 
 
 def plot_execution(data_collection, execution):

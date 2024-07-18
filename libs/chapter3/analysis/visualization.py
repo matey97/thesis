@@ -6,15 +6,15 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
-import plotly.io as pio
 import warnings
 
 from libs.chapter3.analysis.model import Filter, Model, Source, ORDER
 from libs.chapter3.analysis.statistical_tests import pairwise_n_comparision, p_value_formatter
+from libs.common.plotly import configure_renderers
 
 from plotly.subplots import make_subplots
 
-pio.renderers.default = "notebook+jupyterlab"
+configure_renderers()
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 

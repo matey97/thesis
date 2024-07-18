@@ -7,15 +7,15 @@ import math
 
 import plotly.graph_objects as go
 import plotly.express as px
-import plotly.io as pio
 
 from libs.chapter4.analysis.bland_altman import bland_altman_components
 from libs.chapter4.analysis.tug_results_processing import DURATION_AND_PHASES
 from libs.chapter4.analysis.statistical_tests import compare_distribution_with_zero
+from libs.common.plotly import configure_renderers
 
 from plotly.subplots import make_subplots
 
-pio.renderers.default = "notebook+jupyterlab"
+configure_renderers()
 
 
 def _create_figure_with_subplots(x_title, y_title, subplots, with_titles, max_subfigures_in_row=3):
@@ -108,8 +108,8 @@ def bland_altman_plot(system_results, man_results, system_desc, attrs, with_titl
         (`plotly.Figure`): Interactive Plotly figure.
     '''
 
-    x_title=f'Mean {system_desc} and manual measures (s)'
-    y_title=f'Difference {system_desc} and manual measures (s)'
+    x_title=f'Mean {system_desc} and reference measures (s)'
+    y_title=f'Difference {system_desc} and reference measures (s)'
     fig, rows, cols = _create_figure_with_subplots(x_title, y_title, attrs, with_titles)
     fig.update_annotations(font_size=20)
     
