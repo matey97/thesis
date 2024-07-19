@@ -14,7 +14,7 @@ listing:
 
 # Materials & Methods
 
-This section describes the materials and methods employed during the development of the thesis. More concretely, this section encompasses the follwing subsections:
+This section describes the materials and methods developed (e.g., data collection tools), generated (e.g., dataset) and used (e.g., ML and DL models, statistical tools, etc.) throughout this thesis. More concretely, this section encompasses the follwing subsections:
 
 :::{#contents}
 :::

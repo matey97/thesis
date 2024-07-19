@@ -14,7 +14,7 @@ format:
 This section describes the ML and DL architectures employed for HAR classification and the statistical tools used to determine the significance of the presented results that will be used in the following sections.
 
 ## ML and DL {#sec-ml_methods}
-In the context of HAR and thorough this thesis, **labelled** data is employed to train ML or DL models and to determine --**classify**-- the activity a user is performing given some input data. Therefore, this dissertation faces a **supervised learning classification** problem.
+In the context of HAR and thoroughout this thesis, **labelled** data is employed to train ML or DL models and to determine --**classify**-- the activity a user is performing given some input data. Therefore, this dissertation faces a **supervised learning classification** problem.
 
 Next, the models employed, the evaluation metrics used to evaluate them and the tools used to develop them are described.
 
@@ -29,16 +29,16 @@ A solution for this problem was proposed with the MLP, which consisted of stacki
 
 @fig-mlp shows the architecture of an MLP. Each layer contains a set of neurons, and each neuron is connected to the neurons in the next layer with a weight (parameters of the network). The outputs of the first hidden layer can be formulated as:
 \begin{equation}
-    h_i^1 = \sigma^1(b+\sum^{H_1}_{j=1}w_{ij}^1x_i),
+    h_i^1 = \sigma^1(b+\sum^{H_1}_{j=1}w_{ij}^1x_i)\,,
 \end{equation}
 where $x_i$ is the $i^{th}$ input, $w_{ij}^1$ is the weight of the connection between $x_i$ and the $j^{th}$ neuron in the layer, $b$ is a constant bias not affected by the previous layer\footnote{Guarantees activation when all other inputs are zero.}, $H_1$ is the amount of neurons in the layer and $\sigma^1$ is the activation function. Given $k$ layers, the equation can be generalized as follows:
 \begin{equation}
-    h_i^k = \sigma^k(b+\sum^{H_k}_{j=1}w_{ij}^kh_i^{k-1})
+    h_i^k = \sigma^k(b+\sum^{H_k}_{j=1}w_{ij}^kh_i^{k-1})\,.
 \end{equation}
 
-The results of the output layer can be also expressed as follows:
+The results of the output layer can also be expressed as follows:
 \begin{equation}
-    y_i = \sigma^{out}(b+\sum^{H_{out}}_{j=1}w_{ij}^{out}h_i^{k})
+    y_i = \sigma^{out}(b+\sum^{H_{out}}_{j=1}w_{ij}^{out}h_i^{k})\,.
 \end{equation}
 
 #### Convolutional Neural Network (CNN)
@@ -48,18 +48,17 @@ These networks are the CNN and contain convolution layers, which are useful for 
 
 The convolutional layers apply a set of **convolutional kernels** (learnt during training) to an input to obtain an output. These kernels $K\in R^{i\times j}$ are applied to an input matrix $A\in R^{x\times y}$ sliding them over its width and height computing the convolution operation over each data point, obtaining as a result a new matrix $B\in R^{m\times n \times d}$, where $m=x-i+1$, $n=y-j+1$ and $d$ is the number convolutional kernels applied. For 1 and 2-dimensional convolutions, the result for $B_{(m,n)}$ is defined as an element-wise multiplication, or:
 \begin{equation}
-    B_{(m,n)} = \sum_i\sum_j A_{(m+i,n+j)}K_{(i,j)}.
+    B_{(m,n)} = \sum_i\sum_j A_{(m+i,n+j)}K_{(i,j)}\,.
 \end{equation}
 
 ![Architecture of Convolutional Neural Network.](figs/chapter2/cnn.png){#fig-cnn .lightbox}
 
-@fig-cnn shows the architecture of a CNN network. Since the convolutional layers act as feature extractors, these networks contain after the convolutional layers and a flattening layer to reduce the convolved output to one dimension, a classifier or a regressor (e.g., MLP).
+@fig-cnn shows the architecture of a CNN network. Since the convolutional layers act as feature extractors, these networks add after the convolutional layers and a flattening layer to reduce the convolved output to one dimension, a classifier or a regressor (e.g., MLP).
 
 #### Long-Short Term Memory (LSTM)
-When the data has a sequential nature (e.g., time-series), RNN can be useful since they can remember information from the previous status and use it for the current status. This is possible because the information flows between neurons in the same and other layers. However, the learning, driven by the backpropagation algorithm, suffers from several issues such as the vanishing and exploding gradient.
+When the data has a sequential nature (e.g., time-series), RNN can be useful since they can remember information from the previous status and use it for the current status. This is possible because the output of specific neurons can be employed as subsequent input of the same neurons. However, the learning, driven by the backpropagation algorithm, suffers from several issues such as the vanishing and exploding gradient.
 
 To solve these issues, @hochreiter1997long invented the LSTM architecture, consisting of LSTM cells. An LSTM cell receives as input the state ($C_{t-1}$, or **long-term memory**) and hidden state ($H_{t-1}$, or **short-term memory**) of the previous cell at instant $t-1$, and an input vector ($X_{t}$) at the current instant ($t$). Its outputs are the state ($C_t$) and the hidden state ($H_t$). Since the input vectors are raw sequences, they are considered DL techniques. While LSTM networks are usually used for forecasting, they can also be combined with classifiers (i.e., MLP) to solve such tasks.
-
 
 
 The architecture of the LSTM cell is depicted in @fig-lstm. Internally, the cell is composed of three gates (i.e., neural networks):
@@ -71,23 +70,23 @@ The architecture of the LSTM cell is depicted in @fig-lstm. Internally, the cell
 ![Architecture of the Long Short-Term Memory network.](figs/chapter2/lstm.png){#fig-lstm .lightbox}
 
 $$
-    F_t=\sigma(W^X_FX_t + W^{h_{t-1}}_Fh_{t-1} + b_F)
+    F_t=\sigma(W^X_FX_t + W^{h_{t-1}}_Fh_{t-1} + b_F)\,.
 $$ {#eq-forget_gate}
 
 $$
-    I_t=\sigma(W^X_IX_t + W^{h_{t-1}}_Ih_{t-1} + b_I) \cdot \tanh(W^X_CX_t + W^{h_{t-1}}_Ch_{t-1} + b_C)
+    I_t=\sigma(W^X_IX_t + W^{h_{t-1}}_Ih_{t-1} + b_I) \cdot \tanh(W^X_CX_t + W^{h_{t-1}}_Ch_{t-1} + b_C)\,.
 $$ {#eq-in_gate}
 
 $$
-    O_t=\sigma(W^X_OX_t + W^{h_{t-1}}_Oh_{t-1} + b_O)
+    O_t=\sigma(W^X_OX_t + W^{h_{t-1}}_Oh_{t-1} + b_O)\,.
 $$ {#eq-out_gate}
 
 $$
-    C_t=C_{t-1} \cdot F_t + I_t
+    C_t=C_{t-1} \cdot F_t + I_t\,.
 $$ {#eq-c_update}
 
 $$
-    H_t=\tanh(C_t) \cdot O_t
+    H_t=\tanh(C_t) \cdot O_t\,.
 $$ {#eq-h_update}
 
 #### CNN Long-Short Term Memory (CNN-LSTM)
@@ -96,7 +95,7 @@ To address this issue several solutions were proposed, such as the ConvLSTM netw
 
 In this dissertation, we employ the CNN-LSTM since it has shown similar and better results than the ConvLSTM in HAR and other fields while being less resource-consuming.
 
-The architecture of the CNN-LSTM network is depicted in @fig-cnnlstm. The input of the network consists of convolutional layers for spatial modelling. Then, the outputs of those convolutional layers go through several LSTM layers for modelling temporal dependencies. Finally, the outputs of the LSTM layers are fed into a MLP to perform classification.
+The architecture of the CNN-LSTM network is depicted in @fig-cnnlstm. The input of the network consists of convolutional layers for spatiotemporal modelling. Then, the outputs of those convolutional layers go through several LSTM layers for modelling temporal dependencies. Finally, the outputs of the LSTM layers are fed into a MLP to perform classification.
 
 ![Architecture of the CNN Long Short-Term Memory network.](figs/chapter2/cnnlstm.png){#fig-cnnlstm .lightbox}
 
@@ -107,24 +106,28 @@ The performance of the ML and DL models can be measured in several ways. Along t
 #### Accuracy
 Measures the ratio between the correct and all the generated predictions. It allows to obtain an overall insight into the performance of the model.
 
+$$
+    Accuracy=\frac{Correct~predictions}{All~predictions}\,.
+$$
+
 #### Precision
 The ratio between the correct predictions of a certain class $A$ and all the generated predictions of class $A$, whether they are correct or not. It answers the following question: _how good is the model identifying samples of class $A$?_ Precision is defined by the following equation:
 $$
-    Precision_{A}=\frac{Correct~predictions~of~A}{All~predictions~of~A}=\frac{TP_{A}}{TP_{A} + FP_{A}} ,
+    Precision_{A}=\frac{Correct~predictions~of~A}{All~predictions~of~A}=\frac{TP_{A}}{TP_{A} + FP_{A}}\,,
 $$
 where $TP_{A}$ (**true postives**) is the number of correct preditions of class $A$ and $FP_{A}$ (**false positives**) is the number of samples wrongly predicted as class $A$.
 
 #### Recall
 Measures the ratio between the correct predictions of class $A$ and all samples that should be predicted as $A$. It answers the following question: _how good is the model to identify samples of class $A$?_ Recall is defined as:
 $$
-    Recall_{A}=\frac{Correct~predictions~of~A}{All~real~instances~of~A}=\frac{TP_{A}}{TP_{A} + FN_{A}} ,
+    Recall_{A}=\frac{Correct~predictions~of~A}{All~real~instances~of~A}=\frac{TP_{A}}{TP_{A} + FN_{A}}\,,
 $$
 where $FN_{A}$ (**false negatives**) is the number of samples of class $A$ classified to other classes.
 
 #### F1-score
 Measures the predictive performance of a model on specific classes taking into account the **precision** and the **recall**. It is defined as:
 $$
-    F1-score_{A}=2\frac{Precision_{A}*Recall_{A}}{Precision_{A}+Recall_{A}} .
+    F1-score_{A}=2\frac{Precision_{A}*Recall_{A}}{Precision_{A}+Recall_{A}}\,.
 $$
 
 ### Tools
@@ -163,41 +166,41 @@ The T-test is any statistical hypothesis test which test statistic adheres to th
 It determines if the mean of a group is significantly different from a specific value. For example, it can be used to determine the errors in some measures obtained with a device are different from $0$. Its hypothesis can be defined as:
 $$
     \begin{cases}
-        H_0: \mu_A = x \\
-        H_1: \mu_A \neq x
-    \end{cases},
+        H_0: \mu_A = x\,, \\
+        H_1: \mu_A \neq x\,,
+    \end{cases}
 $$
-where $\mu$ represents the mean of the population and $x$ the specific value.
+where $\mu_A$ represents the mean of the population $A$ and $x$ the specific value.
 
 ##### Two-sample T-test
-It is used to determine if the difference between two groups is statistically significant. It can be used to know if two groups are different and in consequence, determine which group is better. Its hypothesis can be defined as:
+It is used to determine if the difference between two groups is statistically significant. It can be used to know if two groups ($A$ and $B$) are different and in consequence, determine which group is better. Its hypothesis can be defined as:
 $$
     \begin{cases}
-        H_0: \mu_A = \mu_B \\
-        H_1: \mu_A \neq \mu_B
-    \end{cases},
+        H_0: \mu_A = \mu_B\,, \\
+        H_1: \mu_A \neq \mu_B\,.
+    \end{cases}
 $$
 
-[^1]: Parametric tests operate with the mean of the distributions.
+[^1]: Parametric tests operate with the mean of distributions.
 
 #### Wilcoxon signed-rank test (W-test)
 The W-test is the **non-parametric**[^2] counterpart of the one-sample T-test [@wilcoxon1945]. It is applied to compare a non-normally distributed group with a specific value. Its hypothesis can be defined as:
 $$
     \begin{cases}
-        H_0: \eta_A = x \\
-        H_1: \eta_A \neq x
-    \end{cases},
+        H_0: \eta_A = x\,, \\
+        H_1: \eta_A \neq x\,,
+    \end{cases}
 $$
-where $\eta$ represents the median of the population.
+where $\eta_A$ represents the median of the population $A$.
 
-[^2]: Non-parametric tests usually operate with the median of the distributions.
+[^2]: Non-parametric tests usually operate with the median of distributions.
 
 #### Mann-Whitney U-test (MWU)
-The MWU is the **non-parametric** counterpart of the two-sample T-test [@mann1947test]. It should be applied to compare two non-normally distributed groups. Its hypothesis can be defined as:
+The MWU is the **non-parametric** counterpart of the two-sample T-test [@mann1947test]. It should be applied to compare two non-normally distributed groups ($A$ and $B$). Its hypothesis can be defined as:
 $$
     \begin{cases}
-        H_0: \eta_A = \eta_B \\
-        H_1: \eta_A \neq \eta_B
+        H_0: \eta_A = \eta_B\,, \\
+        H_1: \eta_A \neq \eta_B\,.
     \end{cases}
 $$
 
@@ -205,8 +208,8 @@ $$
 The KWH is a non-parametric significance test used to compare three or more non-normally distributed groups [@kruskalWallis1952]. Its hypothesis can be defined as:
 $$
     \begin{cases}
-        H_0: \eta \mathit{~of~groups~are~equal} \\
-        H_1: \eta \mathit{~of~groups~are~different}
+        H_0: \eta \mathit{~of~groups~are~equal}\,, \\
+        H_1: \eta \mathit{~of~groups~are~different}\,.
     \end{cases}
 $$
 

@@ -31,11 +31,11 @@ format:
 
 The data collection from IMU sensors built-in Android smartphones or Wear OS smartwatches for HAR (and other applications) should be reliable, i.e., reduce the presence of missing data. 
 
-However, as indicated previously, it has been documented that a broad amount of passive sensing applications used in research suffer up to 50% of missing data [@boonstra2018]. As pointed out by @gonzalez2022using, the cause of this missingness comes from the energy consumption restrictions imposed by the OS, which tends to reduce resources and even kill long-running processes (e.g., data collection).
+However, as indicated previously, it has been documented that a broad amount of passive sensing applications used in published research suffer up to 50% of missing data [@boonstra2018]. As pointed out by @gonzalez2022using, the cause of this missingness comes from the energy consumption restrictions imposed by the OS, which tends to reduce resources and even kill long-running processes (e.g., data collection).
 
 To mitigate these energy restrictions, @gonzalez2022using propose a set of development guidelines that must be applied to reduce the amount of missing data, showing only a 1% of data missingness in long-running executions.
 
-This section describes the developed libraries implementing these guidelines for data collection in Android smartphones and WearOS smartwatches.
+This section describes the developed libraries implementing these guidelines for data collection in Android smartphones and WearOS smartwatches, addressing research objective **RO1**.
 
 ## Background Sensors
 The _Background Sensors_ library is an Android library developed in Java that implements a reliable passive collection of IMU sensors (i.e., accelerometer, gyroscope and magnetometer), and, therefore, it can be used to develop native Android applications that require to collect samples from such sensors. The library has been developed to support devices running from Andriod 5.0 (API level 21) to Android 13 (API level 33). 
@@ -52,7 +52,7 @@ The version of the library at the moment of writing this thesis is **v1.3.0**. T
 
 @fig-bs_arch includes the simplified architecture of the _Background Sensors_ library.
 
-![Simplified architecture of the _Background Sensors_ library](figs/chapter2/background-sensors.png){#fig-bs_arch .lightbox}
+![Conceptual architecture of the _Background Sensors_ library.](figs/chapter2/background-sensors.png){#fig-bs_arch .lightbox}
 
 ::: {.callout-tip}
 ## Library documentation
@@ -113,19 +113,19 @@ public class ExampleActivity extends Activity {
 6. Stop the data collection calling `ServiceManager#stopCollection(...)`.
 
 ## WearOS Sensors & NativeScript WearOS Sensors
-The _WearOS Sensors_ library is a Wear OS library written in Java that can be used to develop native Wear OS applications and, like _Background Sensors_, implements a reliable passive collection of IMU sensors (i.e., accelerometer, gyroscope and magnetometer). In addition, it also supports the collection from the heart rate sensor and the location services (i.e., GNSS). 
+The _WearOS Sensors_ library is a Wear OS library written in Java that can be used to develop native Wear OS applications and, like _Background Sensors_, implements a reliable passive collection of IMU sensors (i.e., accelerometer, gyroscope and magnetometer). In addition, it supports collecting data from the heart rate sensor and the location services (i.e., GNSS). 
 
-On the other hand, _NativeScript WearOS Sensors_ is a library written in TypeScript that can be used to build smartphone applications complementary to WearOS Sensors developed applications. Unlike the other libraries, this one cannot be used to develop native applications but applications built with the [NativeScript development framework](https://nativescript.org), which uses web technologies (e.g., JavaScript, TypeScript) to build Android and iOS applications.
+On the other hand, _NativeScript WearOS Sensors_ is a library written in TypeScript that can be used to build smartphone applications complementary to _WearOS Sensors_ developed applications. Unlike the other libraries, this one cannot be used to develop native applications but applications built with the [NativeScript development framework](https://nativescript.org), which uses web technologies (e.g., JavaScript, TypeScript) to build Android and iOS applications.
 
 The following features are available when using applications developed with these libraries:
 
 - _WearOS Sensors_:
-  - Start and stop the data collection on the smartwatch.
-  - Gather collected data in the smartwatch.
+  - Start and stop from the smartwatch the data collection of the available sensors in the device.
+  - Store collected data in the smartwatch.
 - _WearOS Sensors_ + _Nativescript WearOS Sensors_:
-  - Start and stop the data collection on the smartwatch.
-  - Start and stop the data collection on the smartwatch **from a paired smartphone**.
-  - Gater the collected data in the smartwatch or in the smartphone.
+  - Start and stop from the smartwatch the data collection of the available sensors in the device.
+  - Start and stop from the paired smartphone the data collection of the available sensors in the smartwatch.
+  - Store the collected data in the smartwatch or in the smartphone.
 
 The  _WearOS Sensors_ and _NativeScript WearOS Senosrs_ libraries have been developed to support devices running from Wear OS 1.0 (\gls{api} level 23) to Wear OS 4 (\gls{api} level 33) and from Android 6 (\gls{api} level 23) to Android 13 (\gls{api} level 33), respectively.
 
@@ -146,7 +146,7 @@ The version of _WearOS Sensors_ and _NativeScript WearOS Sensors_ at the moment 
 
 @fig-ws_arch includes the simplified architecture of the _WearOS Sensors_ and _NativeScript WearOS Sensors_ libraries.
 
-![Simplified architecture of both libraries](figs/chapter2/wearos-sensors.png){#fig-ws_arch .lightbox}
+![Conceptual architecture of the _Wear OS Sensors_ and _NativeScript WearOS Sensors_ libraries.](figs/chapter2/wearos-sensors.png){#fig-ws_arch .lightbox}
 
 ::: {.callout-tip}
 ## Library documentation
@@ -156,10 +156,10 @@ The full documentation of the libraries and their components can be found in the
 
 ### Sample usage
 
-#### Managing and gathering collection in smartwatch.
+#### Managing collection process and storing data in smartwatch.
 Since _WearOS Sensors_ is built on top of _Background Sensors_ the same code as the one presented previously can be employed for this purpose.
 
-#### Managing in smartwatch, gathering in smartphone.
+#### Managing collection process in smartwatch, storing data in smartphone.
 
 ```{.java}
 public class ExampleActivity extends Activity {
@@ -206,7 +206,7 @@ function registerListener() {
 5. Obtain a `CollectorManager` instance using the `getCollectorManager()` function.
 6. Register a listener with the `CollectorManager#addSensorListener(...)`.
 
-#### Managing and gathering collection in smartphone.
+#### Managing collection process and storing data in smartphone.
 
 ```{.typescript}
 let collectorManager;
@@ -245,13 +245,15 @@ function stop() {
 
 The AwarNS Framework, implemented by a colleague researcher, is an Android-based development framework aimed to facilitate the development of context-aware smartphone applications which require systematic data acquisition, on-device analyses and perform actions based on these analyses [@gonzalez2023awarns]. The framework is built on top of the NativeScript Task Dispatcher, which allows the definition and execution of reactive workflows using its building blocks: `Tasks` (code units), `Events` (execution drivers) and `TaskGraphs` (allow the definition of reactive workflows, i.e., `Tasks` triggered by `Events`) [@gonzalez2022using].
 
-This dissertation contributes to the AwarNS Framework by integrating the previously described data collection tools into it. In that sense, two new packages are developed and added into the framework: the _Phone Sensors_ and the _Wear OS_ packages. These packages wrap up the _Background Sensors_ and _NativeScript WearOS Sensors_ libraries to integrate their functionality into the AwarNS Framework. 
+This dissertation contributes to the AwarNS Framework by wrapping the previously described data collection tools in it. This integration would allow the combination of already existing features in the framework (e.g., geolocation) with the features of the developed libraries (e.g., IMU data for HAR) to implement context-aware applications (e.g., recognition of activities in specific contexts). 
+
+In particular, two new packages are developed and added into the framework: the _Phone Sensors_ and the _Wear OS_ packages. These packages wrap up the _Background Sensors_ and _NativeScript WearOS Sensors_ libraries to integrate their functionality into the AwarNS Framework. 
 
 ::: {.callout-note}
 For a more detailed description of the AwarNS Framework, check its [GitHub repository](https://github.com/GeoTecINIT/awarns-framework/tree/v1.0.0.210922) and the research paper [@gonzalez2023awarns]
 :::
 
-![Integration of _Background Sensors_ and _NativeScript WearOS Sensors_ into the AwarNS Framework.](figs/chapter2/awarns-integration.png){.lightbox}
+![UML diagram of the integration of _Background Sensors_ and _NativeScript WearOS Sensors_ in AwarNS.](figs/chapter2/awarns-integration.png){.lightbox}
 
 ::: {.callout-tip}
 ## Library documentation
