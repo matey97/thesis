@@ -65,7 +65,7 @@ book:
         - 02.2_dataset.ipynb
         - 02.3_methods.qmd
     - part: 03_analysis-har.qmd
-      text: Multidimensional analysis
+      text: Multidimensional Analysis
       chapters:
         - 03.1_training-data.ipynb
         - 03.2_data-sources.ipynb
