@@ -29,9 +29,9 @@ format:
         target: blank
 ---
 
-# HAR in mHealth: TUG test using smartphones and smartwatches
+# HAR in mHealth: TUG Test Using Smartphones and Smartwatches
 
-Physical performance tests aim to assess the physical abilities and mobility skills of individuals for various healthcare purposes. They are often driven by experts and usually performed at their practice, and therefore they are resource-intensive and time-demanding. For tests based on objective measurements (e.g., duration, repetitions), technology can be used to automate them, allowing the patients to perform the test themselves, more frequently and anywhere while alleviating the expert from supervising the test. The well-known Timed Up & Go (TUG) test [@podsiadlo1991timed], typically used for mobility assessment, is an ideal candidate for automation, as inertial sensors (among others) can be deployed to detect the various movements constituting the test without expert supervision. To move from expert-led testing to self-administered testing, we present a mHealth system capable of automating the TUG test using a pocket-sized smartphone or a wrist smartwatch paired with a smartphone, where data from inertial sensors are used to detect the activities carried out by the patient while performing the test and compute their results in real-time. The use of both devices to automate the TUG test was evaluated and mutually compared and set off with a manual method in terms of accuracy, clinical and statistical reliability and battery consumption, proving its feasibility as a real-life mHealth application.
+Physical performance tests aim to assess the physical abilities and mobility skills of individuals for various healthcare purposes. They are often driven by experts and usually performed at their practice, and therefore they are resource-intensive and time-demanding. For tests based on objective measurements (e.g., duration, repetitions), technology can be used to automate them, allowing the patients to perform the test themselves, more frequently and anywhere while alleviating the expert from supervising the test. The well-known Timed Up & Go (TUG) test [@podsiadlo1991timed], typically used for mobility assessment, is an ideal candidate for automation, as inertial sensors (among others) can be deployed to detect the different movements that constitute the test without expert supervision. To evolve from expert-led testing to self-administered testing, we present a mHealth system capable of automating the TUG test using a off-the-shelve hardware, i.e., pocket-sized smartphone or a wrist smartwatch paired with a smartphone, where data from inertial sensors are used to detect the activities carried out by the patient while performing the test and compute their results in real-time. The use of both devices to automate the TUG test was evaluated and mutually compared with a reference method in terms of accuracy, statistical agreement, statistical reliability and battery consumption, proving its feasibility as a real-life mHealth application.
 
 ![TUG test diagram](figs/chapter4/tug.png){#fig-tug width=500 fig-align="center"}
 
@@ -57,7 +57,7 @@ The developed system collects samples from the smartwatch (`C1`) or the smartpho
 ### Smartwatch application
 The smartwatch application is a native Android application developed using the WearOS Sensors library (described in @sec-collection_tools) that runs on a WearOS-based smartwatch whose main purpose is to act as a sensing device. The smartwatch must be linked to a smartphone with the application described in the next section installed, but the phone does not need to be carried on since it is used as a computing device. This is to increase the battery life of the smartwatch. 
 
-[@fig-sw_screenshots] shows the application interface that allows the user to start the collection of accelerometer and gyroscope samples at $100$Hz for data collection -- [@fig-sw_collection] -- or inference -- [@fig-sw_inference] --. After the collection is started, samples are batched in groups of $50$, wirelessly sending each batch to the paired smartphone using Bluetooth communication. When the end of the test is detected and its results are computed on the smartphone side, the smartwatch stops the data collection process, receives the results and vibrates to signal the end of the test, displaying the results (only the total duration, due to screen size constraints) on the screen -- [@fig-sw_results] --.
+[@fig-sw_screenshots] shows the application interface that allows the user to start the collection of accelerometer and gyroscope samples at $100$Hz for data collection -- [@fig-sw_collection] -- or inference -- [@fig-sw_inference] --. After pressing the button to start the system, the smartwatch emits a vibration to indicate that the system is ready and that the collection has started. Then, collected samples are batched in groups of $50$ and wirelessly sent to the paired smartphone using Bluetooth communication. When the end of the test is detected and its results are computed on the smartphone side, the smartwatch stops the data collection process, receives the results and vibrates to signal the end of the test, displaying the results (only the total duration, due to screen size constraints) on the screen -- [@fig-sw_results] --.
 
 ::: {#fig-sw_screenshots layout-ncol=3}
 
@@ -77,12 +77,11 @@ The TUG test smartwatch application is available in [GitHub](https://github.com/
 :::
 
 ### Smartphone application
-The smartphone application is a NativeScript application that runs on Android smartphones. It has been developed using the **Phone Sensors**, **Wear OS** and **ML Kit** packages of the AwarNS Framework [@gonzalez2023awarns]. With the application set up and running, the smartphone can act just as a computing device (`C1`), with a paired smartwatch as a sensing device, or as a sensing and computing device (`C2`).
+The smartphone application is a NativeScript application that runs on Android smartphones. It has been developed using the _Phone Sensors_, _Wear OS_ and _ML Kit_  packages (see @sec-collection_tools and @sec-ml_methods) of the AwarNS Framework [@gonzalez2023awarns]. With the application set up and running, the smartphone can act just as a computing device (`C1`), with a paired smartwatch as a sensing device, or as a sensing and computing device (`C2`).
 
-On the sensing facet, the application provides an interface to start the data collection process ([@fig-sp_main]). Like the smartwatch application, it collects accelerometer and gyroscope data at $100$Hz. 
-On the computing facet, the application processes the collected data (either from the smartwatch or from the phone itself) by applying a temporal alignment, Min-Max scaling and data windowing. Once a data window is prepared, the bundle is used as input to an embedded ML or DL model that predicts which activity the subject is performing. 
+On the sensing facet, the application provides an interface to start the data collection process ([@fig-sp_main]). After pressing the start button, the smartphone emits a sound to notify the user that the system is ready and the data collection has started. Like the smartwatch application, it collects accelerometer and gyroscope data at $100$Hz. On the computing facet, the application processes the collected data (either from the smartwatch or from the phone itself) by applying a temporal alignment, Min-Max scaling and data windowing. Once a data window is prepared, the bundle is used as input to an embedded ML or DL model that predicts which activity the subject is performing. 
 
-Based on the predicted activities, the system can automatically detect the end of the TUG test and calculate the results. The application then computes the start and end time (and duration) of each subphase of the test by determining the boundaries between them using the predicted activities. Finally, with the start of the *standing_up* and the end of the *sitting_down* subphases, the duration of the entire test is determined.
+Based on the predicted activities, the system can automatically detect the end of the TUG test and calculate the results. The end is detected when the application predicts three consecutive `SEATED` activities preceded by some `SITTING_DOWN` activities. This pattern, which requires the user to maintain a _seated_ position after sitting down, is captured by the system approximately one second after the subject has sat down (i.e., $3$ consecutive windows of $50$ samples -- $0.5$ seconds per window -- with a $50\%$ overlap -- $0.25$ seconds --). The application then computes the start and end time (and duration) of each subphase of the test by determining the boundaries between them using the predicted activities. Finally, with the start of the *standing_up* and the end of the *sitting_down* subphases, the duration of the entire test is determined.  If for some reason the application cannot detect any of the other subphases, it will still be able to compute the total duration of the test as long as these two subphases are correctly identified and their duration calculated. 
 
 After the detection of the end of the test, the data collection is automatically stopped on the sensing device (i.e., smartwatch or smartphone), and the test results are calculated and sent to the smartwatch if it is the sensing device. The smartphone application also displays a list of the executed TUG tests and their full results -- [@fig-sp_main] and [@fig-sp_detail], respectively --.
 
@@ -114,10 +113,10 @@ Thirty healthy individuals participated in the evaluation of the system. The par
 The experiment was approved by the ethics committee of the Universitat Jaume I (reference No. CD/88/2022) and carried out in accordance with the Declaration of Helsinki.
 :::
 
-The objectives and description of the study were explained to the participants, who were informed that they were going to be video-recorded while performing the test, and their written informed consent was obtained. 
+The objectives and description of the study were explained to the participants, who were informed that they were going to be video-recorded while performing the test, and their written informed consent was obtained. The experiment was approved by the ethics committee of the Universitat Jaume I (reference No. **CD/88/2022**) and carried out in accordance with the Declaration of Helsinki.
 
 ### Devices
-Participants were provided with a TicWatch Pro 3 GPS (WH12018) smartwatch and two Xiaomi Poco X3 Pro (M2102J20SG) smartphones, equipped with an STMicroelectronics LSM6DSO IMU[^1] sensor. The smartwatch and one smartphone were used as sensing and computing devices respectively (`C1`), while the other smartphone was used as a sensing and computing device (`C2`). The participants were instructed to wear the smartwatch on the left wrist (the paired smartphone was left aside) and the smartphone on the left pocket, without further instructions regarding orientation.
+Participants were provided with a TicWatch Pro 3 GPS (WH12018) smartwatch and two Xiaomi Poco X3 Pro (M2102J20SG) smartphones, equipped with an STMicroelectronics LSM6DSO IMU[^1] sensor. The smartwatch and one smartphone were used as sensing and computing devices respectively (`C1`), while the other smartphone was used as a sensing and computing device (`C2`). The participants were instructed to wear the smartwatch on the left wrist (the paired smartphone was left aside) and the smartphone on the left front pocket, without further instructions regarding orientation.
 
 A Xiaomi Poco F2 Pro (M2004J11G) smartphone was also used to video-record the subjects while participating in the study. All devices' internal clocks were synchronized using the NTP protocol.
 
@@ -132,20 +131,20 @@ A Xiaomi Poco F2 Pro (M2004J11G) smartphone was also used to video-record the su
 
 ### HAR classifier
 
-Supported by the results presented in the previous chapter, the CNN architecture has been chosen for activity classification. Therefore, two CNN models (i.e., one for smartphone and other smartwatch data) have been trained for HAR using the dataset presented in [@sec-dataset] and embedded in the smartphone application.
+Supported by the results presented in the previous section, the CNN architecture has been chosen for activity classification. Therefore, two CNN models (i.e., one for smartphone and other smartwatch data) have been trained for HAR using the dataset presented in [@sec-dataset] and embedded in the smartphone application.
 
 ### Experimental protocol
 
 Each participant was instructed to execute the TUG test while wearing the smartwatch on the left wrist and the smartphone in the left front pocket, adhering to the following procedure:
 
-1. From a seated position, press the "start" button on the smartphone application, lock the device and store it in the front left pocket.
+1. From a _seated_ position, press the "start" button on the smartphone application, lock the device and store it in the front left pocket.
 2. Wait for a sound emitted from the smartphone.
 3. Press the "start" button on the smartwatch application (already placed on the wrist).
 4. Wait for a vibration emitted from the smartwatch.
 5. Execute the TUG test.
 6. Once finished, the smartphone and smartwatch applications will show the test's results.
 
-Every participant executed the TUG test 10 times, yielding a total amount of 300 TUG test executions, whose results were extracted from both system configurations. From those 300 executions, 9 were discarded due to procedural breaches.
+Every participant executed the TUG test $10$ times, yielding a total amount of $300$ TUG test executions, whose results were extracted from both system configurations. From those $300$ executions, $9$ were discarded due to procedural breaches (i.e., start the TUG test before the measuring device is ready).
 
 Then, the recorded videos of the participants were manually analysed to determine the boundaries between the activities contained in the test to measure the duration of the test and its subphases.
 
@@ -165,7 +164,7 @@ Then, the computed results were compared with the manually obtained results (ref
 
 - **Errors**: a direct comparison between a system and a manual measure to check the difference between them. The significance of the errors (i.e., different from 0) was tested using one-sample T-tests or W-tests. Then, both system configurations were also compared in terms of inter-subject RMSE, using two-sample T-tests or MWU tests to evaluate the significance of the comparison.
 - **Bland Altman agreement**: determines the agreement between measurements from `C1` and `C2` with the manual method (i.e., gold standard).
-- **ICC**: estimates and their $95\%$ confidence intervals based on a single rater, absolute-agreement, 2-way mixed-effects model (i.e., $ICC_{(2,1)}$) were computed comparing each system configuration with the manual approach.
+- **ICC**: the ICC estimations and their $95\%$ confidence intervals based on a single rater, absolute-agreement, 2-way mixed-effects model (i.e., $ICC_{(2,1)}$) were computed comparing each system configuration with the manual approach.
 
 Finally, the energy consumption of the system was analysed using the data obtained from the Google's BatteryHistorian tool.
 

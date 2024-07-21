@@ -15,7 +15,7 @@ pg.options['round.column.p-val'] = 3
 # - Test family > t tests
 # - Statistical test > Means: Wilcoxon-Mann_Whitney test (two groups)
 # - Type of power analysis > Post hoc: Compute achieved power -- given alpha, sample size, and effect size.
-COMPUTED_POWERS = {
+COMPUTED_POWERS_SPLITTING = {
     'sp_accuracy': 1
 }
 
@@ -36,7 +36,7 @@ def compare_splitting_approaches(reports, metrics):
     def test_builder(parametric, source, metric, alternative='two-sided'):
         def mwu(g1, g2):
             res = pg.mwu(g1, g2, alternative=alternative).loc['MWU']
-            power = COMPUTED_POWERS[f'{source}_{metric}']
+            power = COMPUTED_POWERS_SPLITTING[f'{source}_{metric}']
             return [np.round(np.median(g1), 3), np.round(np.median(g2), 3), f'U={res["U-val"]}, p-val={res["p-val"]}, power={power}']
 
         def ttest(g1, g2):
@@ -82,7 +82,7 @@ def compare_distribution_with_zero(distribution):
 # - Test family > t tests
 # - Statistical test > Means: Wilcoxon-Mann_Whitney test (two groups)
 # - Type of power analysis > Post hoc: Compute achieved power -- given alpha, sample size, and effect size.
-COMPUTED_POWERS = {
+COMPUTED_POWERS_RMSE = {
     'duration': 0.542,
     'first_walk': 0.338,
     'first_turn': 0.434,
@@ -117,7 +117,7 @@ def compare_rmse_distributions(errors_df):
             result += [np.mean(c1_df), np.mean(c2_df), ttest]
         else:
             mwu = pg.mwu(c1_df, c2_df).loc['MWU']
-            power = COMPUTED_POWERS[measure]
+            power = COMPUTED_POWERS_RMSE[measure]
             mwu = f'U={mwu["U-val"]}, p-val={mwu["p-val"]}, power={power}'
             result += [np.median(c1_df), np.median(c2_df), mwu]
 
