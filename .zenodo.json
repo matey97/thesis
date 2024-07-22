@@ -1,0 +1,26 @@
+{
+    "title": "Resources of \"Human Activity Recognition with Consumer Devices and Real-Life Perspectives\" PhD thesis",
+    "description": "This repository collects all the resources employed during the development of the doctoral thesis in computer science titled \"Human Activity Recognition with Consumer Devices and Real-Life Perspectives\", authored by Miguel Matey Sanz and supervised by Carlos Granell Canut and Sven Casteleyn at the Universitat Jaume I.",
+    "creators": [
+        {
+            "name": "Matey Sanz, Miguel",
+            "orcid": "0000-0002-1189-5079",
+            "affiliation": "Institute of New Imaging Technologies, Universitat Jaume I" 
+        }
+    ],
+    "contributors": [
+        {
+            "name": "Granell, Carlos",
+            "affiliation": "Institute of New Imaging Technologies, Universitat Jaume I",
+            "orcid": "0000-0003-1004-9695",
+            "type": "supervisor"
+        },
+        {
+            "name": "Casteleyn, Sven",
+            "affiliation": "Institute of New Imaging Technologies, Universitat Jaume I",
+            "orcid": "0000-0003-0572-5716",
+            "type": "supervisor"
+        }
+    ],
+    "notes": "All the code contained in '.ipynb' notebooks and the 'libs' folder are licensed under the GPL-3.0 License.<br>The data contained in the 'data' folder is licensed under the Open Data Commons Open Database License (ODbL).<br>The remaining documents included in this repository are licensed under the Creative Commons Attribution-ShareAlike (CC BY-SA 4.0)."
+}
