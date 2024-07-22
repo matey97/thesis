@@ -1,7 +1,7 @@
-#!/bin/bash -v
+#!/usr/bin/env bash -v
 
 # determine which version of Quarto to install
-QUARTO_VERSION=1.4.553
+QUARTO_VERSION=1.5.52
 
 # See whether we need to lookup a Quarto version
 if [ $QUARTO_VERSION = "prerelease" ]; then
@@ -53,16 +53,6 @@ ln -s ~/.quarto/opt/quarto/bin/tools/x86_64/pandoc ~/.quarto/opt/quarto/bin/tool
 
 echo
 echo Installed Quarto
-echo
-
-echo
-echo Installing TinyTex
-echo
-# install tinytex
-quarto install tinytex --no-prompt
-
-echo
-echo Installed TinyTex
 echo
 
 echo
