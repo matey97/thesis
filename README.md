@@ -91,5 +91,4 @@ The remaining documents included in this repository are licensed under the [Crea
 
 ## Funding
 
-This thesis has been funded by the Spanish Ministry of Universities. Grant references FPU19/05352 and EST23/00320.
-
+This thesis has been funded by the Spanish Ministry of Universities with a predoctoral grant (FPU19/05352) and a research stay grant (EST23/00320). Financial support for derived activities of this dissertation (e.g., publications, conferences, etc.) was received from the SyMptOMS-ET project (PID2020-120250RB-I00), funded by MICIU/AEI/10.13039/501100011033.
