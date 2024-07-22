@@ -203,8 +203,6 @@ format:
     toc-depth: 4
     #toc-expand: true
     smooth-scroll: true
-  pdf:
-    documentclass: scrreprt
 
 
 
