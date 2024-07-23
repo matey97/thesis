@@ -1,6 +1,8 @@
 # Human Activity Recognition with Consumer Devices and Real-Life Perspectives
 
 [![GH Deployment](https://img.shields.io/badge/GitHub%20Pages-Deployment-green.svg)](https://matey97.github.io/thesis)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12799623.svg)](https://doi.org/10.5281/zenodo.12799623)
+
 
 This repository collects all the resources employed during the development of the doctoral thesis in computer science titled *"Human Activity Recognition with Consumer Devices and Real-Life Perspectives"*, authored by 
 Miguel Matey Sanz <a href="https://orcid.org/0000-0002-1189-5079"><img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height="16"/></a>
