@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.52">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="description" content="Describes the ML and DL architectures employed for HAR classification and the statistical tools used to determine the significance of the presented results.">
 
-<title>Human activity recognition with consumer devices and real-life perspectives - Common methods</title>
+<title>Common methods – Human Activity Recognition with Consumer Devices and Real-Life Perspectives</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,7 +99,7 @@ div.csl-indent {
 <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" type="text/css">
 <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Roboto+Mono" type="text/css">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -137,13 +137,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_materials-methods.html">Materials &amp; Methods</a></li><li class="breadcrumb-item"><a href="./02.3_methods.html"><span class="chapter-title">Common methods</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -158,7 +158,7 @@ window.Quarto = {
       <img src="./figs/uji-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Human activity recognition with consumer devices and real-life perspectives</a> 
+      <a href="./">Human Activity Recognition with Consumer Devices and Real-Life Perspectives</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/matey97/thesis" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -186,7 +186,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="./02_materials-methods.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Materials &amp; Methods</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -211,8 +211,8 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./03_analysis-har.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Multidimensional analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+ <span class="menu-text">Multidimensional Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -238,7 +238,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="./04_tug.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HAR in mHealth: TUG test</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -264,7 +264,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="./05_wifi-csi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Wi-Fi CSI based HAR</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -299,9 +299,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -310,7 +310,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="./reference/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reference</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -530,7 +530,7 @@ window.Quarto = {
 <p>This section describes the ML and DL architectures employed for HAR classification and the statistical tools used to determine the significance of the presented results that will be used in the following sections.</p>
 <section id="sec-ml_methods" class="level2">
 <h2 class="anchored" data-anchor-id="sec-ml_methods">ML and DL</h2>
-<p>In the context of HAR and thorough this thesis, <strong>labelled</strong> data is employed to train ML or DL models and to determine –<strong>classify</strong>– the activity a user is performing given some input data. Therefore, this dissertation faces a <strong>supervised learning classification</strong> problem.</p>
+<p>In the context of HAR and thoroughout this thesis, <strong>labelled</strong> data is employed to train ML or DL models and to determine –<strong>classify</strong>– the activity a user is performing given some input data. Therefore, this dissertation faces a <strong>supervised learning classification</strong> problem.</p>
 <p>Next, the models employed, the evaluation metrics used to evaluate them and the tools used to develop them are described.</p>
 <section id="models-employed" class="level3">
 <h3 class="anchored" data-anchor-id="models-employed">Models employed</h3>
@@ -538,10 +538,10 @@ window.Quarto = {
 <h4 class="anchored" data-anchor-id="multilayer-perceptron-mlp">Multilayer Perceptron (MLP)</h4>
 <p>The Perceptron was invented by <span class="citation" data-cites="mcculloch1943logical">McCulloch and Pitts (<a href="references.html#ref-mcculloch1943logical" role="doc-biblioref">1943</a>)</span>, inspired by the neurons present in the brain, which receive, process and transmit information. <span class="citation" data-cites="rosenblatt1958perceptron">Rosenblatt (<a href="references.html#ref-rosenblatt1958perceptron" role="doc-biblioref">1958</a>)</span> implemented the first Perceptron with learning capabilities, where a neuron would receive a series of inputs in the <strong>input</strong> layer. These inputs would be combined through a weighted sum and passed through an activation function, generating an output in the <strong>output</strong> layer. However, the Perceptron presented an issue: it could only solve problems with linear solutions.</p>
 <p>A solution for this problem was proposed with the MLP, which consisted of stacking several perceptions. However, the learning ability in these MLP was not possible until the development of the Backpropagation algorithm. The MLP is usually fed with <strong>features</strong> extracted from raw data after a feature engineering process into an <strong>input</strong> layer, multiple <strong>hidden</strong> layers and an <strong>output</strong> layer. Since feature engineering is required, MLP are considered ML techniques.</p>
-<div id="fig-mlp" class="lightbox quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-mlp" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mlp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="figs/chapter2/mlp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="figs/chapter2/mlp.png" class="img-fluid figure-img"></a>
+<a href="figs/chapter2/mlp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;5.1: Architecture of Multilayer Perceptron."><img src="figs/chapter2/mlp.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mlp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.1: Architecture of Multilayer Perceptron.
@@ -549,12 +549,12 @@ Figure&nbsp;5.1: Architecture of Multilayer Perceptron.
 </figure>
 </div>
 <p><a href="#fig-mlp" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> shows the architecture of an MLP. Each layer contains a set of neurons, and each neuron is connected to the neurons in the next layer with a weight (parameters of the network). The outputs of the first hidden layer can be formulated as: <span class="math display">\[\begin{equation}
-    h_i^1 = \sigma^1(b+\sum^{H_1}_{j=1}w_{ij}^1x_i),
+    h_i^1 = \sigma^1(b+\sum^{H_1}_{j=1}w_{ij}^1x_i)\,,
 \end{equation}\]</span> where <span class="math inline">\(x_i\)</span> is the <span class="math inline">\(i^{th}\)</span> input, <span class="math inline">\(w_{ij}^1\)</span> is the weight of the connection between <span class="math inline">\(x_i\)</span> and the <span class="math inline">\(j^{th}\)</span> neuron in the layer, <span class="math inline">\(b\)</span> is a constant bias not affected by the previous layer, <span class="math inline">\(H_1\)</span> is the amount of neurons in the layer and <span class="math inline">\(\sigma^1\)</span> is the activation function. Given <span class="math inline">\(k\)</span> layers, the equation can be generalized as follows: <span class="math display">\[\begin{equation}
-    h_i^k = \sigma^k(b+\sum^{H_k}_{j=1}w_{ij}^kh_i^{k-1})
+    h_i^k = \sigma^k(b+\sum^{H_k}_{j=1}w_{ij}^kh_i^{k-1})\,.
 \end{equation}\]</span></p>
-<p>The results of the output layer can be also expressed as follows: <span class="math display">\[\begin{equation}
-    y_i = \sigma^{out}(b+\sum^{H_{out}}_{j=1}w_{ij}^{out}h_i^{k})
+<p>The results of the output layer can also be expressed as follows: <span class="math display">\[\begin{equation}
+    y_i = \sigma^{out}(b+\sum^{H_{out}}_{j=1}w_{ij}^{out}h_i^{k})\,.
 \end{equation}\]</span></p>
 </section>
 <section id="convolutional-neural-network-cnn" class="level4">
@@ -562,23 +562,23 @@ Figure&nbsp;5.1: Architecture of Multilayer Perceptron.
 <p><span class="citation" data-cites="fukushima1980neocognitron">Fukushima (<a href="references.html#ref-fukushima1980neocognitron" role="doc-biblioref">1980</a>)</span> invented the Neocognitron for vision-based pattern recognition, inspired by the work of <span class="citation" data-cites="hubel1959">(<a href="references.html#ref-hubel1959" role="doc-biblioref">Hubel and Wiesel 1959</a>)</span>, who showed that individual cells on the visual cortex respond to small regions of the visual field and that neighbouring cells have similar and overlapping receptive fields. Then, <span class="citation" data-cites="atlas1987artificial">Atlas, Homma, and Marks (<a href="references.html#ref-atlas1987artificial" role="doc-biblioref">1987</a>)</span> proposed replacing the multiplications inside a neuron with a convolution, a computation between a small area (receptive field) and a filter containing the trainable weights of the network.</p>
 <p>These networks are the CNN and contain convolution layers, which are useful for feature recognition in data with spatial and temporal domains. These networks have diverse applications, such as vision applications or time series prediction. They can be directly fed with <strong>raw data</strong> (i.e., no need for feature extraction), and therefore, are considered as DL techniques.</p>
 <p>The convolutional layers apply a set of <strong>convolutional kernels</strong> (learnt during training) to an input to obtain an output. These kernels <span class="math inline">\(K\in R^{i\times j}\)</span> are applied to an input matrix <span class="math inline">\(A\in R^{x\times y}\)</span> sliding them over its width and height computing the convolution operation over each data point, obtaining as a result a new matrix <span class="math inline">\(B\in R^{m\times n \times d}\)</span>, where <span class="math inline">\(m=x-i+1\)</span>, <span class="math inline">\(n=y-j+1\)</span> and <span class="math inline">\(d\)</span> is the number convolutional kernels applied. For 1 and 2-dimensional convolutions, the result for <span class="math inline">\(B_{(m,n)}\)</span> is defined as an element-wise multiplication, or: <span class="math display">\[\begin{equation}
-    B_{(m,n)} = \sum_i\sum_j A_{(m+i,n+j)}K_{(i,j)}.
+    B_{(m,n)} = \sum_i\sum_j A_{(m+i,n+j)}K_{(i,j)}\,.
 \end{equation}\]</span></p>
-<div id="fig-cnn" class="lightbox quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-cnn" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cnn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="figs/chapter2/cnn.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2"><img src="figs/chapter2/cnn.png" class="img-fluid figure-img"></a>
+<a href="figs/chapter2/cnn.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;5.2: Architecture of Convolutional Neural Network."><img src="figs/chapter2/cnn.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cnn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.2: Architecture of Convolutional Neural Network.
 </figcaption>
 </figure>
 </div>
-<p><a href="#fig-cnn" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> shows the architecture of a CNN network. Since the convolutional layers act as feature extractors, these networks contain after the convolutional layers and a flattening layer to reduce the convolved output to one dimension, a classifier or a regressor (e.g., MLP).</p>
+<p><a href="#fig-cnn" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> shows the architecture of a CNN network. Since the convolutional layers act as feature extractors, these networks add after the convolutional layers and a flattening layer to reduce the convolved output to one dimension, a classifier or a regressor (e.g., MLP).</p>
 </section>
 <section id="long-short-term-memory-lstm" class="level4">
 <h4 class="anchored" data-anchor-id="long-short-term-memory-lstm">Long-Short Term Memory (LSTM)</h4>
-<p>When the data has a sequential nature (e.g., time-series), RNN can be useful since they can remember information from the previous status and use it for the current status. This is possible because the information flows between neurons in the same and other layers. However, the learning, driven by the backpropagation algorithm, suffers from several issues such as the vanishing and exploding gradient.</p>
+<p>When the data has a sequential nature (e.g., time-series), RNN can be useful since they can remember information from the previous status and use it for the current status. This is possible because the output of specific neurons can be employed as subsequent input of the same neurons. However, the learning, driven by the backpropagation algorithm, suffers from several issues such as the vanishing and exploding gradient.</p>
 <p>To solve these issues, <span class="citation" data-cites="hochreiter1997long">Hochreiter and Schmidhuber (<a href="references.html#ref-hochreiter1997long" role="doc-biblioref">1997</a>)</span> invented the LSTM architecture, consisting of LSTM cells. An LSTM cell receives as input the state (<span class="math inline">\(C_{t-1}\)</span>, or <strong>long-term memory</strong>) and hidden state (<span class="math inline">\(H_{t-1}\)</span>, or <strong>short-term memory</strong>) of the previous cell at instant <span class="math inline">\(t-1\)</span>, and an input vector (<span class="math inline">\(X_{t}\)</span>) at the current instant (<span class="math inline">\(t\)</span>). Its outputs are the state (<span class="math inline">\(C_t\)</span>) and the hidden state (<span class="math inline">\(H_t\)</span>). Since the input vectors are raw sequences, they are considered DL techniques. While LSTM networks are usually used for forecasting, they can also be combined with classifiers (i.e., MLP) to solve such tasks.</p>
 <p>The architecture of the LSTM cell is depicted in <a href="#fig-lstm" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>. Internally, the cell is composed of three gates (i.e., neural networks):</p>
 <ul>
@@ -586,10 +586,10 @@ Figure&nbsp;5.2: Architecture of Convolutional Neural Network.
 <li><strong>Input</strong> gate (<span class="math inline">\(I_t\)</span>, <a href="#eq-in_gate" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>): determines based on <span class="math inline">\(X_t\)</span> and <span class="math inline">\(H_{t-1}\)</span> what information must be included (i.e., remembered) in the cell state (<span class="math inline">\({C_t}\)</span>). The updated <span class="math inline">\(C_{t}\)</span> <a href="#eq-c_update" class="quarto-xref">Equation&nbsp;<span>5.4</span></a> will be used for the cell at <span class="math inline">\(t+1\)</span>.</li>
 <li><strong>Output</strong> gate (<span class="math inline">\(O_t\)</span>, <a href="#eq-out_gate" class="quarto-xref">Equation&nbsp;<span>5.3</span></a>): determines based on <span class="math inline">\(H_{t-1}\)</span> and <span class="math inline">\(C_{t}\)</span> what information must be kept in <span class="math inline">\(H_{t}\)</span> <a href="#eq-h_update" class="quarto-xref">Equation&nbsp;<span>5.5</span></a> and used for the LSTM cell at <span class="math inline">\(t+1\)</span>.</li>
 </ul>
-<div id="fig-lstm" class="lightbox quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-lstm" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lstm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="figs/chapter2/lstm.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3"><img src="figs/chapter2/lstm.png" class="img-fluid figure-img"></a>
+<a href="figs/chapter2/lstm.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;5.3: Architecture of the Long Short-Term Memory network."><img src="figs/chapter2/lstm.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lstm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.3: Architecture of the Long Short-Term Memory network.
@@ -597,30 +597,30 @@ Figure&nbsp;5.3: Architecture of the Long Short-Term Memory network.
 </figure>
 </div>
 <p><span id="eq-forget_gate"><span class="math display">\[
-    F_t=\sigma(W^X_FX_t + W^{h_{t-1}}_Fh_{t-1} + b_F)
+    F_t=\sigma(W^X_FX_t + W^{h_{t-1}}_Fh_{t-1} + b_F)\,.
 \tag{5.1}\]</span></span></p>
 <p><span id="eq-in_gate"><span class="math display">\[
-    I_t=\sigma(W^X_IX_t + W^{h_{t-1}}_Ih_{t-1} + b_I) \cdot \tanh(W^X_CX_t + W^{h_{t-1}}_Ch_{t-1} + b_C)
+    I_t=\sigma(W^X_IX_t + W^{h_{t-1}}_Ih_{t-1} + b_I) \cdot \tanh(W^X_CX_t + W^{h_{t-1}}_Ch_{t-1} + b_C)\,.
 \tag{5.2}\]</span></span></p>
 <p><span id="eq-out_gate"><span class="math display">\[
-    O_t=\sigma(W^X_OX_t + W^{h_{t-1}}_Oh_{t-1} + b_O)
+    O_t=\sigma(W^X_OX_t + W^{h_{t-1}}_Oh_{t-1} + b_O)\,.
 \tag{5.3}\]</span></span></p>
 <p><span id="eq-c_update"><span class="math display">\[
-    C_t=C_{t-1} \cdot F_t + I_t
+    C_t=C_{t-1} \cdot F_t + I_t\,.
 \tag{5.4}\]</span></span></p>
 <p><span id="eq-h_update"><span class="math display">\[
-    H_t=\tanh(C_t) \cdot O_t
+    H_t=\tanh(C_t) \cdot O_t\,.
 \tag{5.5}\]</span></span></p>
 </section>
 <section id="cnn-long-short-term-memory-cnn-lstm" class="level4">
 <h4 class="anchored" data-anchor-id="cnn-long-short-term-memory-cnn-lstm">CNN Long-Short Term Memory (CNN-LSTM)</h4>
 <p>While the LSTM architectures are useful for modelling temporal dependencies, they do not leverage the spatial nature of the data. To address this issue several solutions were proposed, such as the ConvLSTM network which extends the LSTM by adding convolutional operations in the input and state-to-state transitions <span class="citation" data-cites="shi2015">(<a href="references.html#ref-shi2015" role="doc-biblioref">Shi et al. 2015</a>)</span>. Another approach was to join the CNN and the LSTM networks, in the so-called CNN-LSTM network to take advantage of the spatial and temporal modelling capabilities of both networks <span class="citation" data-cites="sainath2015">(<a href="references.html#ref-sainath2015" role="doc-biblioref">Sainath et al. 2015</a>)</span>. Like the CNN and LSTM, both networks are considered DL techniques.</p>
 <p>In this dissertation, we employ the CNN-LSTM since it has shown similar and better results than the ConvLSTM in HAR and other fields while being less resource-consuming.</p>
-<p>The architecture of the CNN-LSTM network is depicted in <a href="#fig-cnnlstm" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>. The input of the network consists of convolutional layers for spatial modelling. Then, the outputs of those convolutional layers go through several LSTM layers for modelling temporal dependencies. Finally, the outputs of the LSTM layers are fed into a MLP to perform classification.</p>
-<div id="fig-cnnlstm" class="lightbox quarto-figure quarto-figure-center quarto-float anchored">
+<p>The architecture of the CNN-LSTM network is depicted in <a href="#fig-cnnlstm" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>. The input of the network consists of convolutional layers for spatiotemporal modelling. Then, the outputs of those convolutional layers go through several LSTM layers for modelling temporal dependencies. Finally, the outputs of the LSTM layers are fed into a MLP to perform classification.</p>
+<div id="fig-cnnlstm" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cnnlstm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="figs/chapter2/cnnlstm.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4"><img src="figs/chapter2/cnnlstm.png" class="img-fluid figure-img"></a>
+<a href="figs/chapter2/cnnlstm.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;5.4: Architecture of the CNN Long Short-Term Memory network."><img src="figs/chapter2/cnnlstm.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cnnlstm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.4: Architecture of the CNN Long Short-Term Memory network.
@@ -635,23 +635,26 @@ Figure&nbsp;5.4: Architecture of the CNN Long Short-Term Memory network.
 <section id="accuracy" class="level4">
 <h4 class="anchored" data-anchor-id="accuracy">Accuracy</h4>
 <p>Measures the ratio between the correct and all the generated predictions. It allows to obtain an overall insight into the performance of the model.</p>
+<p><span class="math display">\[
+    Accuracy=\frac{Correct~predictions}{All~predictions}\,.
+\]</span></p>
 </section>
 <section id="precision" class="level4">
 <h4 class="anchored" data-anchor-id="precision">Precision</h4>
 <p>The ratio between the correct predictions of a certain class <span class="math inline">\(A\)</span> and all the generated predictions of class <span class="math inline">\(A\)</span>, whether they are correct or not. It answers the following question: <em>how good is the model identifying samples of class <span class="math inline">\(A\)</span>?</em> Precision is defined by the following equation: <span class="math display">\[
-    Precision_{A}=\frac{Correct~predictions~of~A}{All~predictions~of~A}=\frac{TP_{A}}{TP_{A} + FP_{A}} ,
+    Precision_{A}=\frac{Correct~predictions~of~A}{All~predictions~of~A}=\frac{TP_{A}}{TP_{A} + FP_{A}}\,,
 \]</span> where <span class="math inline">\(TP_{A}\)</span> (<strong>true postives</strong>) is the number of correct preditions of class <span class="math inline">\(A\)</span> and <span class="math inline">\(FP_{A}\)</span> (<strong>false positives</strong>) is the number of samples wrongly predicted as class <span class="math inline">\(A\)</span>.</p>
 </section>
 <section id="recall" class="level4">
 <h4 class="anchored" data-anchor-id="recall">Recall</h4>
 <p>Measures the ratio between the correct predictions of class <span class="math inline">\(A\)</span> and all samples that should be predicted as <span class="math inline">\(A\)</span>. It answers the following question: <em>how good is the model to identify samples of class <span class="math inline">\(A\)</span>?</em> Recall is defined as: <span class="math display">\[
-    Recall_{A}=\frac{Correct~predictions~of~A}{All~real~instances~of~A}=\frac{TP_{A}}{TP_{A} + FN_{A}} ,
+    Recall_{A}=\frac{Correct~predictions~of~A}{All~real~instances~of~A}=\frac{TP_{A}}{TP_{A} + FN_{A}}\,,
 \]</span> where <span class="math inline">\(FN_{A}\)</span> (<strong>false negatives</strong>) is the number of samples of class <span class="math inline">\(A\)</span> classified to other classes.</p>
 </section>
 <section id="f1-score" class="level4">
 <h4 class="anchored" data-anchor-id="f1-score">F1-score</h4>
 <p>Measures the predictive performance of a model on specific classes taking into account the <strong>precision</strong> and the <strong>recall</strong>. It is defined as: <span class="math display">\[
-    F1-score_{A}=2\frac{Precision_{A}*Recall_{A}}{Precision_{A}+Recall_{A}} .
+    F1-score_{A}=2\frac{Precision_{A}*Recall_{A}}{Precision_{A}+Recall_{A}}\,.
 \]</span></p>
 </section>
 </section>
@@ -692,22 +695,22 @@ Availability
 <section id="students-t-test" class="level4 page-columns page-full">
 <h4 class="anchored" data-anchor-id="students-t-test">Student’s T-test</h4>
 <p>The T-test is any statistical hypothesis test which test statistic adheres to the Student’s <em>T</em>-distribution <span class="citation" data-cites="student1908probable">(<a href="references.html#ref-student1908probable" role="doc-biblioref">Student 1908</a>)</span>. The T-tests are <strong>parametric</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> tests, thus they can only be used with normal distributions. Several T-tests are employed:</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Parametric tests operate with the mean of the distributions.</p></div></div><section id="one-sample-t-test" class="level5">
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Parametric tests operate with the mean of distributions.</p></div></div><section id="one-sample-t-test" class="level5">
 <h5 class="anchored" data-anchor-id="one-sample-t-test">One-sample T-test</h5>
 <p>It determines if the mean of a group is significantly different from a specific value. For example, it can be used to determine the errors in some measures obtained with a device are different from <span class="math inline">\(0\)</span>. Its hypothesis can be defined as: <span class="math display">\[
     \begin{cases}
-        H_0: \mu_A = x \\
-        H_1: \mu_A \neq x
-    \end{cases},
-\]</span> where <span class="math inline">\(\mu\)</span> represents the mean of the population and <span class="math inline">\(x\)</span> the specific value.</p>
+        H_0: \mu_A = x\,, \\
+        H_1: \mu_A \neq x\,,
+    \end{cases}
+\]</span> where <span class="math inline">\(\mu_A\)</span> represents the mean of the population <span class="math inline">\(A\)</span> and <span class="math inline">\(x\)</span> the specific value.</p>
 </section>
 <section id="two-sample-t-test" class="level5">
 <h5 class="anchored" data-anchor-id="two-sample-t-test">Two-sample T-test</h5>
-<p>It is used to determine if the difference between two groups is statistically significant. It can be used to know if two groups are different and in consequence, determine which group is better. Its hypothesis can be defined as: <span class="math display">\[
+<p>It is used to determine if the difference between two groups is statistically significant. It can be used to know if two groups (<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>) are different and in consequence, determine which group is better. Its hypothesis can be defined as: <span class="math display">\[
     \begin{cases}
-        H_0: \mu_A = \mu_B \\
-        H_1: \mu_A \neq \mu_B
-    \end{cases},
+        H_0: \mu_A = \mu_B\,, \\
+        H_1: \mu_A \neq \mu_B\,.
+    \end{cases}
 \]</span></p>
 </section>
 </section>
@@ -715,17 +718,17 @@ Availability
 <h4 class="anchored" data-anchor-id="wilcoxon-signed-rank-test-w-test">Wilcoxon signed-rank test (W-test)</h4>
 <p>The W-test is the <strong>non-parametric</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> counterpart of the one-sample T-test <span class="citation" data-cites="wilcoxon1945">(<a href="references.html#ref-wilcoxon1945" role="doc-biblioref">Wilcoxon 1945</a>)</span>. It is applied to compare a non-normally distributed group with a specific value. Its hypothesis can be defined as: <span class="math display">\[
     \begin{cases}
-        H_0: \eta_A = x \\
-        H_1: \eta_A \neq x
-    \end{cases},
-\]</span> where <span class="math inline">\(\eta\)</span> represents the median of the population.</p>
-<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Non-parametric tests usually operate with the median of the distributions.</p></div></div></section>
+        H_0: \eta_A = x\,, \\
+        H_1: \eta_A \neq x\,,
+    \end{cases}
+\]</span> where <span class="math inline">\(\eta_A\)</span> represents the median of the population <span class="math inline">\(A\)</span>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Non-parametric tests usually operate with the median of distributions.</p></div></div></section>
 <section id="mann-whitney-u-test-mwu" class="level4">
 <h4 class="anchored" data-anchor-id="mann-whitney-u-test-mwu">Mann-Whitney U-test (MWU)</h4>
-<p>The MWU is the <strong>non-parametric</strong> counterpart of the two-sample T-test <span class="citation" data-cites="mann1947test">(<a href="references.html#ref-mann1947test" role="doc-biblioref">Mann and Whitney 1947</a>)</span>. It should be applied to compare two non-normally distributed groups. Its hypothesis can be defined as: <span class="math display">\[
+<p>The MWU is the <strong>non-parametric</strong> counterpart of the two-sample T-test <span class="citation" data-cites="mann1947test">(<a href="references.html#ref-mann1947test" role="doc-biblioref">Mann and Whitney 1947</a>)</span>. It should be applied to compare two non-normally distributed groups (<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>). Its hypothesis can be defined as: <span class="math display">\[
     \begin{cases}
-        H_0: \eta_A = \eta_B \\
-        H_1: \eta_A \neq \eta_B
+        H_0: \eta_A = \eta_B\,, \\
+        H_1: \eta_A \neq \eta_B\,.
     \end{cases}
 \]</span></p>
 </section>
@@ -733,8 +736,8 @@ Availability
 <h4 class="anchored" data-anchor-id="kruskal-wallis-h-test-kwh">Kruskal-Wallis H-test (KWH)</h4>
 <p>The KWH is a non-parametric significance test used to compare three or more non-normally distributed groups <span class="citation" data-cites="kruskalWallis1952">(<a href="references.html#ref-kruskalWallis1952" role="doc-biblioref">Kruskal and Wallis 1952</a>)</span>. Its hypothesis can be defined as: <span class="math display">\[
     \begin{cases}
-        H_0: \eta \mathit{~of~groups~are~equal} \\
-        H_1: \eta \mathit{~of~groups~are~different}
+        H_0: \eta \mathit{~of~groups~are~equal}\,, \\
+        H_1: \eta \mathit{~of~groups~are~different}\,.
     \end{cases}
 \]</span></p>
 <p>Since the KWH compares three or more groups, the rejection of <span class="math inline">\(H_0\)</span> is not enough to determine the differences among groups. Therefore, <strong>post-hoc</strong> tests (e.g., MWU) must be applied to make conclusions.</p>
@@ -751,12 +754,6 @@ Availability
 <p>Depending on the measurement methods (i.e., raters), the way the measurements will be considered (e.g., single or aggregated) and the feature to consider (e.g., absolute agreement or consistency), there are up to ten different ICC definitions <span class="citation" data-cites="mcgraw1996forming">(<a href="references.html#ref-mcgraw1996forming" role="doc-biblioref">McGraw and Wong 1996</a>)</span>.</p>
 
 
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">Figure&nbsp;5.1: Architecture of Multilayer Perceptron.</span>
-<span class="glightbox-desc lightbox-desc-2">Figure&nbsp;5.2: Architecture of Convolutional Neural Network.</span>
-<span class="glightbox-desc lightbox-desc-3">Figure&nbsp;5.3: Architecture of the Long Short-Term Memory network.</span>
-<span class="glightbox-desc lightbox-desc-4">Figure&nbsp;5.4: Architecture of the CNN Long Short-Term Memory network.</span>
-</div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-atlas1987artificial" class="csl-entry" role="listitem">
 Atlas, Les, Toshiteru Homma, and Robert Marks. 1987. <span>“<a href="">An Artificial Neural Network for Spatio-Temporal Bipolar Patterns: Application to Phoneme Classification</a>.”</span> In <em>Neural Information Processing Systems</em>.
@@ -991,18 +988,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1034,7 +1020,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1042,7 +1050,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1372,8 +1380,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03_analysis-har.html" class="pagination-link" aria-label="Multidimensional analysis">
-        <span class="nav-page-text">Multidimensional analysis</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./03_analysis-har.html" class="pagination-link" aria-label="Multidimensional Analysis">
+        <span class="nav-page-text">Multidimensional Analysis</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1381,7 +1389,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><em>Human activity recognition with consumer devices and real-life perspectives</em> <br> Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> © Miguel Matey Sanz, 2024</p>
+<p><em>Human Activity Recognition with Consumer Devices and Real-Life Perspectives</em> <br> Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> © Miguel Matey Sanz, 2024</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
@@ -1391,30 +1399,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":false,"closeEffect":"zoom","descPosition":"bottom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
     }
-  });
-
-};
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
           </script>
 
 
