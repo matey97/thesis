@@ -6,8 +6,8 @@
 
 This repository collects all the resources employed during the development of the doctoral thesis in computer science titled *"Human Activity Recognition with Consumer Devices and Real-Life Perspectives"*, authored by 
 Miguel Matey Sanz <a href="https://orcid.org/0000-0002-1189-5079"><img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height="16"/></a>
-and supervised by Carlos Granell Canut <a href="https://orcid.org/0000-0003-1004-9695"><img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height="16"/></a>
-and Sven Casteleyn <a href="https://orcid.org/0000-0003-0572-5716"><img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height="16"/></a>
+and supervised by Dr. Carlos Granell Canut <a href="https://orcid.org/0000-0003-1004-9695"><img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height="16"/></a>
+and Dr. Sven Casteleyn <a href="https://orcid.org/0000-0003-0572-5716"><img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height="16"/></a>
 at the [Universitat Jaume I](www.uji.es).
 
 The repository employs [Quarto](https://quarto.org) to present the main outcomes of the thesis in a book format deployed in [GitHub Pages](https://matey97.github.io/thesis). The generated Quarto Book consitutes a "lite" version of the thesis. Therefore, the thesis document should be consulted for more context, references, or discussions.
