@@ -68,14 +68,14 @@ Financial support for derived activities of this dissertation was received from 
 :::: {.columns}
 
 ::: {.column width="60%"}
-_Human Activity Recognition with Consumer Devices and Real-Life Perspectives_ Copyright © 2024 Miguel Matey Sanz. This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
+_Human Activity Recognition with Consumer Devices and Real-Life Perspectives_ Copyright © 2024 Miguel Matey Sanz. This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 :::
 
 ::: {.column width="5%"}
 :::
 
 ::: {.column width="35%"}
-[![](figs/cc-by-sa.png){width=300 fig-align="center"}](https://creativecommons.org/licenses/by-sa/4.0/)
+[![](figs/by-nc-sa.png){width=300 fig-align="center"}](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 :::
 
 ::::

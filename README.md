@@ -83,13 +83,13 @@ To reproduce the outcomes presented in the thesis, open the desired Jupyter note
 
 [![License!: GPL v3](https://img.shields.io/badge/Code%20License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
 [![License: ODbL](https://img.shields.io/badge/Data%20License-ODbL-brightgreen.svg)](https://opendatacommons.org/licenses/odbl/) 
-[![License: CC BY-SA 4.0](https://img.shields.io/badge/Documents%20License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/Documents%20License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 All the code contained in the `.ipynb` notebooks and the `libs` folder are licensed under the [GPL-3.0 License](LICENSE).
 
 The data contained in the `data` folder is licensed under the [Open Data Commons Open Database License](https://opendatacommons.org/licenses/odbl/1.0) (ODbL).
 
-The remaining documents included in this repository are licensed under the [Creative Commons Attribution-ShareAlike](https://creativecommons.org/licenses/by-sa/4.0/) (CC BY-SA 4.0).
+The remaining documents included in this repository are licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike](https://creativecommons.org/licenses/by-nc-sa/4.0/) (CC BY-NC-SA 4.0).
 
 ## Funding
 

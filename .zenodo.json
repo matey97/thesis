@@ -22,5 +22,5 @@
             "type": "supervisor"
         }
     ],
-    "notes": "All the code contained in '.ipynb' notebooks and the 'libs' folder are licensed under the GPL-3.0 License.<br>The data contained in the 'data' folder is licensed under the Open Data Commons Open Database License (ODbL).<br>The remaining documents included in this repository are licensed under the Creative Commons Attribution-ShareAlike (CC BY-SA 4.0)."
+    "notes": "All the code contained in '.ipynb' notebooks and the 'libs' folder are licensed under the GPL-3.0 License.<br>The data contained in the 'data' folder is licensed under the Open Data Commons Open Database License (ODbL).<br>The remaining documents included in this repository are licensed under the Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA 4.0)."
 }
