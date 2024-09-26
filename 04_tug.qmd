@@ -22,7 +22,11 @@ format:
         icon: github
         href: https://github.com/matey97/TugTestSmartphone/tree/v2.0.0
         target: blank
-    other-links:  
+    other-links:
+      - text: JBHI paper
+        icon: journal-bookmark-fill
+        href: https://doi.org/10.1109/JBHI.2024.3456169
+        target: blank  
       - text: AIME paper
         icon: journal-bookmark-fill
         href: https://doi.org/10.1007/978-3-031-09342-5_14
@@ -36,7 +40,7 @@ Physical performance tests aim to assess the physical abilities and mobility ski
 ![TUG test diagram](figs/chapter4/tug.png){#fig-tug width=500 fig-align="center"}
 
 ::: {.callout-note}
-The contents on this section correspond with the Chapter 4 of the dissertation document and constitute an extension of the work "Instrumented Timed Up and Go Test Using Inertial Sensors from Consumer Wearable Devices" [@matey2022instrumented] presented in the $20^{th}$ International Conference on Artificial Intelligence in Medicine (AIME).
+The contents on this section correspond with the Chapter 4 of the dissertation document, which is based in the article "Implemented and evaluating the Timed Up and Go test automation using smartphones and smartwatches" [@matey2024implementing] publisehd in the _IEEE Journal of Biomedical and Health Informatics_. This paper also constitutes an extension of the work "Instrumented Timed Up and Go Test Using Inertial Sensors from Consumer Wearable Devices" [@matey2022instrumented] presented in the $20^{th}$ International Conference on Artificial Intelligence in Medicine (AIME).
 :::
 
 ## TUG test mHealth system

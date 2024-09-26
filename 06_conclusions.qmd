@@ -37,6 +37,10 @@ format:
         icon: journal-bookmark-fill
         href: https://doi.org/10.1016/j.dib.2023.109809
         target: blank
+      - text: JBHI paper
+        icon: journal-bookmark-fill
+        href: https://doi.org/10.1109/JBHI.2024.3456169
+        target: blank
       - text: AIME paper
         icon: journal-bookmark-fill
         href: https://doi.org/10.1007/978-3-031-09342-5_14
@@ -109,7 +113,7 @@ Several research outcomes were produced during the development of this thesis. T
 ### Journals
 
 - "Dataset of inertial measurements of smartphones and smartwatches for human activity recognition". In: **Data in Brief** [@matey2023dib].
-- "Implementing and evaluating the Timed Up and Go test automation using smartphones and smartwatches". In: **IEEE Journal of Biomedical and Health Informatics** **[Submitted. Under second review round]** [@matey2024implementing].
+- "Implementing and evaluating the Timed Up and Go test automation using smartphones and smartwatches". In: **IEEE Journal of Biomedical and Health Informatics** [@matey2024implementing].
 
 ### Conferences
 
