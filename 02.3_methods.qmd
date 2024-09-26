@@ -159,8 +159,8 @@ Next, the significance tests employed in the following sections are described.
 #### Shapiro-Wilk test
 The Shapiro-Wilk test is used to contrast the **normality** of a distribution, i.e., the data is sampled from a normally distributed population [@shapiro1965]. This test precedes other significance tests since the **normality** of the distribution must be taken into account to choose the right significance test.
 
-#### Student's T-test
-The T-test is any statistical hypothesis test which test statistic adheres to the Student's _T_-distribution [@student1908probable]. The T-tests are **parametric**[^1] tests, thus they can only be used with normal distributions. Several T-tests are employed:
+#### T-test
+The T-test is any statistical hypothesis test which test statistic adheres to the Student's _T_-distribution [@student1908probable]. The T-tests are **parametric**[^1] tests, thus they can only be used with normal distributions. A variation of the Student's T-Test is Welch's T-test [@welch1947], employed when the distributions are not homoscedastic (i.e., unequal variances). Several T-tests are employed:
 
 ##### One-sample T-test
 It determines if the mean of a group is significantly different from a specific value. For example, it can be used to determine the errors in some measures obtained with a device are different from $0$. Its hypothesis can be defined as:

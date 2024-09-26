@@ -40,7 +40,8 @@ def compare_splitting_approaches(reports, metrics):
             return [np.round(np.median(g1), 3), np.round(np.median(g2), 3), f'U={res["U-val"]}, p-val={res["p-val"]}, power={power}']
 
         def ttest(g1, g2):
-            res = pg.ttest(g1, g2, alternative=alternative).loc['T-test']
+            homoscedasticity = pg.homoscedasticity([g1, g2]).loc['levene', 'equal_var']
+            res = pg.ttest(g1, g2, alternative=alternative, correction=not bool(homoscedasticity)).loc['T-test']
             return [np.round(np.mean(g1), 3), np.round(np.mean(g2), 3), f't({res["dof"]})={res["T"]}, p-val={res["p-val"]}, power={res["power"]}']
 
         return ttest if parametric else mwu
@@ -56,6 +57,7 @@ def compare_splitting_approaches(reports, metrics):
             else:
                 ts_dataset = datasource_report['ts'][metric]
                 tts_dataset = datasource_report['tts'][metric]
+                
 
                 tester = test_builder(bool(pg.normality(ts_dataset)['normal'].values[0]) and bool(pg.normality(tts_dataset)["normal"].values[0]), source, metric)
                 results.append(partial_result + tester(ts_dataset, tts_dataset))
@@ -75,7 +77,12 @@ def compare_distribution_with_zero(distribution):
     '''
 
     is_normal = pg.normality(distribution).loc[0, 'normal']
-    return pg.ttest(distribution, 0).loc['T-test']['p-val'] if is_normal else pg.wilcoxon(distribution).loc['Wilcoxon']['p-val'], is_normal
+
+    if is_normal:
+        homoscedasticity = pg.homoscedasticity([distribution, [0]*len(distribution)]).loc['levene', 'equal_var']
+        return pg.ttest(distribution, 0, correction=not bool(homoscedasticity)).loc['T-test']['p-val'], True 
+    else: 
+        return pg.wilcoxon(distribution).loc['Wilcoxon']['p-val'], False
 
 
 # Computed MWU power using G*Power 3.1:
@@ -112,7 +119,8 @@ def compare_rmse_distributions(errors_df):
         c2_df = df_reset[df_reset.system == 'C2'][measure].values
         result = [measure]
         if pg.normality(c1_df).loc[0, 'normal'] and pg.normality(c2_df).loc[0, 'normal']:
-            ttest = pg.ttest(c1_df, c2_df).loc['T-test']
+            homoscedasticity = pg.homoscedasticity([c1_df, c2_df]).loc['levene', 'equal_var']
+            ttest = pg.ttest(c1_df, c2_df, correction=not bool(homoscedasticity)).loc['T-test']
             ttest = f't({ttest["dof"]:.2f})={ttest["T"]:.2f}, p-val={ttest["p-val"]}, power={ttest["power"]}'
             result += [np.mean(c1_df), np.mean(c2_df), ttest]
         else:
