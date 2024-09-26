@@ -96,3 +96,101 @@ def plot_execution(data_collection, execution):
     fig.update_yaxes(title_text='Angular velocity (º/s)', row=2, col=1)
     fig.update_layout(margin=dict(l=20, r=20, t=100, b=20), font_family='Helvetica')
     return fig
+
+
+def plot_orientation_stats(executions_info):
+    '''
+    Generates an interactive plot counting the different phone orientations in the executions.
+    
+    Args:
+        executions_info (`pandas.DataFrame`): DataFrame with the information of the executions. See: `data_loading.load_executions_info()`
+        
+    Returns:
+        figure (`plotly.graph_objs.Figure`): Interactive plot
+    '''
+    df = executions_info['orientation'].value_counts()
+    fig = go.Figure(data=[go.Bar(x=df.index, y=df.values, text=df.values)])
+    fig.update_layout(
+        width=500,
+        title={
+            'text': 'Phone orientation in pocket',
+            'y': 0.90,
+            'x': 0.5,
+            'xanchor': 'center',
+            'yanchor': 'top',
+            'font_size': 22
+        }, 
+        xaxis_title='Orientation', 
+        yaxis_title='Count'
+    )
+
+    return fig
+
+
+def plot_turn_direction_stats(executions_info): 
+    '''
+    Generates an interactive plot counting the turning direction (right or left) of the `first_turn` and `second_turn`
+    
+    Args:
+        executions_info (`pandas.DataFrame`): DataFrame with the information of the executions. See: `data_loading.load_executions_info()`
+        
+    Returns:
+        figure (`plotly.graph_objs.Figure`): Interactive plot
+    '''
+
+    first = executions_info['first_turn'].value_counts()
+    second = executions_info['second_turn'].value_counts()
+
+    fig = go.Figure([
+        go.Bar(x=first.index, y=first.values, text=first.values, name='first_turn'),
+        go.Bar(x=second.index, y=second.values, text=second.values, name='second_turn')
+    ])
+
+    fig.update_layout(
+        width=500,
+        title={
+            'text': 'Turn direction',
+            'y': 0.90,
+            'x': 0.5,
+            'xanchor': 'center',
+            'yanchor': 'top',
+            'font_size': 22
+        }, 
+        xaxis_title='Direction', 
+        yaxis_title='Count'
+    )
+    
+    return fig
+
+
+def plot_turn_direction_combined_stats(executions_info):
+    '''
+    Generates an interactive plot counting the turning direction of the `first_turn` and `second_turn` combined.
+    
+    Args:
+        executions_info (`pandas.DataFrame`): DataFrame with the information of the executions. See: `data_loading.load_executions_info()`
+        
+    Returns:
+        figure (`plotly.graph_objs.Figure`): Interactive plot
+    '''
+
+    df = executions_info[['first_turn', 'second_turn']].value_counts()
+
+    df = df.reset_index()
+    df['comb'] = df['first_turn'] + df['second_turn']
+    fig = go.Figure([go.Bar(x=df['comb'], y=df[0], text=df[0])])
+    fig.update_layout(
+        width=500,
+        title={
+            'text': 'Turn direction combined',
+            'y': 0.90,
+            'x': 0.5,
+            'xanchor': 'center',
+            'yanchor': 'top',
+            'font_size': 22
+        }, 
+        xaxis_title='Direction', 
+        yaxis_title='Count'
+    )
+
+    return fig

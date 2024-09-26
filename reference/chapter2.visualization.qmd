@@ -9,6 +9,9 @@ Provides a function to plot the collected data.
 | Name | Description |
 | --- | --- |
 | [plot_execution](#libs.chapter2.visualization.plot_execution) | Generates an interactive plot with the accelerometer and gyroscope data of the specified execution. |
+| [plot_orientation_stats](#libs.chapter2.visualization.plot_orientation_stats) | Generates an interactive plot counting the different phone orientations in the executions. |
+| [plot_turn_direction_combined_stats](#libs.chapter2.visualization.plot_turn_direction_combined_stats) | Generates an interactive plot counting the turning direction of the `first_turn` and `second_turn` combined. |
+| [plot_turn_direction_stats](#libs.chapter2.visualization.plot_turn_direction_stats) | Generates an interactive plot counting the turning direction (right or left) of the `first_turn` and `second_turn` |
 
 ### plot_execution { #libs.chapter2.visualization.plot_execution }
 
@@ -22,6 +25,60 @@ Generates an interactive plot with the accelerometer and gyroscope data of the s
 |-------------------|--------|------------------------------------------------------------------------------|------------|
 | `data_collection` | dict   | Dict containing the collected dataset. See: `utils.data_loading.load_data()` | _required_ |
 | `execution`       | str    | execution data to plot. Format: 'sXX_YY_{sp\|sw}'                            | _required_ |
+
+#### Returns
+
+| Type                       | Description      |
+|----------------------------|------------------|
+| `plotly.graph_objs.Figure` | Interactive plot |
+
+### plot_orientation_stats { #libs.chapter2.visualization.plot_orientation_stats }
+
+`chapter2.visualization.plot_orientation_stats(executions_info)`
+
+Generates an interactive plot counting the different phone orientations in the executions.
+
+#### Parameters
+
+| Name              | Type               | Description                                                                                  | Default    |
+|-------------------|--------------------|----------------------------------------------------------------------------------------------|------------|
+| `executions_info` | `pandas.DataFrame` | DataFrame with the information of the executions. See: `data_loading.load_executions_info()` | _required_ |
+
+#### Returns
+
+| Type                       | Description      |
+|----------------------------|------------------|
+| `plotly.graph_objs.Figure` | Interactive plot |
+
+### plot_turn_direction_combined_stats { #libs.chapter2.visualization.plot_turn_direction_combined_stats }
+
+`chapter2.visualization.plot_turn_direction_combined_stats(executions_info)`
+
+Generates an interactive plot counting the turning direction of the `first_turn` and `second_turn` combined.
+
+#### Parameters
+
+| Name              | Type               | Description                                                                                  | Default    |
+|-------------------|--------------------|----------------------------------------------------------------------------------------------|------------|
+| `executions_info` | `pandas.DataFrame` | DataFrame with the information of the executions. See: `data_loading.load_executions_info()` | _required_ |
+
+#### Returns
+
+| Type                       | Description      |
+|----------------------------|------------------|
+| `plotly.graph_objs.Figure` | Interactive plot |
+
+### plot_turn_direction_stats { #libs.chapter2.visualization.plot_turn_direction_stats }
+
+`chapter2.visualization.plot_turn_direction_stats(executions_info)`
+
+Generates an interactive plot counting the turning direction (right or left) of the `first_turn` and `second_turn`
+
+#### Parameters
+
+| Name              | Type               | Description                                                                                  | Default    |
+|-------------------|--------------------|----------------------------------------------------------------------------------------------|------------|
+| `executions_info` | `pandas.DataFrame` | DataFrame with the information of the executions. See: `data_loading.load_executions_info()` | _required_ |
 
 #### Returns
 
