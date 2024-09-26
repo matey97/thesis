@@ -1,7 +1,7 @@
 # Human Activity Recognition with Consumer Devices and Real-Life Perspectives
 
 [![GH Deployment](https://img.shields.io/badge/GitHub%20Pages-Deployment-green.svg)](https://matey97.github.io/thesis)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12799623.svg)](https://doi.org/10.5281/zenodo.12799623)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13843366.svg)](https://doi.org/10.5281/zenodo.13843366)
 
 
 This repository collects all the resources employed during the development of the doctoral thesis in computer science titled *"Human Activity Recognition with Consumer Devices and Real-Life Perspectives"*, authored by 
