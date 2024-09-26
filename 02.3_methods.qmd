@@ -204,6 +204,8 @@ $$
     \end{cases}
 $$
 
+When multiple MWU tests are executed within groups (i.e., pairwise) and compared, the resulting **p-values** are corrected using the Benjamini/Hochberg False Discovery Rate correction.
+
 #### Kruskal-Wallis H-test (KWH)
 The KWH is a non-parametric significance test used to compare three or more non-normally distributed groups [@kruskalWallis1952]. Its hypothesis can be defined as:
 $$

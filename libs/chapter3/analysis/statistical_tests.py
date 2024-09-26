@@ -30,9 +30,9 @@ def pairwise_n_comparision(data, filters, alternative='two-sided', stars=False, 
     
     if parametric:
         df = data_filtered[['n', 'i', 'value']].pivot(index='i', columns='n')['value']
-        return df.ptests(stars=stars, alternative=alternative)
+        return df.ptests(stars=stars, alternative=alternative, padjust='fdr_bh')
     
-    non_parametric_pariwise = data_filtered.pairwise_tests(dv='value', between='n', parametric=False, alternative=alternative)
+    non_parametric_pariwise = data_filtered.pairwise_tests(dv='value', between='n', parametric=False, alternative=alternative, padjust='fdr_bh')
 
     mat = np.empty((22, 22))
     mat = mat.astype(str)
@@ -41,7 +41,7 @@ def pairwise_n_comparision(data, filters, alternative='two-sided', stars=False, 
     for i in range(1, 22):
         for j in range(i + 1, 23):
             row = non_parametric_pariwise[(non_parametric_pariwise.A == i) & (non_parametric_pariwise.B == j)]
-            mat[i - 1,j - 1] = formatter(row['p-unc'].to_numpy()[0])
+            mat[i - 1,j - 1] = formatter(row['p-corr'].to_numpy()[0])
             mat[j - 1,i - 1] = row['U-val'].to_numpy()[0]
     np.fill_diagonal(mat, "-")
     index = np.arange(1, 23)
@@ -50,7 +50,7 @@ def pairwise_n_comparision(data, filters, alternative='two-sided', stars=False, 
 
 def p_value_formatter(stars, decimals=3):
     def as_value(val):
-        return f'{val:.{decimals}}'
+        return f'{val:.{decimals}f}'
     def as_stars(val):
         if isinstance(val, str):
             try:
@@ -65,7 +65,7 @@ def p_value_formatter(stars, decimals=3):
         elif val < 0.05:
             return '*'
         else:
-            return f'{val:.{decimals}}'
+            return f'{val:.{decimals}f}'
         
     return as_stars if stars else as_value
 
@@ -186,10 +186,10 @@ def _compare_groups(reports, filters, groups, alternative='two-sided'):
         results.append([n] + test_results)
         
         if kruskal['p-unc'] <= 0.05:
-            posthoc = pg.pairwise_tests(n_reports, dv='value', between=between, parametric=False, return_desc=True)[['A', 'B', 'mean(A)', 'std(A)', 'mean(B)', 'std(B)', 'U-val', 'p-unc']]
+            posthoc = pg.pairwise_tests(n_reports, dv='value', between=between, parametric=False, return_desc=True, padjust='fdr_bh')[['A', 'B', 'mean(A)', 'std(A)', 'mean(B)', 'std(B)', 'U-val', 'p-corr']]
             posthoc['n'] = n
             posthoc_results.append(posthoc)
  
     posthoc_df = pd.concat(posthoc_results)#.set_index(['n'])
-    posthoc_df = posthoc_df.rename(columns={'U-val': 'U', 'p-unc': 'p-value'})
+    posthoc_df = posthoc_df.rename(columns={'U-val': 'U', 'p-corr': 'p-value'})
     return pd.DataFrame(results, columns=labels), posthoc_df
