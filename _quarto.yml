@@ -13,7 +13,7 @@ book:
     email: matey@uji.es
     corresponding: true
     degrees:
-      - MSc
+      - PhD
     affiliation:
       - id: uji
         name: Universitat Jaume I
@@ -34,7 +34,9 @@ book:
       - PhD
     affiliation:
       - ref: uji
-  date: now
+  date: 10/30/2024
+  date-format: long
+  doi: 10.6035/14101.2024.663821
 
   page-footer:
     left: |
